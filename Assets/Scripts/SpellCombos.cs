@@ -24,6 +24,10 @@ public class SpellCombos : MonoBehaviour
             leftWheel.SetActive(true);
             
         }
+        if (Input.GetButtonDown(""))
+        {
+            rightWheel.SetActive(true);
+        }
         switch (leftHand)
         {
             case 0:
