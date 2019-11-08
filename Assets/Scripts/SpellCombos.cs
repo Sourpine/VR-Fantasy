@@ -19,14 +19,20 @@ public class SpellCombos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryThumbstick"))
+        if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryThumbstick") && leftWheel.activeSelf == false)
         {
             leftWheel.SetActive(true);
             
+        }else if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryThumbstick") && leftWheel.activeSelf == true)
+        {
+            leftWheel.SetActive(false);
         }
-        if (Input.GetButtonDown("Oculus_CrossPlatform_SecondaryThumbstick"))
+        if (Input.GetButtonDown("Oculus_CrossPlatform_SecondaryThumbstick") && rightWheel.activeSelf == false)
         {
             rightWheel.SetActive(true);
+        }else if (Input.GetButtonDown("Oculus_CrossPlatform_SecondaryThumbstick") && rightWheel.activeSelf == true)
+        {
+            rightWheel.SetActive(false);
         }
         switch (leftHand)
         {
