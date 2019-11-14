@@ -9,6 +9,8 @@ public class SpellCombos : MonoBehaviour
     public GameObject leftWheel;
     public GameObject rightWheel;
     public bool combo = false;
+    public GameObject ES;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,9 @@ public class SpellCombos : MonoBehaviour
     {
         if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryThumbstick") && leftWheel.activeSelf == false)
         {
+            rightWheel.SetActive(false);
             leftWheel.SetActive(true);
+            //ES.GetComponent<UIBehaviour>().FirstSelected(""); 
             
         }else if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryThumbstick") && leftWheel.activeSelf == true)
         {
@@ -30,10 +34,19 @@ public class SpellCombos : MonoBehaviour
         }
         if (Input.GetButtonDown("Oculus_CrossPlatform_SecondaryThumbstick") && rightWheel.activeSelf == false)
         {
+            leftWheel.SetActive(false);
             rightWheel.SetActive(true);
+
         }else if (Input.GetButtonDown("Oculus_CrossPlatform_SecondaryThumbstick") && rightWheel.activeSelf == true)
         {
             rightWheel.SetActive(false);
+        }
+        if(rightWheel.activeSelf == true || leftWheel.activeSelf == true)
+        {
+            player.GetComponent<OVRPlayerController>().enabled = false;
+        }else if (rightWheel.activeSelf == false && leftWheel.activeSelf == false)
+        {
+            player.GetComponent<OVRPlayerController>().enabled = true;
         }
         switch (leftHand)
         {

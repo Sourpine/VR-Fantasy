@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 84153700}
   - component: {fileID: 84153699}
   m_Layer: 5
-  m_Name: Air
+  m_Name: Air (L)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1229,7 +1229,7 @@ GameObject:
   - component: {fileID: 837853231}
   - component: {fileID: 837853230}
   m_Layer: 5
-  m_Name: Water
+  m_Name: Water (L)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1590,7 +1590,7 @@ GameObject:
   - component: {fileID: 998796681}
   - component: {fileID: 998796680}
   m_Layer: 5
-  m_Name: Earth
+  m_Name: Earth (R)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1756,7 +1756,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998847910}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1833,7 +1833,7 @@ GameObject:
   - component: {fileID: 1052393588}
   - component: {fileID: 1052393587}
   m_Layer: 5
-  m_Name: Earth
+  m_Name: Earth (L)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2348,7 +2348,7 @@ GameObject:
   - component: {fileID: 1166831125}
   - component: {fileID: 1166831124}
   m_Layer: 5
-  m_Name: Sword
+  m_Name: Sword (L)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2468,7 +2468,7 @@ GameObject:
   - component: {fileID: 1185431649}
   - component: {fileID: 1185431648}
   m_Layer: 5
-  m_Name: Sword
+  m_Name: Sword (R)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2679,7 +2679,7 @@ GameObject:
   - component: {fileID: 1302316641}
   - component: {fileID: 1302316640}
   m_Layer: 5
-  m_Name: Air
+  m_Name: Air (R)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3019,7 +3019,7 @@ GameObject:
   - component: {fileID: 1419563036}
   - component: {fileID: 1419563035}
   m_Layer: 5
-  m_Name: Fire
+  m_Name: Fire (R)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3159,6 +3159,9 @@ MonoBehaviour:
   rightHand: 0
   leftWheel: {fileID: 2117017728}
   rightWheel: {fileID: 1732977085}
+  combo: 0
+  EventSystem: {fileID: 998847910}
+  player: {fileID: 1248810959}
 --- !u!4 &1420437596
 Transform:
   m_ObjectHideFlags: 0
@@ -3265,7 +3268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1552133000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3333,7 +3336,7 @@ GameObject:
   - component: {fileID: 1691430732}
   - component: {fileID: 1691430731}
   m_Layer: 5
-  m_Name: Fire
+  m_Name: Fire (L)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3811,7 +3814,7 @@ GameObject:
   - component: {fileID: 1803962152}
   - component: {fileID: 1803962151}
   m_Layer: 5
-  m_Name: Water
+  m_Name: Water (R)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
