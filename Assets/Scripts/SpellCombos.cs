@@ -8,6 +8,7 @@ public class SpellCombos : MonoBehaviour
     public int rightHand = 0;
     public GameObject leftWheel;
     public GameObject rightWheel;
+    public bool combo = false;
 
     // Start is called before the first frame update
     void Start()
@@ -61,10 +62,40 @@ public class SpellCombos : MonoBehaviour
 
                 break;
         }
-        /*switch (leftHand + rightHand)
+        switch (rightHand)
+        {
+            case 0:
+                //empty
+
+                break;
+            case 1:
+                //1 = earth (stun)
+
+                break;
+            case 10:
+                //fire (flames)
+
+                break;
+            case 50:
+                //50 = water (lesser healing)
+
+                break;
+            case 500:
+                //500 = air (shield)
+
+                break;
+            case 5000:
+                //sword
+
+                break;
+        }
+        if (combo == true)
+        {
+            /*switch (leftHand + rightHand)
         {
 
         }*/
+        }
     }
 }
 //0 = empty
