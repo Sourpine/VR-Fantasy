@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1052393585}
+  m_FirstSelected: {fileID: 1166831122}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &998847913
@@ -3158,7 +3158,7 @@ MonoBehaviour:
   leftHand: 0
   rightHand: 0
   leftWheel: {fileID: 2117017728}
-  rightWheel: {fileID: 0}
+  rightWheel: {fileID: 1732977085}
 --- !u!4 &1420437596
 Transform:
   m_ObjectHideFlags: 0
@@ -3297,7 +3297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1185431646}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1552133002
@@ -4298,7 +4298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &2117017730
 MeshRenderer:
   m_ObjectHideFlags: 0
