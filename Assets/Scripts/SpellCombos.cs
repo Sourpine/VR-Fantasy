@@ -9,8 +9,11 @@ public class SpellCombos : MonoBehaviour
     public GameObject leftWheel;
     public GameObject rightWheel;
     public bool combo = false;
-    public GameObject ES;
+    public GameObject ESL;
+    public GameObject ESR;
     public GameObject player;
+    public bool rIn = false;
+    public bool lIn = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,29 +25,43 @@ public class SpellCombos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //how to set as combo
+        if(rIn == true && lIn == true)
+        {
+            combo = true;
+        }
+
+        //menu pop-up
         if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryThumbstick") && leftWheel.activeSelf == false)
         {
+            ESR.SetActive(false);
+            ESL.SetActive(true);
             rightWheel.SetActive(false);
             leftWheel.SetActive(true);
-            //ES.GetComponent<UIBehaviour>().FirstSelected(""); 
-            
-        }else if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryThumbstick") && leftWheel.activeSelf == true)
+        }
+        else if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryThumbstick") && leftWheel.activeSelf == true)
         {
+            ESL.SetActive(true);
             leftWheel.SetActive(false);
         }
         if (Input.GetButtonDown("Oculus_CrossPlatform_SecondaryThumbstick") && rightWheel.activeSelf == false)
         {
+            ESL.SetActive(false);
+            ESR.SetActive(true);
             leftWheel.SetActive(false);
             rightWheel.SetActive(true);
 
-        }else if (Input.GetButtonDown("Oculus_CrossPlatform_SecondaryThumbstick") && rightWheel.activeSelf == true)
+        }
+        else if (Input.GetButtonDown("Oculus_CrossPlatform_SecondaryThumbstick") && rightWheel.activeSelf == true)
         {
+            ESR.SetActive(true);
             rightWheel.SetActive(false);
         }
         if(rightWheel.activeSelf == true || leftWheel.activeSelf == true)
         {
             player.GetComponent<OVRPlayerController>().enabled = false;
-        }else if (rightWheel.activeSelf == false && leftWheel.activeSelf == false)
+        }
+        else if (rightWheel.activeSelf == false && leftWheel.activeSelf == false)
         {
             player.GetComponent<OVRPlayerController>().enabled = true;
         }
@@ -104,11 +121,60 @@ public class SpellCombos : MonoBehaviour
         }
         if (combo == true)
         {
-            /*switch (leftHand + rightHand)
-        {
-
-        }*/
+        
         }
+    }
+
+    //left hand
+    void FireLeft()
+    {
+        leftHand = 10;
+    }
+    void EarthLeft()
+    {
+        leftHand = 1;
+    }
+    void WaterLeft()
+    {
+        leftHand = 50;
+    }
+    void AirLeft()
+    {
+        leftHand = 500;
+    }
+    void SwordLeft()
+    {
+        if(rightHand == 5000)
+        {
+            rightHand = 0;
+        }
+        leftHand = 5000;
+    }
+
+    //right hand
+    void FireRight()
+    {
+        rightHand = 10;
+    }
+    void EarthRight()
+    {
+        rightHand = 1;
+    }
+    void WaterRight()
+    {
+        rightHand = 50;
+    }
+    void AirRight()
+    {
+        rightHand = 500;
+    }
+    void SwordRight()
+    {
+        if (leftHand == 5000)
+        {
+            leftHand = 0;
+        }
+        leftHand = 5000;
     }
 }
 //0 = empty
