@@ -3196,8 +3196,8 @@ MonoBehaviour:
   leftWheel: {fileID: 2117017728}
   rightWheel: {fileID: 1732977085}
   combo: 0
-  ESL: {fileID: 0}
-  ESR: {fileID: 0}
+  ESL: {fileID: 998847910}
+  ESR: {fileID: 1552132999}
   player: {fileID: 1248810959}
   rIn: 0
   lIn: 0
