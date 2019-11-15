@@ -121,7 +121,65 @@ public class SpellCombos : MonoBehaviour
         }
         if (combo == true)
         {
-        
+            switch (leftHand + rightHand)
+            {
+                case 2:
+                    //meteor
+
+                    break;
+                case 11:
+                    //lava
+
+                    break;
+                case 20:
+                    //fireball
+
+                    break;
+                case 51:
+                    //vines
+
+                    break;
+                case 60:
+                    //geyser
+
+                    break;
+                case 100:
+                    //greater heal
+
+                    break;
+                case 501:
+                    //gravity
+
+                    break;
+                case 510:
+                    //lightning
+
+                    break;
+                case 550:
+                    //ice
+
+                    break;
+                case 1000:
+                    //cyclone
+
+                    break;
+                case 5001:
+                    //earth and sword
+
+                    break;
+                case 5010:
+                    //fire and sword
+
+                    break;
+                case 5050:
+                    //water and sword
+
+                    break;
+                case 5500:
+                    //air amd sword
+
+                    break;
+            }
         }
     }
 
