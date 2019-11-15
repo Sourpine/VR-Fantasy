@@ -25,6 +25,9 @@ public class SpellCombos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(leftHand);
+        //Debug.Log(rightHand);
+        
         //how to set as combo
         if(rIn == true && lIn == true)
         {
@@ -184,55 +187,65 @@ public class SpellCombos : MonoBehaviour
     }
 
     //left hand
-    void FireLeft()
+    public void FireLeft()
     {
         leftHand = 10;
+        leftWheel.SetActive(false);
     }
-    void EarthLeft()
+    public void EarthLeft()
     {
         leftHand = 1;
+        leftWheel.SetActive(false);
     }
-    void WaterLeft()
+    public void WaterLeft()
     {
         leftHand = 50;
+        leftWheel.SetActive(false);
     }
-    void AirLeft()
+    public void AirLeft()
     {
         leftHand = 500;
+        leftWheel.SetActive(false);
     }
-    void SwordLeft()
+    public void SwordLeft()
     {
         if(rightHand == 5000)
         {
             rightHand = 0;
         }
         leftHand = 5000;
+        leftWheel.SetActive(false);
     }
 
     //right hand
-    void FireRight()
+    public void FireRight()
     {
         rightHand = 10;
+        rightWheel.SetActive(false);
     }
-    void EarthRight()
+    public void EarthRight()
     {
         rightHand = 1;
+        rightWheel.SetActive(false);
     }
-    void WaterRight()
+    public void WaterRight()
     {
         rightHand = 50;
+        rightWheel.SetActive(false);
     }
-    void AirRight()
+    public void AirRight()
     {
         rightHand = 500;
+        rightWheel.SetActive(false);
     }
-    void SwordRight()
+    public void SwordRight()
     {
         if (leftHand == 5000)
         {
             leftHand = 0;
         }
         leftHand = 5000;
+        rightWheel.SetActive(false);
     }
 }
 //0 = empty
