@@ -52,7 +52,7 @@ public class SpellCombos : MonoBehaviour
         {
             case 0:
                 //empty
-
+                
                 break;
             case 1:
                 //1 = earth (stun)
@@ -72,7 +72,7 @@ public class SpellCombos : MonoBehaviour
                 break;
             case 5000:
                 //sword
-
+                
                 break;
         }
         switch (rightHand)
