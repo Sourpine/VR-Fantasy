@@ -35,8 +35,8 @@ public class SpellCombos : MonoBehaviour
         if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryThumbstick") && leftWheel.activeSelf == false)
         {
             ESR.SetActive(false);
-            ESL.SetActive(true);
             rightWheel.SetActive(false);
+            ESL.SetActive(true);
             leftWheel.SetActive(true);
         }
         else if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryThumbstick") && leftWheel.activeSelf == true)
@@ -47,8 +47,8 @@ public class SpellCombos : MonoBehaviour
         if (Input.GetButtonDown("Oculus_CrossPlatform_SecondaryThumbstick") && rightWheel.activeSelf == false)
         {
             ESL.SetActive(false);
-            ESR.SetActive(true);
             leftWheel.SetActive(false);
+            ESR.SetActive(true);
             rightWheel.SetActive(true);
 
         }
