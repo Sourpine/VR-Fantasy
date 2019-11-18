@@ -102,23 +102,27 @@ public class SpellCombos : MonoBehaviour
                 break;
             case 1:
                 //1 = earth (stun)
+                ResetLeft();
                 EarthL.SetActive(true);
                 break;
             case 10:
                 //fire (flames)
+                ResetLeft();
                 FireL.SetActive(true);
                 break;
             case 50:
                 //50 = water (lesser healing)
+                ResetLeft();
                 WaterL.SetActive(true);
                 break;
             case 500:
                 //500 = air (shield)
+                ResetLeft();
                 AirL.SetActive(true);
                 break;
             case 5000:
                 //sword
-                
+                ResetLeft();
                 break;
         }
         switch (rightHand)
@@ -129,23 +133,27 @@ public class SpellCombos : MonoBehaviour
                 break;
             case 1:
                 //1 = earth (stun)
+                ResetRight();
                 EarthR.SetActive(true);
                 break;
             case 10:
                 //fire (flames)
+                ResetRight();
                 FireR.SetActive(true);
                 break;
             case 50:
                 //50 = water (lesser healing)
+                ResetRight();
                 WaterR.SetActive(true);
                 break;
             case 500:
                 //500 = air (shield)
+                ResetRight();
                 AirR.SetActive(true);
                 break;
             case 5000:
                 //sword
-
+                ResetRight();
                 break;
         }
         if (combo == true)
@@ -289,7 +297,7 @@ public class SpellCombos : MonoBehaviour
         {
             leftHand = 0;
         }
-        leftHand = 5000;
+        rightHand = 5000;
         rightWheel.SetActive(false);
     }
 }
