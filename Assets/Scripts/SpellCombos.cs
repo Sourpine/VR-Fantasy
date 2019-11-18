@@ -14,6 +14,32 @@ public class SpellCombos : MonoBehaviour
     public GameObject player;
     public bool rIn = false;
     public bool lIn = false;
+    
+    //test items (may be removed in time)
+
+    public GameObject FireL;
+    public GameObject EarthL;
+    public GameObject WaterL;
+    public GameObject AirL;
+    //public GameObject SwordL;
+
+    public GameObject FireR;
+    public GameObject EarthR;
+    public GameObject WaterR;
+    public GameObject AirR;
+    //public GameObject SwordR;
+
+    /*public GameObject FireballC;
+    public GameObject MeteorC;
+    public GameObject GrHealC;
+    public GameObject CycloneC;
+
+    public GameObject LavaC;
+    public GameObject GravityC;
+    public GameObject LifeC;
+    public GameObject GeyserC;
+    public GameObject LightningC;
+    public GameObject IceC;*/
 
     // Start is called before the first frame update
     void Start()
@@ -76,19 +102,19 @@ public class SpellCombos : MonoBehaviour
                 break;
             case 1:
                 //1 = earth (stun)
-
+                EarthL.SetActive(true);
                 break;
             case 10:
                 //fire (flames)
-
+                FireL.SetActive(true);
                 break;
             case 50:
                 //50 = water (lesser healing)
-
+                WaterL.SetActive(true);
                 break;
             case 500:
                 //500 = air (shield)
-
+                AirL.SetActive(true);
                 break;
             case 5000:
                 //sword
@@ -103,19 +129,19 @@ public class SpellCombos : MonoBehaviour
                 break;
             case 1:
                 //1 = earth (stun)
-
+                EarthR.SetActive(true);
                 break;
             case 10:
                 //fire (flames)
-
+                FireR.SetActive(true);
                 break;
             case 50:
                 //50 = water (lesser healing)
-
+                WaterR.SetActive(true);
                 break;
             case 500:
                 //500 = air (shield)
-
+                AirR.SetActive(true);
                 break;
             case 5000:
                 //sword
@@ -186,6 +212,25 @@ public class SpellCombos : MonoBehaviour
         }
     }
 
+    public void ResetLeft()
+    {
+        FireL.SetActive(false);
+        EarthL.SetActive(false);
+        WaterL.SetActive(false);
+        AirL.SetActive(false);
+    }
+    public void ResetRight()
+    {
+        FireR.SetActive(false);
+        EarthR.SetActive(false);
+        WaterR.SetActive(false);
+        AirR.SetActive(false);
+    }
+    public void ResetCombo()
+    {
+
+    }
+    
     //left hand
     public void FireLeft()
     {
