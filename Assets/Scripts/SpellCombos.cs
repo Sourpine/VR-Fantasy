@@ -14,6 +14,10 @@ public class SpellCombos : MonoBehaviour
     public GameObject player;
     public bool rIn = false;
     public bool lIn = false;
+    public GameObject LHand;
+    public GameObject RHand;
+    public int LHSave = 0;
+    public int RHSave = 0;
     
     //test items (may be removed in time)
 
@@ -29,17 +33,19 @@ public class SpellCombos : MonoBehaviour
     public GameObject AirR;
     //public GameObject SwordR;
 
-    /*public GameObject FireballC;
+    //x2's
+    public GameObject FireballC;
     public GameObject MeteorC;
     public GameObject GrHealC;
     public GameObject CycloneC;
 
+    //different spells c
     public GameObject LavaC;
     public GameObject GravityC;
     public GameObject LifeC;
     public GameObject GeyserC;
     public GameObject LightningC;
-    public GameObject IceC;*/
+    public GameObject IceC;
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +92,7 @@ public class SpellCombos : MonoBehaviour
             ESR.SetActive(true);
             rightWheel.SetActive(false);
         }
+        //movement turned off
         if(rightWheel.activeSelf == true || leftWheel.activeSelf == true)
         {
             player.GetComponent<OVRPlayerController>().enabled = false;
@@ -94,6 +101,8 @@ public class SpellCombos : MonoBehaviour
         {
             player.GetComponent<OVRPlayerController>().enabled = true;
         }
+
+        //determines left hand spell
         switch (leftHand)
         {
             case 0:
@@ -125,6 +134,8 @@ public class SpellCombos : MonoBehaviour
                 ResetLeft();
                 break;
         }
+
+        //determines right hand spell
         switch (rightHand)
         {
             case 0:
@@ -156,76 +167,125 @@ public class SpellCombos : MonoBehaviour
                 ResetRight();
                 break;
         }
+
+        //checking whether or not hands are in trigger
+        if (LHand.GetComponent<OnHandCombos>().handIn == true && RHand.GetComponent<OnHandCombos>().handIn == true)
+        {
+            if (leftHand > 0)
+            {
+                LHSave = leftHand;
+            }
+            if (rightHand > 0)
+            {
+                RHSave = rightHand;
+            }
+            combo = true;
+        }
+        else if (LHand.GetComponent<OnHandCombos>().handIn == false || RHand.GetComponent<OnHandCombos>().handIn == false)
+        {
+            if (leftHand == 0)
+            {
+                leftHand = LHSave;
+                LHSave = 0;
+            }
+            if (rightHand == 0)
+            {
+                rightHand = RHSave;
+                RHSave = 0;
+            }
+        }
+
+        //checking if combo spell is true
         if (combo == true)
         {
-            switch (leftHand + rightHand)
+            leftHand = 0;
+            rightHand = 0;
+
+            //sets combo spells 
+            switch (LHSave + RHSave)
             {
                 case 2:
                     //meteor
-
+                    ResetCombo();
+                    MeteorC.SetActive(true);
                     break;
                 case 11:
                     //lava
-
+                    ResetCombo();
+                    LavaC.SetActive(true);
                     break;
                 case 20:
                     //fireball
-
+                    ResetCombo();
+                    FireballC.SetActive(true);
                     break;
                 case 51:
                     //vines
-
+                    ResetCombo();
+                    LifeC.SetActive(true);
                     break;
                 case 60:
                     //geyser
-
+                    ResetCombo();
+                    GeyserC.SetActive(true);
                     break;
                 case 100:
                     //greater heal
-
+                    ResetCombo();
+                    GrHealC.SetActive(true);
                     break;
                 case 501:
                     //gravity
-
+                    ResetCombo();
+                    GravityC.SetActive(true);
                     break;
                 case 510:
                     //lightning
-
+                    ResetCombo();
+                    LightningC.SetActive(true);
                     break;
                 case 550:
                     //ice
-
+                    ResetCombo();
+                    IceC.SetActive(true);
                     break;
                 case 1000:
                     //cyclone
-
+                    ResetCombo();
+                    CycloneC.SetActive(true);
                     break;
                 case 5001:
                     //earth and sword
+                    ResetCombo();
 
                     break;
                 case 5010:
                     //fire and sword
-
+                    ResetCombo();
                     break;
                 case 5050:
                     //water and sword
+                    ResetCombo();
 
                     break;
                 case 5500:
                     //air amd sword
+                    ResetCombo();
 
                     break;
             }
-        }
+        } 
     }
 
+    
+    //reset hands and combo
     public void ResetLeft()
     {
         FireL.SetActive(false);
         EarthL.SetActive(false);
         WaterL.SetActive(false);
         AirL.SetActive(false);
+        //SwordL.SetActive(false);
     }
     public void ResetRight()
     {
@@ -233,12 +293,24 @@ public class SpellCombos : MonoBehaviour
         EarthR.SetActive(false);
         WaterR.SetActive(false);
         AirR.SetActive(false);
+        //SwordR.SetActive(false);
     }
     public void ResetCombo()
     {
-
+        ResetLeft();
+        ResetRight();
+        FireballC.SetActive(false);
+        MeteorC.SetActive(false);
+        GrHealC.SetActive(false);
+        CycloneC.SetActive(false);
+        LavaC.SetActive(false);
+        GravityC.SetActive(false);
+        LifeC.SetActive(false);
+        GeyserC.SetActive(false);
+        LightningC.SetActive(false);
+        IceC.SetActive(false);
     }
-    
+
     //left hand
     public void FireLeft()
     {
