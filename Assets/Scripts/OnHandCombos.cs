@@ -15,7 +15,7 @@ public class OnHandCombos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("Hand is " + handIn);
     }
 
     private void OnTriggerEnter(Collider other)

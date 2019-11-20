@@ -59,9 +59,11 @@ public class SpellCombos : MonoBehaviour
     {
         //Debug.Log(leftHand);
         //Debug.Log(rightHand);
-        
+        //Debug.Log(RHSave);
+        //Debug.Log(LHSave);
+
         //how to set as combo
-        if(rIn == true && lIn == true)
+        if (rIn == true && lIn == true)
         {
             combo = true;
         }
