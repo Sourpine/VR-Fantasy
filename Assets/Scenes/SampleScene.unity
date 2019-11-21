@@ -834,7 +834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &263265071
 Transform:
   m_ObjectHideFlags: 0
@@ -2099,6 +2099,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crosshair
       objectReference: {fileID: 0}
+    - target: {fileID: 3040001056118196192, guid: 58708082c945e8043884376befcb4b44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4722348154304792420, guid: 58708082c945e8043884376befcb4b44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2626,7 +2631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &963875939
 Transform:
   m_ObjectHideFlags: 0
@@ -3199,7 +3204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1023879962
 Transform:
   m_ObjectHideFlags: 0
@@ -4084,7 +4089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1178078920
 Transform:
   m_ObjectHideFlags: 0
@@ -4268,7 +4273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1182664759
 Transform:
   m_ObjectHideFlags: 0
@@ -4491,7 +4496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1189233961
 Transform:
   m_ObjectHideFlags: 0
@@ -5117,7 +5122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1387338709
 Transform:
   m_ObjectHideFlags: 0
@@ -5209,7 +5214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1398905157
 Transform:
   m_ObjectHideFlags: 0
@@ -5593,6 +5598,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crosshair
       objectReference: {fileID: 0}
+    - target: {fileID: 3040001056118196192, guid: 58708082c945e8043884376befcb4b44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4722348154304792420, guid: 58708082c945e8043884376befcb4b44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5674,7 +5684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1492528423
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5910,7 +5920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1580354722
 Transform:
   m_ObjectHideFlags: 0
@@ -6440,6 +6450,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crosshair
       objectReference: {fileID: 0}
+    - target: {fileID: 3040001056118196192, guid: 58708082c945e8043884376befcb4b44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4722348154304792420, guid: 58708082c945e8043884376befcb4b44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6514,6 +6529,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crosshair
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040001056118196192, guid: 58708082c945e8043884376befcb4b44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4722348154304792420, guid: 58708082c945e8043884376befcb4b44,
         type: 3}
@@ -7070,6 +7090,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crosshair
       objectReference: {fileID: 0}
+    - target: {fileID: 3040001056118196192, guid: 58708082c945e8043884376befcb4b44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4722348154304792420, guid: 58708082c945e8043884376befcb4b44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7513,6 +7538,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crosshair
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040001056118196192, guid: 58708082c945e8043884376befcb4b44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4722348154304792420, guid: 58708082c945e8043884376befcb4b44,
         type: 3}
