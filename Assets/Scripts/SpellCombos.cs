@@ -57,11 +57,11 @@ public class SpellCombos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("leftHand is " + leftHand);
-        Debug.Log("rightHand is " + rightHand);
-        Debug.Log("RHSave is " + RHSave);
-        Debug.Log("LHSave is " + LHSave);
-        Debug.Log("combo is " + combo);
+        //Debug.Log("leftHand is " + leftHand);
+        //Debug.Log("rightHand is " + rightHand);
+        //Debug.Log("RHSave is " + RHSave);
+        //Debug.Log("LHSave is " + LHSave);
+        //Debug.Log("combo is " + combo);
 
         //how to set as combo
         /*if (rIn == true && lIn == true)
@@ -197,6 +197,16 @@ public class SpellCombos : MonoBehaviour
                 RHSave = 0;
             }
             combo = false;
+            FireballC.SetActive(false);
+            MeteorC.SetActive(false);
+            GrHealC.SetActive(false);
+            CycloneC.SetActive(false);
+            LavaC.SetActive(false);
+            GravityC.SetActive(false);
+            LifeC.SetActive(false);
+            GeyserC.SetActive(false);
+            LightningC.SetActive(false);
+            IceC.SetActive(false);
         }
 
         //checking if combo spell is true
