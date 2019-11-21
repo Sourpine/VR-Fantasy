@@ -57,16 +57,17 @@ public class SpellCombos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(leftHand);
-        //Debug.Log(rightHand);
-        //Debug.Log(RHSave);
-        //Debug.Log(LHSave);
+        Debug.Log("leftHand is " + leftHand);
+        Debug.Log("rightHand is " + rightHand);
+        Debug.Log("RHSave is " + RHSave);
+        Debug.Log("LHSave is " + LHSave);
+        Debug.Log("combo is " + combo);
 
         //how to set as combo
-        if (rIn == true && lIn == true)
+        /*if (rIn == true && lIn == true)
         {
             combo = true;
-        }
+        }*/
 
         //menu pop-up
         if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryThumbstick") && leftWheel.activeSelf == false)
@@ -171,7 +172,7 @@ public class SpellCombos : MonoBehaviour
         }
 
         //checking whether or not hands are in trigger
-        if (LHand.GetComponent<OnHandCombos>().handIn == true && RHand.GetComponent<OnHandCombos>().handIn == true)
+        if (LHand.GetComponent<OnHandCombos>().handIn == true)
         {
             if (leftHand > 0)
             {
@@ -183,7 +184,7 @@ public class SpellCombos : MonoBehaviour
             }
             combo = true;
         }
-        else if (LHand.GetComponent<OnHandCombos>().handIn == false || RHand.GetComponent<OnHandCombos>().handIn == false)
+        else if (LHand.GetComponent<OnHandCombos>().handIn == false)
         {
             if (leftHand == 0)
             {
@@ -195,6 +196,7 @@ public class SpellCombos : MonoBehaviour
                 rightHand = RHSave;
                 RHSave = 0;
             }
+            combo = false;
         }
 
         //checking if combo spell is true
