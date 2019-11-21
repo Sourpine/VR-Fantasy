@@ -57,17 +57,7 @@ public class SpellCombos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("leftHand is " + leftHand);
-        //Debug.Log("rightHand is " + rightHand);
-        //Debug.Log("RHSave is " + RHSave);
-        //Debug.Log("LHSave is " + LHSave);
-        //Debug.Log("combo is " + combo);
-
-        //how to set as combo
-        /*if (rIn == true && lIn == true)
-        {
-            combo = true;
-        }*/
+        
 
         //menu pop-up
         if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryThumbstick") && leftWheel.activeSelf == false)
@@ -135,6 +125,7 @@ public class SpellCombos : MonoBehaviour
             case 5000:
                 //sword
                 ResetLeft();
+                //SwordL.SetActive(true);
                 break;
         }
 
@@ -168,6 +159,7 @@ public class SpellCombos : MonoBehaviour
             case 5000:
                 //sword
                 ResetRight();
+                //SwordR.SetActive(true);
                 break;
         }
 
