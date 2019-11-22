@@ -49,8 +49,13 @@ public class SpellCombos : MonoBehaviour
 
     //shoot test variables
     public Camera camera;
+<<<<<<< HEAD
     public GameObject rockPrefab;
     public float bulletSpeed;
+=======
+    public GameObject prefab;
+    public float bulletSpeed = 10f;
+>>>>>>> ff18e4435abda55ccf6e90c207bedef86da14033
     public float rayLength = 50.0f;
 
     // Start is called before the first frame update
@@ -102,6 +107,8 @@ public class SpellCombos : MonoBehaviour
         }
 
         //determines left hand spell
+
+        //Debug.Log(leftHand);
         switch (leftHand)
         {
             case 0:
@@ -112,22 +119,32 @@ public class SpellCombos : MonoBehaviour
                 //1 = earth (stun)
                 ResetLeft();
                 EarthL.SetActive(true);
-                if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryIndexTrigger"))
+                if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryIndexTrigger") || Input.GetButtonDown("Fire1"))
                 {
+                    //Debug.Log("Proper button");
+                    //shooting maybe
                     RaycastHit hit;
                     Vector3 destination;
-                    if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, 50))
+                    if (Physics.Raycast(LHand.transform.position, LHand.transform.forward, out hit, 50))
                     {
                         destination = hit.point;
                     }
                     else
                     {
-                        destination = camera.transform.position + rayLength * camera.transform.forward;
+                        destination = LHand.transform.position + rayLength * LHand.transform.forward;
                     }
-                    Vector3 direction = destination - transform.position;
+                    //Debug.Log(destination);
+                    Vector3 direction = destination - LHand.transform.position;
                     direction.Normalize();
+<<<<<<< HEAD
                     GameObject projectile = Instantiate(rockPrefab, transform.position, Quaternion.identity);
+=======
+                    //Debug.Log(direction);
+                    GameObject projectile = Instantiate(prefab, LHand.transform.position, Quaternion.identity);
+                    //Debug.Log(direction);
+>>>>>>> ff18e4435abda55ccf6e90c207bedef86da14033
                     projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
+                    //Debug.Log("HELLO IT IS HERE" + projectile.GetComponent<Rigidbody>().velocity);
                     Destroy(projectile, 5);
                 }
                 break;
