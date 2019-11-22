@@ -49,13 +49,10 @@ public class SpellCombos : MonoBehaviour
 
     //shoot test variables
     public Camera camera;
-<<<<<<< HEAD
+
     public GameObject rockPrefab;
     public float bulletSpeed;
-=======
-    public GameObject prefab;
-    public float bulletSpeed = 10f;
->>>>>>> ff18e4435abda55ccf6e90c207bedef86da14033
+
     public float rayLength = 50.0f;
 
     // Start is called before the first frame update
@@ -136,13 +133,8 @@ public class SpellCombos : MonoBehaviour
                     //Debug.Log(destination);
                     Vector3 direction = destination - LHand.transform.position;
                     direction.Normalize();
-<<<<<<< HEAD
-                    GameObject projectile = Instantiate(rockPrefab, transform.position, Quaternion.identity);
-=======
-                    //Debug.Log(direction);
-                    GameObject projectile = Instantiate(prefab, LHand.transform.position, Quaternion.identity);
-                    //Debug.Log(direction);
->>>>>>> ff18e4435abda55ccf6e90c207bedef86da14033
+                    GameObject projectile = Instantiate(rockPrefab, LHand.transform.position, Quaternion.identity);
+
                     projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
                     //Debug.Log("HELLO IT IS HERE" + projectile.GetComponent<Rigidbody>().velocity);
                     Destroy(projectile, 5);
