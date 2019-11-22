@@ -47,6 +47,12 @@ public class SpellCombos : MonoBehaviour
     public GameObject LightningC;
     public GameObject IceC;
 
+    //shoot test variables
+    public Camera camera;
+    public GameObject prefab;
+    public float bulletSpeed;
+    public float rayLength = 50.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -106,21 +112,51 @@ public class SpellCombos : MonoBehaviour
                 //1 = earth (stun)
                 ResetLeft();
                 EarthL.SetActive(true);
+                if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryIndexTrigger"))
+                {
+                    RaycastHit hit;
+                    Vector3 destination;
+                    if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, 50))
+                    {
+                        destination = hit.point;
+                    }
+                    else
+                    {
+                        destination = camera.transform.position + rayLength * camera.transform.forward;
+                    }
+                    Vector3 direction = destination - transform.position;
+                    direction.Normalize();
+                    GameObject projectile = Instantiate(prefab, transform.position, Quaternion.identity);
+                    projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
+                    Destroy(projectile, 5);
+                }
                 break;
             case 10:
                 //fire (flames)
                 ResetLeft();
                 FireL.SetActive(true);
+                if (Input.GetButton("Oculus_CrossPlatform_PrimaryIndexTrigger"))
+                {
+
+                }
                 break;
             case 50:
                 //50 = water (lesser healing)
                 ResetLeft();
                 WaterL.SetActive(true);
+                if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryIndexTrigger"))
+                {
+
+                }
                 break;
             case 500:
                 //500 = air (shield)
                 ResetLeft();
                 AirL.SetActive(true);
+                if (Input.GetButton("Oculus_CrossPlatform_PrimaryIndexTrigger"))
+                {
+
+                }
                 break;
             case 5000:
                 //sword

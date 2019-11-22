@@ -604,6 +604,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+--- !u!20 &159619607 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2015248, guid: ce816f2e6abb0504092c23ed9b970dfd,
+    type: 3}
+  m_PrefabInstance: {fileID: 159619606}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &182051123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5564,7 +5570,7 @@ PrefabInstance:
     - target: {fileID: 6721459367247605454, guid: d9e1d4353f729c447b6cd709833e696b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.46
+      value: -0.71
       objectReference: {fileID: 0}
     - target: {fileID: 6721459367247605454, guid: d9e1d4353f729c447b6cd709833e696b,
         type: 3}
@@ -5594,7 +5600,7 @@ PrefabInstance:
     - target: {fileID: 6721459367247605454, guid: d9e1d4353f729c447b6cd709833e696b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6721459367247605454, guid: d9e1d4353f729c447b6cd709833e696b,
         type: 3}
@@ -6020,7 +6026,7 @@ Transform:
   - {fileID: 1749665919}
   - {fileID: 1681797603}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1114095877
 GameObject:
@@ -9208,6 +9214,10 @@ MonoBehaviour:
   GeyserC: {fileID: 1398905156}
   LightningC: {fileID: 1580354721}
   IceC: {fileID: 1492528422}
+  camera: {fileID: 159619607}
+  prefab: {fileID: 6325498717203889607, guid: 0bbe9bd7269bd5f4999aed0065b3b086, type: 3}
+  bulletSpeed: 0
+  rayLength: 50
 --- !u!4 &1420437596
 Transform:
   m_ObjectHideFlags: 0
