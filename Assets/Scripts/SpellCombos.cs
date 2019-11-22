@@ -49,7 +49,7 @@ public class SpellCombos : MonoBehaviour
 
     //shoot test variables
     public Camera camera;
-    public GameObject prefab;
+    public GameObject rockPrefab;
     public float bulletSpeed;
     public float rayLength = 50.0f;
 
@@ -126,7 +126,7 @@ public class SpellCombos : MonoBehaviour
                     }
                     Vector3 direction = destination - transform.position;
                     direction.Normalize();
-                    GameObject projectile = Instantiate(prefab, transform.position, Quaternion.identity);
+                    GameObject projectile = Instantiate(rockPrefab, transform.position, Quaternion.identity);
                     projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
                     Destroy(projectile, 5);
                 }
@@ -176,6 +176,24 @@ public class SpellCombos : MonoBehaviour
                 //1 = earth (stun)
                 ResetRight();
                 EarthR.SetActive(true);
+                if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryIndexTrigger"))
+                {
+                    RaycastHit hit;
+                    Vector3 destination;
+                    if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, 50))
+                    {
+                        destination = hit.point;
+                    }
+                    else
+                    {
+                        destination = camera.transform.position + rayLength * camera.transform.forward;
+                    }
+                    Vector3 direction = destination - transform.position;
+                    direction.Normalize();
+                    GameObject projectile = Instantiate(rockPrefab, transform.position, Quaternion.identity);
+                    projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
+                    Destroy(projectile, 5);
+                }
                 break;
             case 10:
                 //fire (flames)
