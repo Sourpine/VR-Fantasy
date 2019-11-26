@@ -51,6 +51,7 @@ public class SpellCombos : MonoBehaviour
     public Camera camera;
 
     public GameObject rockPrefab;
+    public GameObject icePrefab;
     public float bulletSpeed;
 
     public float rayLength = 50.0f;
@@ -132,7 +133,6 @@ public class SpellCombos : MonoBehaviour
                     Vector3 direction = destination - LHand.transform.position;
                     direction.Normalize();
                     //rockPrefab.transform.eulerAngles = LHand.transform.eulerAngles;
-                    Debug.Log(rockPrefab.transform.eulerAngles);
                     GameObject projectile = Instantiate(rockPrefab, LHand.transform.position, LHand.transform.localRotation);
                     //Quaternion.identity * Quaternion.Euler 
                         //(LHand.transform.eulerAngles.x, LHand.transform.eulerAngles.y, LHand.transform.eulerAngles.z));
@@ -187,21 +187,28 @@ public class SpellCombos : MonoBehaviour
                 //1 = earth (stun)
                 ResetRight();
                 EarthR.SetActive(true);
-                if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryIndexTrigger"))
+                if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryIndexTrigger") || Input.GetButtonDown("Fire1"))
                 {
+                    //shooting maybe
                     RaycastHit hit;
                     Vector3 destination;
-                    if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, 50))
+                    if (Physics.Raycast(RHand.transform.position, RHand.transform.forward, out hit, 50))
                     {
                         destination = hit.point;
                     }
                     else
                     {
-                        destination = camera.transform.position + rayLength * camera.transform.forward;
+                        destination = RHand.transform.position + rayLength * RHand.transform.forward;
                     }
-                    Vector3 direction = destination - transform.position;
+                    Vector3 direction = destination - RHand.transform.position;
                     direction.Normalize();
-                    GameObject projectile = Instantiate(rockPrefab, transform.position, Quaternion.identity);
+                    //rockPrefab.transform.eulerAngles = LHand.transform.eulerAngles;
+                    Debug.Log(rockPrefab.transform.eulerAngles);
+                    GameObject projectile = Instantiate(rockPrefab, RHand.transform.position, RHand.transform.localRotation);
+                    //Quaternion.identity * Quaternion.Euler 
+                    //LLHand.transform.eulerAngles.x, LHand.transform.eulerAngles.y, LHand.transform.eulerAngles.z));
+                    //rockPrefab.transform.rotation = LHand.transform.rotation;
+
                     projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
                     Destroy(projectile, 5);
                 }
@@ -319,6 +326,10 @@ public class SpellCombos : MonoBehaviour
                     //ice
                     ResetCombo();
                     IceC.SetActive(true);
+                    if (Input.GetButtonDown("Fire1"))
+                    {
+                        GameObject projectile = Instantiate(icePrefab, player.transform.position - new Vector3(0, 0.7f, 0), player.transform.localRotation);
+                    }
                     break;
                 case 1000:
                     //cyclone

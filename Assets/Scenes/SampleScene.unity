@@ -2618,6 +2618,12 @@ Transform:
   m_Father: {fileID: 214041649}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &626235986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6724689453492959554, guid: d9e1d4353f729c447b6cd709833e696b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1056442714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &655529011
 GameObject:
   m_ObjectHideFlags: 0
@@ -5597,6 +5603,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6887947143832062232, guid: d9e1d4353f729c447b6cd709833e696b,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9e1d4353f729c447b6cd709833e696b, type: 3}
 --- !u!1 &1068986030
@@ -8405,8 +8416,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329254663}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.26360103, y: 0.26360095, z: 0.2636011}
+  m_LocalPosition: {x: 0.025, y: -0.016, z: 0}
+  m_LocalScale: {x: 0.31539863, y: 0.3153985, z: 0.3153987}
   m_Children: []
   m_Father: {fileID: 20841168}
   m_RootOrder: 8
@@ -9196,6 +9207,7 @@ MonoBehaviour:
   IceC: {fileID: 1492528422}
   camera: {fileID: 159619607}
   rockPrefab: {fileID: 1870491802}
+  icePrefab: {fileID: 626235986}
   bulletSpeed: 10
   rayLength: 50
 --- !u!4 &1420437596
