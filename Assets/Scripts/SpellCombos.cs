@@ -116,7 +116,7 @@ public class SpellCombos : MonoBehaviour
                 //1 = earth (stun)
                 ResetLeft();
                 EarthL.SetActive(true);
-                if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryIndexTrigger") || Input.GetButtonDown("Fire1"))
+                if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryIndexTrigger") /*|| Input.GetButtonDown("Fire1")*/)
                 {
                     //Debug.Log("Proper button");
                     //shooting maybe
