@@ -31,17 +31,34 @@ public class LightningTest : MonoBehaviour
         RaycastHit hit;
         if (Input.GetButtonDown("Fire1") && Physics.Raycast(LHand.transform.position, LHand.transform.forward, out hit, 50))
         {
+            targetList = new List<GameObject>();
             if(hit.collider.gameObject.tag == "Enemy")
             {
-                targetList.Add(hit.collider.gameObject);
+                GameObject go = hit.collider.gameObject;
+                targetList.Add(go);
                 foreach(GameObject target in targetList)
                 {
-                    
+                    List<GameObject> nearby = target.GetComponent<NearbyEnemy>().nearby;
+                    foreach(GameObject g in nearby)
+                    {
+                        if(!targetList.Contains(g) && targetList.Count < 6)
+                        {
+                            targetList.Add(g);
+                        }
+                        if (targetList.Count >= 6)
+                        {
+                            break;
+                        }
+                    }
+                    if(targetList.Count >= 6)
+                    {
+                        break;
+                    }
                 }
             }
         }
         Debug.Log(arrayLength);
-        //targetsArray[].length = arrayLength;
+        //  targetsArray[].length = arrayLength;
     }
     private void OnTriggerEnter(Collider other)
     {
