@@ -12,9 +12,9 @@ public class LightningTest : MonoBehaviour
    // public GameObject T4;
    // public GameObject T5;
 
-    public int[] lightningArray;
-    public GameObject[] targetsArray;
-    public int arrayLength = 0;
+    //public int[] lightningArray;
+    //public GameObject[] targetsArray;
+    //public int arrayLength = 0;
     public List<GameObject> targetList;
     public GameObject LHand;
 
@@ -31,7 +31,9 @@ public class LightningTest : MonoBehaviour
         RaycastHit hit;
         if (Input.GetButtonDown("Fire1") && Physics.Raycast(LHand.transform.position, LHand.transform.forward, out hit, 50))
         {
+            Debug.Log("HIT");
             targetList = new List<GameObject>();
+            
             if(hit.collider.gameObject.tag == "Enemy")
             {
                 GameObject go = hit.collider.gameObject;
@@ -56,11 +58,14 @@ public class LightningTest : MonoBehaviour
                     }
                 }
             }
+            Debug.Log(targetList);
+            //instantiate prefab between self and first on nearby list (or self and go)
+            //do the same between first and second, second and third, and so on till all in list have been hit
         }
         Debug.Log(targetList);
         //  targetsArray[].length = arrayLength;
     }
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
         {
@@ -82,5 +87,5 @@ public class LightningTest : MonoBehaviour
         {
             arrayLength--;
         }
-    }
+    }*/
 }
