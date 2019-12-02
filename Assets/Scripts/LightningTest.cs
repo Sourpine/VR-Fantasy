@@ -57,7 +57,7 @@ public class LightningTest : MonoBehaviour
                 }
             }
         }
-        Debug.Log(arrayLength);
+        Debug.Log(targetList);
         //  targetsArray[].length = arrayLength;
     }
     private void OnTriggerEnter(Collider other)
