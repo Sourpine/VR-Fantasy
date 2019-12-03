@@ -18,9 +18,9 @@ public class NearbyEnemy : MonoBehaviour
         {
             Debug.Log(gameObject.name + "'s list: " + nearby);
         }*/
-        foreach(GameObject target in nearby)
+        foreach(GameObject g in nearby)
         {
-            Debug.Log(target.gameObject.name);
+            Debug.Log(g.name);
         }
         
     }

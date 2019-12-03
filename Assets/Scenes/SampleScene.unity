@@ -8998,6 +8998,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 159619606}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1248810960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248810959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c045b65ac36e064fadcd17daff9ba67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetList: []
+  LHand: {fileID: 2085847653}
+  lightningPrefab: {fileID: 0}
 --- !u!4 &1248810964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd,
@@ -10522,7 +10537,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420437594}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c045b65ac36e064fadcd17daff9ba67, type: 3}
   m_Name: 
