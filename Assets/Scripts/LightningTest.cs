@@ -18,6 +18,7 @@ public class LightningTest : MonoBehaviour
     public List<GameObject> targetList;
     public GameObject LHand;
     public GameObject lightningPrefab;
+    public GameObject LLHand;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +34,11 @@ public class LightningTest : MonoBehaviour
         {
             Debug.Log("HIT");
             targetList = new List<GameObject>();
+            Debug.Log(hit.collider.gameObject.name);
             
             if(hit.collider.gameObject.tag == "Enemy")
             {
+                Debug.Log("HIT");
                 GameObject go = hit.collider.gameObject;
                 targetList.Add(go);
                 foreach(GameObject target in targetList)
@@ -58,17 +61,14 @@ public class LightningTest : MonoBehaviour
                     }
                 }
             }
-            Debug.Log(targetList);
-            //instantiate prefab between self and first on nearby list (or self and go)
-            GameObject lightning = Instantiate(lightningPrefab, transform.position, Quaternion.identity);
-            lightning.transform.right = Vector3.Normalize(targetList[0].transform.position - transform.position);
+            GameObject lightning = Instantiate(lightningPrefab, LHand.transform.position, Quaternion.identity);
+            lightning.transform.forward = -LHand.transform.forward;
+            lightning.transform.right = Vector3.Normalize(targetList[0].transform.position - LHand.transform.position);
             for(int i = 1; i < targetList.Count; i++)
             {
                 GameObject light = Instantiate(lightningPrefab, targetList[i].transform.position, Quaternion.identity);
                 light.transform.right = Vector3.Normalize(targetList[i].transform.position - targetList[i-1].transform.position);
             }
-            //do the same between first and second, second and third, and so on till all in list have been hit
         }
-        //Debug.Log(targetList);
     }
 }
