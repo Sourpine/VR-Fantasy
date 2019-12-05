@@ -28,7 +28,6 @@ public class LightningTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //for(int)
         RaycastHit hit;
         if (Input.GetButtonDown("Fire1") && Physics.Raycast(LHand.transform.position, LHand.transform.forward, out hit, 50))
         {
