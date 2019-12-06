@@ -321,6 +321,10 @@ public class SpellCombos : MonoBehaviour
                     //lightning
                     ResetCombo();
                     LightningC.SetActive(true);
+                    if(LightningC == true /*Input.GetButtonDown(left or right trigger)  */)
+                    {
+                        //fire lightning from lightning script;
+                    }
                     break;
                 case 550:
                     //ice
