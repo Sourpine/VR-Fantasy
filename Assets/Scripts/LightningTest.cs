@@ -34,11 +34,11 @@ public class LightningTest : MonoBehaviour
             Debug.Log("HIT");
             targetList = new List<GameObject>();
             //the raycast is hitting and logging that it is hitting but it doesn't track what it is hitting
-            Debug.Log(hit.collider.gameObject.name);
+            Debug.Log("foo " + hit.collider.gameObject.name);
             
             if(hit.collider.gameObject.tag == "Enemy")
             {
-                Debug.Log("HIT");
+                Debug.Log("HIT2");
                 GameObject go = hit.collider.gameObject;
                 targetList.Add(go);
                 foreach(GameObject target in targetList)

@@ -217,6 +217,10 @@ public class SpellCombos : MonoBehaviour
                 //fire (flames)
                 ResetRight();
                 FireR.SetActive(true);
+                if (Input.GetButton("Fire1"))
+                {
+
+                }
                 break;
             case 50:
                 //50 = water (lesser healing)
