@@ -359,6 +359,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4173461022829282}
   - component: {fileID: 95036812580016120}
+  - component: {fileID: 1628416755833383507}
+  - component: {fileID: 3530695577105225193}
+  - component: {fileID: 2283318441388974495}
   m_Layer: 0
   m_Name: Robot_Blue
   m_TagString: Untagged
@@ -401,6 +404,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1628416755833383507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158717750799836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c9657491a1e724d9bcd0027c8ee78b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3530695577105225193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158717750799836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beadd713b141bf344aac23abe81d7fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTarget: {fileID: 0}
+--- !u!114 &2283318441388974495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158717750799836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75cf47fbdb69ff449887b9964349b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1163287810701774
 GameObject:
   m_ObjectHideFlags: 0
