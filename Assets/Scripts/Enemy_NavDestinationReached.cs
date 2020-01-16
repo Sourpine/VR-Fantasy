@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-public class Enemy_NavPursue : MonoBehaviour
+public class Enemy_NavDestinationReached : MonoBehaviour
 {
     private EnemyMaster enemyMaster;
     private NavMeshAgent navMeshAgent;
@@ -12,17 +11,16 @@ public class Enemy_NavPursue : MonoBehaviour
     private float nextCheck;
     private NavMeshAgent myNavMeshAgent;
 
+ 
     void OnEnable()
     {
-        SetInitialRefrences();
+        SetInitialReferences();
         enemyMaster.EventEnemyDie += DisableThis;
-
     }
 
     void OnDisable()
     {
         enemyMaster.EventEnemyDie -= DisableThis;
-
     }
 
     void Update()
@@ -30,47 +28,34 @@ public class Enemy_NavPursue : MonoBehaviour
         if (Time.time > nextCheck)
         {
             nextCheck = Time.time + checkRate;
-            TryToChaseTarget();
+            CheckIfDestinationReached();
         }
     }
 
-    void SetInitialRefrences()
+    void SetInitialReferences()
     {
         enemyMaster = GetComponent<EnemyMaster>();
-        if(GetComponent<UnityEngine.AI.NavMeshAgent>()!= null)
+        if (GetComponent<UnityEngine.AI.NavMeshAgent>() != null)
         {
             myNavMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         }
-        checkRate = Random.Range(0.1f, 0.2f);
+        checkRate = Random.Range(0.3f, 0.4f);
     }
 
-    void TryToChaseTarget()
+    void CheckIfDestinationReached()
     {
-        if(enemyMaster.myTarget != null && !enemyMaster.isNavPaused)
+        if(enemyMaster.isOnRoute)
         {
-            myNavMeshAgent.SetDestination(enemyMaster.myTarget.position);
-
-            if(myNavMeshAgent.remainingDistance>myNavMeshAgent.stoppingDistance)
+            if(myNavMeshAgent.remainingDistance < myNavMeshAgent.stoppingDistance)
             {
-                enemyMaster.CallEventEnemyWalking();
-                enemyMaster.isOnRoute = true;
-                
+                enemyMaster.isOnRoute = false;
+                enemyMaster.CallEventEnemyReachedNavTarget();
             }
-
         }
     }
 
     void DisableThis()
     {
-        if(myNavMeshAgent != null)
-        {
-            myNavMeshAgent.enabled = false;
-        }
-
         this.enabled = false;
     }
-
-
-
-
 }
