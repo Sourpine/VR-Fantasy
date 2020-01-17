@@ -51,6 +51,7 @@ public class SpellCombos : MonoBehaviour
     public Camera camera;
 
     public GameObject rockPrefab;
+    public GameObject firePrefab;
     public GameObject icePrefab;
     public float bulletSpeed;
 
@@ -219,7 +220,7 @@ public class SpellCombos : MonoBehaviour
                 FireR.SetActive(true);
                 if (Input.GetButton("Fire1"))
                 {
-
+                    GameObject jet = Instantiate(firePrefab, RHand.transform.position, RHand.transform.localRotation);
                 }
                 break;
             case 50:
