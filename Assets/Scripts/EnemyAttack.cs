@@ -29,7 +29,7 @@ public class EnemyAttack : MonoBehaviour
 
     void Update()
     {
-        
+        TryToAttack();
     }
 
     void SetInitialReferences()
@@ -48,13 +48,16 @@ public class EnemyAttack : MonoBehaviour
     {
         if(attackTarget != null)
         {
-            nextAttack = Time.time + attackRate;
-            if(Vector3.Distance(myTransform.position,attackTarget.position) <attackRange)
+            if (Time.time > nextAttack)
             {
-                Vector3 lookAtVector = new Vector3(attackTarget.position.x, myTransform.position.y, attackTarget.position.z);
-                myTransform.LookAt(lookAtVector);
-                enemyMaster.CallEventEnemyAttack();
-                enemyMaster.isOnRoute = false;
+                nextAttack = Time.time + attackRate;
+                if (Vector3.Distance(myTransform.position, attackTarget.position) < attackRange)
+                {
+                    Vector3 lookAtVector = new Vector3(attackTarget.position.x, myTransform.position.y, attackTarget.position.z);
+                    myTransform.LookAt(lookAtVector);
+                    enemyMaster.CallEventEnemyAttack();
+                    enemyMaster.isOnRoute = false;
+                }
             }
         }
     }
@@ -62,16 +65,16 @@ public class EnemyAttack : MonoBehaviour
     public void OnEnemyAttack()//Called by Attack Anim
     {
         if(attackTarget != null)
-        {                                                                                                            //PlayerMaster Goes Here
+        {                                                                                                           
             if (Vector3.Distance(myTransform.position,attackTarget.position) <= attackRange && attackTarget.GetComponent<PlayerMaster>() != null)
             {
                 Vector3 toOther = attackTarget.position - myTransform.position;
 
-                Debug.Log(Vector3.Dot(toOther, myTransform.forward).ToString());
+                //Debug.Log(Vector3.Dot(toOther, myTransform.forward).ToString());
 
                 if (Vector3.Dot(toOther,myTransform.forward)>0.5f)
                 {
-                    //PlayerMaster Goes Here
+                  
                     attackTarget.GetComponent<PlayerMaster>().CallEventPlayerHealthDeduction(attackDamage);
                 }
             }
