@@ -240,6 +240,7 @@ public class SpellCombos : MonoBehaviour
                         jetTimer = 0f;
                     }
                 }
+
                 break;
             case 50:
                 //50 = water (lesser healing)
