@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1420437595}
+      - m_Target: {fileID: 0}
         m_MethodName: AirLeft
         m_Mode: 1
         m_Arguments:
@@ -966,12 +966,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
---- !u!20 &159619607 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2015248, guid: ce816f2e6abb0504092c23ed9b970dfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 159619606}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &161016778
 GameObject:
   m_ObjectHideFlags: 0
@@ -5539,7 +5533,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1420437595}
+      - m_Target: {fileID: 0}
         m_MethodName: WaterLeft
         m_Mode: 1
         m_Arguments:
@@ -11351,7 +11345,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1420437595}
+      - m_Target: {fileID: 0}
         m_MethodName: EarthRight
         m_Mode: 1
         m_Arguments:
@@ -11501,12 +11495,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 1185431646}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!1 &999406097 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1173658494909946, guid: 6fae51a9f4170334e8639e8dbfc0a54b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2131193087}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1010593055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11927,7 +11915,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1420437595}
+      - m_Target: {fileID: 0}
         m_MethodName: EarthLeft
         m_Mode: 1
         m_Arguments:
@@ -13317,7 +13305,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1420437595}
+      - m_Target: {fileID: 0}
         m_MethodName: SwordLeft
         m_Mode: 1
         m_Arguments:
@@ -13865,7 +13853,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1420437595}
+      - m_Target: {fileID: 0}
         m_MethodName: SwordRight
         m_Mode: 1
         m_Arguments:
@@ -14641,7 +14629,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1420437595}
+      - m_Target: {fileID: 0}
         m_MethodName: AirRight
         m_Mode: 1
         m_Arguments:
@@ -20531,7 +20519,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1420437595}
+      - m_Target: {fileID: 0}
         m_MethodName: FireRight
         m_Mode: 1
         m_Arguments:
@@ -20588,8 +20576,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1420437596}
-  - component: {fileID: 1420437595}
-  - component: {fileID: 1420437597}
   m_Layer: 0
   m_Name: scriptTester
   m_TagString: Untagged
@@ -20597,55 +20583,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1420437595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420437594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9f08eb42a4e64848a468377b326e268, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHand: 0
-  rightHand: 0
-  leftWheel: {fileID: 2117017728}
-  rightWheel: {fileID: 1732977085}
-  combo: 0
-  ESL: {fileID: 998847910}
-  ESR: {fileID: 1552132999}
-  player: {fileID: 1248810959}
-  rIn: 0
-  lIn: 0
-  LHand: {fileID: 2085847653}
-  RHand: {fileID: 999406097}
-  LHSave: 0
-  RHSave: 0
-  FireL: {fileID: 1180300600}
-  EarthL: {fileID: 1020026493}
-  WaterL: {fileID: 1320901458}
-  AirL: {fileID: 189835801}
-  FireR: {fileID: 1120635081}
-  EarthR: {fileID: 1715454506}
-  WaterR: {fileID: 824443179}
-  AirR: {fileID: 734183036}
-  FireballC: {fileID: 1023879961}
-  MeteorC: {fileID: 1178078919}
-  GrHealC: {fileID: 963875938}
-  CycloneC: {fileID: 1189233960}
-  LavaC: {fileID: 1182664758}
-  GravityC: {fileID: 1387338708}
-  LifeC: {fileID: 263265070}
-  GeyserC: {fileID: 1398905156}
-  LightningC: {fileID: 1580354721}
-  IceC: {fileID: 1492528422}
-  camera: {fileID: 159619607}
-  rockPrefab: {fileID: 1870491802}
-  icePrefab: {fileID: 0}
-  bulletSpeed: 10
-  rayLength: 50
 --- !u!4 &1420437596
 Transform:
   m_ObjectHideFlags: 0
@@ -20660,22 +20597,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1420437597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420437594}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c045b65ac36e064fadcd17daff9ba67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetList: []
-  LHand: {fileID: 0}
-  lightningPrefab: {fileID: 0}
-  LLHand: {fileID: 0}
 --- !u!1 &1451579065
 GameObject:
   m_ObjectHideFlags: 0
@@ -22184,7 +22105,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1420437595}
+      - m_Target: {fileID: 0}
         m_MethodName: FireLeft
         m_Mode: 1
         m_Arguments:
@@ -23734,7 +23655,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1420437595}
+      - m_Target: {fileID: 0}
         m_MethodName: WaterRight
         m_Mode: 1
         m_Arguments:
