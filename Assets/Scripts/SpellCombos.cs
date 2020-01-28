@@ -57,6 +57,8 @@ public class SpellCombos : MonoBehaviour
 
     public float rayLength = 50.0f;
 
+    public OVRInput.Button shootingbutton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -218,9 +220,25 @@ public class SpellCombos : MonoBehaviour
                 //fire (flames)
                 ResetRight();
                 FireR.SetActive(true);
+                GameObject jet;
+                bool jetIn = false;
+                float jetTime = 1.0f;
+                float jetTimer = 0.0f;
                 if (Input.GetButton("Fire1"))
                 {
-                    GameObject jet = Instantiate(firePrefab, RHand.transform.position, RHand.transform.localRotation);
+                    if (jetIn == false)
+                    {
+                        jet = Instantiate(firePrefab, RHand.transform.position, RHand.transform.localRotation);
+                        jetIn = true;
+
+                        Destroy(jet, 1);
+                    }
+                    jetTimer += Time.deltaTime;
+                    if(jetTimer >= jetTime)
+                    {
+                        jetIn = false;
+                        jetTimer = 0f;
+                    }
                 }
                 break;
             case 50:
