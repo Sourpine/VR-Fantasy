@@ -14,7 +14,8 @@ public class NEWSpells : MonoBehaviour
     public GameObject Water;
     public GameObject Air;
 
-    //list
+    //list or array
+    //public List<GameObject> spellsList;
     public GameObject[] spellsArray;
 
     //button assignments
@@ -27,6 +28,10 @@ public class NEWSpells : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         Hand = gameObject;
         spellsArray = GameObject.FindGameObjectsWithTag("spells");
+        foreach(GameObject s in spellsArray)
+        {
+            s.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -44,7 +49,8 @@ public class NEWSpells : MonoBehaviour
     //
     // o all the variables are acounted for (gameObjects ints etc)
     // o all variables are assigned in the script
-    // o 
+    // o pop up menus
+    // o when you chose the icon the menu drops and the spell is enabled
     //
     //
     //2 menus with 4 options each
