@@ -1,0 +1,131 @@
+# Exported from 3D Builder
+
+newmtl Mat_0
+Kd 1.000000 1.000000 1.000000
+map_Kd tabl.png
+
+newmtl Mat_1
+Kd 1.000000 1.000000 1.000000
+map_Kd bowl.png
+
+newmtl Mat_2
+Kd 1.000000 1.000000 1.000000
+map_Kd back.png
+
+newmtl Mat_3
+Kd 1.000000 1.000000 1.000000
+map_Kd front.png
+
+newmtl Mat_4
+Kd 1.000000 1.000000 1.000000
+map_Kd lights.png
+
+newmtl Mat_5
+Kd 1.000000 1.000000 1.000000
+map_Kd banner.png
+
+newmtl Mat_6
+Kd 1.000000 1.000000 1.000000
+map_Kd WDRG.png
+
+newmtl Mat_7
+Kd 1.000000 1.000000 1.000000
+map_Kd purpur_block.png
+
+newmtl Mat_8
+Kd 1.000000 1.000000 1.000000
+map_Kd jwbr.png
+
+newmtl Mat_9
+Kd 1.000000 1.000000 1.000000
+map_Kd jwbrtex2.png
+
+newmtl Mat_10
+Kd 1.000000 1.000000 1.000000
+map_Kd jwbrtex1.png
+
+newmtl Mat_11
+Kd 1.000000 1.000000 1.000000
+map_Kd s-l2000.jpg.jpeg
+
+newmtl Mat_12
+Kd 1.000000 1.000000 1.000000
+map_Kd nood.png
+
+newmtl Mat_13
+Kd 1.000000 1.000000 1.000000
+map_Kd images.jpg.jpeg
+
+newmtl Mat_14
+Kd 1.000000 1.000000 1.000000
+map_Kd SINK.png
+
+newmtl FFFFFFFF_0
+Kd 1.000000 1.000000 1.000000
+
+newmtl Mat_15
+Kd 1.000000 1.000000 1.000000
+map_Kd images.01.jpg
+
+newmtl Mat_16
+Kd 1.000000 1.000000 1.000000
+map_Kd glass2.png
+
+newmtl Mat_17
+Kd 1.000000 1.000000 1.000000
+map_Kd glasstex2.png
+
+newmtl Mat_18
+Kd 1.000000 1.000000 1.000000
+map_Kd rim2.png
+
+newmtl Mat_19
+Kd 1.000000 1.000000 1.000000
+map_Kd tecvod.jpg.jpeg
+
+newmtl Mat_20
+Kd 1.000000 1.000000 1.000000
+map_Kd top1.png
+
+newmtl Mat_21
+Kd 1.000000 1.000000 1.000000
+map_Kd tsing.png
+
+newmtl Mat_22
+Kd 1.000000 1.000000 1.000000
+map_Kd GUEST_d743a668-62d8-44b5-8d8a-b61ea9cf440a.jpg.jpeg
+
+newmtl Mat_23
+Kd 1.000000 1.000000 1.000000
+map_Kd beer.png
+
+newmtl Mat_24
+Kd 1.000000 1.000000 1.000000
+map_Kd GNOOD2.png
+
+newmtl Mat_25
+Kd 1.000000 1.000000 1.000000
+map_Kd bb5541b1d203719b1fac2c4784301e63.jpg
+
+newmtl Mat_26
+Kd 1.000000 1.000000 1.000000
+map_Kd sush.png
+
+newmtl Mat_27
+Kd 1.000000 1.000000 1.000000
+map_Kd grmarble.jpg
+
+newmtl Mat_28
+Kd 1.000000 1.000000 1.000000
+map_Kd shrimp.png
+
+newmtl Mat_29
+Kd 1.000000 1.000000 1.000000
+map_Kd oak.jpg.jpeg
+
+newmtl Mat_30
+Kd 1.000000 1.000000 1.000000
+map_Kd tex4.png
+
+newmtl Orange_0
+Kd 1.000000 0.498039 0.145098
