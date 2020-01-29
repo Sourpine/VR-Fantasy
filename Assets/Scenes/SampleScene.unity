@@ -746,8 +746,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: AirLeft
+      - m_Target: {fileID: 2085847659}
+        m_MethodName: AirFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1885,11 +1885,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -1.8789936}
   m_LocalScale: {x: 0.016387576, y: 0.016387576, z: 0.016387573}
   m_Children:
-  - {fileID: 1419563034}
   - {fileID: 998796679}
-  - {fileID: 1185431647}
-  - {fileID: 1302316639}
+  - {fileID: 1419563034}
   - {fileID: 1803962150}
+  - {fileID: 1302316639}
+  - {fileID: 1185431647}
   m_Father: {fileID: 1732977086}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2081,8 +2081,24 @@ MonoBehaviour:
   OtherHand: {fileID: 0}
   Menu: {fileID: 0}
   EventSystem: {fileID: 0}
-  menuOpen: 32768
-  cast: 8192
+  menuOpen: 8388608
+  cast: 2097152
+  value: 0
+  valueSave: 0
+  EarthPrefab: {fileID: 0}
+  FirePrefab: {fileID: 0}
+  WaterPrefab: {fileID: 0}
+  AirPrefab: {fileID: 0}
+  Earthx2Prefab: {fileID: 0}
+  Firex2Prefab: {fileID: 0}
+  Waterx2Prefab: {fileID: 0}
+  Airx2Prefab: {fileID: 0}
+  EarthFirePrefab: {fileID: 0}
+  EarthWaterPrefab: {fileID: 0}
+  EarthAirPrefab: {fileID: 0}
+  FireWaterPrefab: {fileID: 0}
+  FireAirPrefab: {fileID: 0}
+  WaterAirPrefab: {fileID: 0}
 --- !u!1 &367491243
 GameObject:
   m_ObjectHideFlags: 0
@@ -5137,7 +5153,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2014927866}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5189,8 +5205,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: WaterLeft
+      - m_Target: {fileID: 2085847659}
+        m_MethodName: WaterFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5849,7 +5865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &981243461
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10949,7 +10965,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 328646732}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11001,8 +11017,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: EarthRight
+      - m_Target: {fileID: 363530641}
+        m_MethodName: EarthFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11519,7 +11535,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2014927866}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11571,8 +11587,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: EarthLeft
+      - m_Target: {fileID: 2085847659}
+        m_MethodName: EarthFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12909,7 +12925,7 @@ RectTransform:
   m_LocalScale: {x: 0.22352, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2014927866}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12961,8 +12977,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SwordLeft
+      - m_Target: {fileID: 2085847659}
+        m_MethodName: EmptyFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13413,7 +13429,7 @@ RectTransform:
   m_LocalScale: {x: 0.22352, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 328646732}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13465,8 +13481,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SwordRight
+      - m_Target: {fileID: 363530641}
+        m_MethodName: EmptyFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14276,8 +14292,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: AirRight
+      - m_Target: {fileID: 363530641}
+        m_MethodName: AirFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20114,7 +20130,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 328646732}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20166,8 +20182,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: FireRight
+      - m_Target: {fileID: 363530641}
+        m_MethodName: FireFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20316,6 +20332,22 @@ MonoBehaviour:
   EventSystem: {fileID: 0}
   menuOpen: 32768
   cast: 8192
+  value: 0
+  valueSave: 0
+  EarthPrefab: {fileID: 0}
+  FirePrefab: {fileID: 0}
+  WaterPrefab: {fileID: 0}
+  AirPrefab: {fileID: 0}
+  Earthx2Prefab: {fileID: 0}
+  Firex2Prefab: {fileID: 0}
+  Waterx2Prefab: {fileID: 0}
+  Airx2Prefab: {fileID: 0}
+  EarthFirePrefab: {fileID: 0}
+  EarthWaterPrefab: {fileID: 0}
+  EarthAirPrefab: {fileID: 0}
+  FireWaterPrefab: {fileID: 0}
+  FireAirPrefab: {fileID: 0}
+  WaterAirPrefab: {fileID: 0}
 --- !u!1 &1451579065
 GameObject:
   m_ObjectHideFlags: 0
@@ -21689,7 +21721,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2014927866}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21741,8 +21773,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: FireLeft
+      - m_Target: {fileID: 2085847659}
+        m_MethodName: FireFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23239,7 +23271,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 328646732}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -23291,8 +23323,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: WaterRight
+      - m_Target: {fileID: 363530641}
+        m_MethodName: WaterFunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29831,11 +29863,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -1.8789936}
   m_LocalScale: {x: 0.016387576, y: 0.016387576, z: 0.016387573}
   m_Children:
-  - {fileID: 1691430730}
   - {fileID: 1052393586}
-  - {fileID: 1166831123}
-  - {fileID: 84153698}
+  - {fileID: 1691430730}
   - {fileID: 837853229}
+  - {fileID: 84153698}
+  - {fileID: 1166831123}
   m_Father: {fileID: 2117017732}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30099,6 +30131,22 @@ MonoBehaviour:
   EventSystem: {fileID: 0}
   menuOpen: 32768
   cast: 8192
+  value: 0
+  valueSave: 0
+  EarthPrefab: {fileID: 0}
+  FirePrefab: {fileID: 0}
+  WaterPrefab: {fileID: 0}
+  AirPrefab: {fileID: 0}
+  Earthx2Prefab: {fileID: 0}
+  Firex2Prefab: {fileID: 0}
+  Waterx2Prefab: {fileID: 0}
+  Airx2Prefab: {fileID: 0}
+  EarthFirePrefab: {fileID: 0}
+  EarthWaterPrefab: {fileID: 0}
+  EarthAirPrefab: {fileID: 0}
+  FireWaterPrefab: {fileID: 0}
+  FireAirPrefab: {fileID: 0}
+  WaterAirPrefab: {fileID: 0}
 --- !u!1 &2117017728
 GameObject:
   m_ObjectHideFlags: 0

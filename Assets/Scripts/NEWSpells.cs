@@ -35,6 +35,10 @@ public class NEWSpells : MonoBehaviour
     public OVRInput.Button menuOpen;
     public OVRInput.Button cast;
 
+    //button values
+    public int value = 0;
+    public int valueSave = 0;
+
     //prefabs
     public GameObject EarthPrefab;
     public GameObject FirePrefab;
@@ -55,6 +59,7 @@ public class NEWSpells : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //setting the variables based off tag and name
         player = GameObject.FindGameObjectWithTag("Player");
         Hand = gameObject;
         if(Hand.tag == "lHand")
@@ -88,6 +93,18 @@ public class NEWSpells : MonoBehaviour
         FireAir = GameObject.Find("FireAir");
         WaterAir = GameObject.Find("WaterAir");
 
+        //disabling the game objects after they're set
+        Earthx2.SetActive(false);
+        Firex2.SetActive(false);
+        Waterx2.SetActive(false);
+        Airx2.SetActive(false);
+        EarthFire.SetActive(false);
+        EarthWater.SetActive(false);
+        EarthAir.SetActive(false);
+        FireWater.SetActive(false);
+        FireAir.SetActive(false);
+        WaterAir.SetActive(false);
+
         Earth.SetActive(false);
         Fire.SetActive(false);
         Water.SetActive(false);
@@ -99,7 +116,7 @@ public class NEWSpells : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if stick button pressed then enable the 4 option menu (project settings input for stick button)
+        //deals with menu appearing and setting the right event system
         if (OVRInput.GetDown(menuOpen) && Menu.activeSelf == false)
         {
             Menu.SetActive(true);
@@ -121,17 +138,89 @@ public class NEWSpells : MonoBehaviour
             player.GetComponent<OVRPlayerController>().enabled = true;
         }
         //inputs up and down to select spell (find in the project settings input)
-
-
-        //tests
-        /*if (Input.GetButtonDown("Fire1"))
+        //depending on the value this sets the correct object to active
+        switch (value)
         {
-            OtherHand.GetComponent<NEWSpells>().Menu.SetActive(true);
+            case 0:
+                ClearHand();
+                break;
+            case 1:
+                ClearHand();
+                //passive (this one's temp)
+                Earth.SetActive(true);
+                if (OVRInput.GetDown(cast))
+                {
+                    //instantiate the rock
+                }
+                break;
+            case 10:
+                ClearHand();
+                //passive (this one's temp)
+                Fire.SetActive(true);
+                //enable the firePrefab game object then disable if let go or if mana if gone
+                if (OVRInput.GetDown(cast))
+                {
+                    FirePrefab.SetActive(true);
+                }
+                if (OVRInput.GetUp(cast))
+                {
+                    FirePrefab.SetActive(false);
+                }
+                break;
+            case 50:
+                ClearHand();
+                //passive (this one's temp)
+                Water.SetActive(true);
+                //
+                if (OVRInput.GetDown(cast))
+                {
+                    //instantiate the water spell (might follow player position)
+                }
+                break;
         }
-        if (Input.GetButtonUp("Fire1"))
-        {
-            OtherHand.GetComponent<NEWSpells>().Menu.SetActive(false);
-        }*/
+    }
+    //button input functions
+    public void EarthFunction()
+    {
+        value = 1;
+        Menu.SetActive(false);
+    }
+    public void FireFunction()
+    {
+        value = 10;
+        Menu.SetActive(false);
+    }
+    public void WaterFunction()
+    {
+        value = 50;
+        Menu.SetActive(false);
+    }
+    public void AirFunction()
+    {
+        value = 500;
+        Menu.SetActive(false);
+    }
+    public void EmptyFunction()
+    {
+        value = 0;
+        Menu.SetActive(false);
+    }
+
+    //these functions are for the switches
+    public void ClearHand()
+    {
+        Earth.SetActive(false);
+        Fire.SetActive(false);
+        Water.SetActive(false);
+        Air.SetActive(false);
+    }
+    public void OutOfManaClear()
+    {
+        //earth
+        FirePrefab.SetActive(false);
+        //water
+        //air
+        //probably combos too
     }
 
     //spell check list
