@@ -55,6 +55,10 @@ public class NEWSpells : MonoBehaviour
     public GameObject FireAirPrefab;
     public GameObject WaterAirPrefab;
 
+    //bullet variables
+    public float bulletSpeed;
+    public float rayLength = 50.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -150,7 +154,24 @@ public class NEWSpells : MonoBehaviour
                 Earth.SetActive(true);
                 if (OVRInput.GetDown(cast))
                 {
-                    //instantiate the rock
+                    Earth.SetActive(false);
+                    RaycastHit hit;
+                    Vector3 destination;
+                    if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50))
+                    {
+                        destination = hit.point;
+                    }
+                    else
+                    {
+                        destination = Hand.transform.position + rayLength * Hand.transform.forward;
+                    }
+                    Vector3 direction = destination - Hand.transform.position;
+                    direction.Normalize();
+                    GameObject projectile = Instantiate(EarthPrefab, Hand.transform.position, Hand.transform.localRotation);
+                    projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
+                    Earth.SetActive(true);
+                    Destroy(projectile, 5);
+
                 }
                 break;
             case 10:
@@ -160,11 +181,15 @@ public class NEWSpells : MonoBehaviour
                 //enable the firePrefab game object then disable if let go or if mana if gone
                 if (OVRInput.GetDown(cast))
                 {
+                    Debug.Log("Active Fire");
+                    Fire.SetActive(false);
                     FirePrefab.SetActive(true);
                 }
                 if (OVRInput.GetUp(cast))
                 {
                     FirePrefab.SetActive(false);
+                    Fire.SetActive(false);
+                    Debug.Log("Inactive Fire");
                 }
                 break;
             case 50:
@@ -176,6 +201,10 @@ public class NEWSpells : MonoBehaviour
                 {
                     //instantiate the water spell (might follow player position)
                 }
+                break;
+            case 500:
+                ClearHand();
+
                 break;
         }
     }

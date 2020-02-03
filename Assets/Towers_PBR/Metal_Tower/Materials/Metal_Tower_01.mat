@@ -74,6 +74,7 @@ Material:
     - _Color: {r: 0.588, g: 0.588, b: 0.588, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+<<<<<<< HEAD
 --- !u!114 &2397539042435232881
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -87,3 +88,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
+=======
+>>>>>>> ca231eebaf9f91d37650aee189d4057fec70a550
