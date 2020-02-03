@@ -1,0 +1,37 @@
+# Exported from 3D Builder
+
+newmtl Mat_0
+Kd 1.000000 1.000000 1.000000
+map_Kd 3.png
+
+newmtl Mat_1
+Kd 1.000000 1.000000 1.000000
+map_Kd 2.png
+
+newmtl Mat_2
+Kd 1.000000 1.000000 1.000000
+map_Kd rt.png
+
+newmtl Mat_3
+Kd 1.000000 1.000000 1.000000
+map_Kd 1.png
+
+newmtl Mat_4
+Kd 1.000000 1.000000 1.000000
+map_Kd purpur_block.png
+
+newmtl Mat_5
+Kd 1.000000 1.000000 1.000000
+map_Kd Neon_discharge_tube.jpg
+
+newmtl Mat_6
+Kd 1.000000 1.000000 1.000000
+map_Kd d48766cff81592b945f96226a0ab71c2.png
+
+newmtl Mat_7
+Kd 1.000000 1.000000 1.000000
+map_Kd download.jpg
+
+newmtl Mat_8
+Kd 1.000000 1.000000 1.000000
+map_Kd 6.png
