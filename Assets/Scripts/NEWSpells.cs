@@ -10,22 +10,22 @@ public class NEWSpells : MonoBehaviour
     public GameObject OtherHand;
 
     //base spells
-    private GameObject Earth;
-    private GameObject Fire;
-    private GameObject Water;
-    private GameObject Air;
+    public GameObject Earth;
+    public GameObject Fire;
+    public GameObject Water;
+    public GameObject Air;
 
     //combo spells
-    private GameObject Earthx2;
-    private GameObject Firex2;
-    private GameObject Waterx2;
-    private GameObject Airx2;
-    private GameObject EarthFire;
-    private GameObject EarthWater;
-    private GameObject EarthAir;
-    private GameObject FireWater;
-    private GameObject FireAir;
-    private GameObject WaterAir;
+    public GameObject Earthx2;
+    public GameObject Firex2;
+    public GameObject Waterx2;
+    public GameObject Airx2;
+    public GameObject EarthFire;
+    public GameObject EarthWater;
+    public GameObject EarthAir;
+    public GameObject FireWater;
+    public GameObject FireAir;
+    public GameObject WaterAir;
 
     //menus and event systems
     public GameObject Menu;
@@ -54,6 +54,15 @@ public class NEWSpells : MonoBehaviour
     public GameObject FireWaterPrefab;
     public GameObject FireAirPrefab;
     public GameObject WaterAirPrefab;
+
+    //bullet variables
+    public float bulletSpeed;
+    public float rayLength = 50.0f;
+
+    //disable timers and bool
+    public float disTimer = 0.0f;
+    public float disTime = 0.1f;
+    public bool dis;
 
 
     // Start is called before the first frame update
@@ -86,25 +95,14 @@ public class NEWSpells : MonoBehaviour
         Firex2 = GameObject.Find("Firex2");
         Waterx2 = GameObject.Find("Waterx2");
         Airx2 = GameObject.Find("Airx2");
-        EarthFire = GameObject.Find("EarhtFire");
-        EarthWater = GameObject.Find("EarhtWater");
-        EarthAir = GameObject.Find("EarhtAir");
+        EarthFire = GameObject.Find("EarthFire");
+        EarthWater = GameObject.Find("EarthWater");
+        EarthAir = GameObject.Find("EarthAir");
         FireWater = GameObject.Find("FireWater");
         FireAir = GameObject.Find("FireAir");
         WaterAir = GameObject.Find("WaterAir");
 
         //disabling the game objects after they're set
-        Earthx2.SetActive(false);
-        Firex2.SetActive(false);
-        Waterx2.SetActive(false);
-        Airx2.SetActive(false);
-        EarthFire.SetActive(false);
-        EarthWater.SetActive(false);
-        EarthAir.SetActive(false);
-        FireWater.SetActive(false);
-        FireAir.SetActive(false);
-        WaterAir.SetActive(false);
-
         Earth.SetActive(false);
         Fire.SetActive(false);
         Water.SetActive(false);
@@ -116,6 +114,28 @@ public class NEWSpells : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //disables variables here to avoid error
+        if(dis == false)
+        {
+            disTimer += Time.deltaTime;
+        }
+        if (disTimer >= disTime)
+        {
+            dis = true;
+            disTimer = 0f;
+
+            Earthx2.SetActive(false);
+            Firex2.SetActive(false);
+            Waterx2.SetActive(false);
+            Airx2.SetActive(false);
+            EarthFire.SetActive(false);
+            EarthWater.SetActive(false);
+            EarthAir.SetActive(false);
+            FireWater.SetActive(false);
+            FireAir.SetActive(false);
+            WaterAir.SetActive(false);
+        }
+        
         //deals with menu appearing and setting the right event system
         if (OVRInput.GetDown(menuOpen) && Menu.activeSelf == false)
         {
@@ -150,7 +170,24 @@ public class NEWSpells : MonoBehaviour
                 Earth.SetActive(true);
                 if (OVRInput.GetDown(cast))
                 {
-                    //instantiate the rock
+                    Earth.SetActive(false);
+                    RaycastHit hit;
+                    Vector3 destination;
+                    if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50))
+                    {
+                        destination = hit.point;
+                    }
+                    else
+                    {
+                        destination = Hand.transform.position + rayLength * Hand.transform.forward;
+                    }
+                    Vector3 direction = destination - Hand.transform.position;
+                    direction.Normalize();
+                    GameObject projectile = Instantiate(EarthPrefab, Hand.transform.position, Hand.transform.localRotation);
+                    projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
+                    Earth.SetActive(true);
+                    Destroy(projectile, 5);
+
                 }
                 break;
             case 10:
@@ -160,11 +197,15 @@ public class NEWSpells : MonoBehaviour
                 //enable the firePrefab game object then disable if let go or if mana if gone
                 if (OVRInput.GetDown(cast))
                 {
+                    Debug.Log("Active Fire");
+                    Fire.SetActive(false);
                     FirePrefab.SetActive(true);
                 }
                 if (OVRInput.GetUp(cast))
                 {
                     FirePrefab.SetActive(false);
+                    Fire.SetActive(false);
+                    Debug.Log("Inactive Fire");
                 }
                 break;
             case 50:
@@ -176,6 +217,10 @@ public class NEWSpells : MonoBehaviour
                 {
                     //instantiate the water spell (might follow player position)
                 }
+                break;
+            case 500:
+                ClearHand();
+
                 break;
         }
     }

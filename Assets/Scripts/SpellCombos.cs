@@ -122,7 +122,6 @@ public class SpellCombos : MonoBehaviour
                 EarthL.SetActive(true);
                 if (Input.GetButtonDown("Oculus_CrossPlatform_PrimaryIndexTrigger") || Input.GetButtonDown("Fire1"))
                 {
-                    //shooting maybe
                     RaycastHit hit;
                     Vector3 destination;
                     if (Physics.Raycast(LHand.transform.position, LHand.transform.forward, out hit, 50))
@@ -135,12 +134,7 @@ public class SpellCombos : MonoBehaviour
                     }
                     Vector3 direction = destination - LHand.transform.position;
                     direction.Normalize();
-                    //rockPrefab.transform.eulerAngles = LHand.transform.eulerAngles;
                     GameObject projectile = Instantiate(rockPrefab, LHand.transform.position, LHand.transform.localRotation);
-                    //Quaternion.identity * Quaternion.Euler 
-                        //(LHand.transform.eulerAngles.x, LHand.transform.eulerAngles.y, LHand.transform.eulerAngles.z));
-                    //rockPrefab.transform.rotation = LHand.transform.rotation;
-
                     projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
                     Destroy(projectile, 5);
                 }
