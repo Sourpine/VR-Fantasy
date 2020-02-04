@@ -1,6 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
 --- !u!114 &-1996398870758773863
+=======
+<<<<<<< HEAD
+--- !u!114 &-1639587154367822246
+=======
+--- !u!114 &-3864975616135092555
+>>>>>>> 94bdb745ea82c33b2439ed22c48940088b49a4e3
+>>>>>>> b19fe43d6e3be08a60d58403b4397889d2f70de5
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,3 +96,19 @@ Material:
     - _Color: {r: 0.588, g: 0.588, b: 0.588, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+<<<<<<< HEAD
+--- !u!114 &2397539042435232881
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+=======
+>>>>>>> ca231eebaf9f91d37650aee189d4057fec70a550
