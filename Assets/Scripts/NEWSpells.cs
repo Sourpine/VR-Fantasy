@@ -16,6 +16,7 @@ public class NEWSpells : MonoBehaviour
 
     //mana
     public int mana;
+    public bool casting = false;
 
     //base spells
     //passive w/ mana
@@ -101,7 +102,6 @@ public class NEWSpells : MonoBehaviour
     public bool dis;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         //setting the variables based off tag and name
@@ -213,10 +213,9 @@ public class NEWSpells : MonoBehaviour
         EventSystem.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //mana = player.GetComponent<Mana>().mana;
+        mana = player.GetComponent<Mana>().mana;
         
         //disables variables here to avoid error
         if(dis == false)
