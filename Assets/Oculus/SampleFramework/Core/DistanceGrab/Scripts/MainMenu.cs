@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     public void ButtonNewGame()
     {
-        SceneManager.LoadScene("City");
+        SceneManager.LoadScene("LucasCity");
  
     }
 
