@@ -14,6 +14,10 @@ public class NEWSpells : MonoBehaviour
     public GameObject Hand;
     public GameObject OtherHand;
 
+    //mana
+    public int mana;
+    public bool casting = false;
+
     //base spells
     //passive w/ mana
     public GameObject Earth;
@@ -98,7 +102,6 @@ public class NEWSpells : MonoBehaviour
     public bool dis;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         //setting the variables based off tag and name
@@ -201,14 +204,19 @@ public class NEWSpells : MonoBehaviour
         WaterLow.SetActive(false);
         AirLow.SetActive(false);
 
+        //disabling active base spells
+        //Not all implemented
+        FirePrefab.SetActive(false);
+
         //disabling ui
         Menu.SetActive(false);
         EventSystem.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        mana = player.GetComponent<Mana>().mana;
+        
         //disables variables here to avoid error
         if(dis == false)
         {
@@ -242,6 +250,9 @@ public class NEWSpells : MonoBehaviour
             FireWaterLow.SetActive(false);
             FireAirLow.SetActive(false);
             WaterAirLow.SetActive(false);
+
+            //diabling active combos
+            //NOT IMPLEMENTED
         }
         
         //deals with menu appearing and setting the right event system

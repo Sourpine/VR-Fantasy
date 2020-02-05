@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
         foreach (Panel panel in panels)
             panel.Setup(this);
 
-        currentPanel.Hide();
+        currentPanel.Show();
     }
 
     private void Update()
