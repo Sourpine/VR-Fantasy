@@ -16,7 +16,7 @@ public class Pause : MonoBehaviour
   
     void Update()
     {
-        OVRInput.GetDown(OVRInput.Button.Start);
+      if(OVRInput.GetDown(OVRInput.Button.Start))
         {
             if (Time.timeScale == 1)
             {
