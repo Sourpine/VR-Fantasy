@@ -14,6 +14,9 @@ public class NEWSpells : MonoBehaviour
     public GameObject Hand;
     public GameObject OtherHand;
 
+    //mana
+    public int mana;
+
     //base spells
     //passive w/ mana
     public GameObject Earth;
@@ -213,6 +216,8 @@ public class NEWSpells : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        mana = player.GetComponent<Mana>().mana;
+        
         //disables variables here to avoid error
         if(dis == false)
         {
