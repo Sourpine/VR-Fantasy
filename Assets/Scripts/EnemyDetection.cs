@@ -30,7 +30,6 @@ public class EnemyDetection : MonoBehaviour
     {
         CarryOutDetection();
         
-
     }
 
     void SetInitialRefrences()

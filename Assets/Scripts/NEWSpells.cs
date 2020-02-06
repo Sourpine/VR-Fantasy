@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class NEWSpells : MonoBehaviour
 {
+    
+    //VERY IMPORTANT!!!
+    //the spell game objects are currently using temp assets
+    //need to change and recenter by end of project
+    
     //hands and big objects
     public GameObject player;
     public GameObject Hand;
     public GameObject OtherHand;
 
+    //mana
+    public int mana;
+    public bool casting = false;
+
     //base spells
+    //passive w/ mana
     public GameObject Earth;
     public GameObject Fire;
     public GameObject Water;
     public GameObject Air;
 
     //combo spells
+    //passive w/ mana
     public GameObject Earthx2;
     public GameObject Firex2;
     public GameObject Waterx2;
@@ -39,11 +50,37 @@ public class NEWSpells : MonoBehaviour
     public int value = 0;
     public int valueSave = 0;
 
+    //base spells
+    //passive no mana
+    public GameObject EarthLow;
+    public GameObject FireLow;
+    public GameObject WaterLow;
+    public GameObject AirLow;
+
+    //combo spells
+    //passive no mana
+    public GameObject Earthx2Low;
+    public GameObject Firex2Low;
+    public GameObject Waterx2Low;
+    public GameObject Airx2Low;
+    public GameObject EarthFireLow;
+    public GameObject EarthWaterLow;
+    public GameObject EarthAirLow;
+    public GameObject FireWaterLow;
+    public GameObject FireAirLow;
+    public GameObject WaterAirLow;
+
     //prefabs
+    //active
+    //some of these may be redundant
     public GameObject EarthPrefab;
     public GameObject FirePrefab;
     public GameObject WaterPrefab;
     public GameObject AirPrefab;
+
+    //prefabs combo
+    //active
+    //some of these may be redundant
     public GameObject Earthx2Prefab;
     public GameObject Firex2Prefab;
     public GameObject Waterx2Prefab;
@@ -65,32 +102,79 @@ public class NEWSpells : MonoBehaviour
     public bool dis;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         //setting the variables based off tag and name
         player = GameObject.FindGameObjectWithTag("Player");
         Hand = gameObject;
-        if(Hand.tag == "lHand")
+        //LEFT HAND
+        if (Hand.tag == "lHand")
         {
+            //right hand
             OtherHand = GameObject.FindGameObjectWithTag("rHand");
+
+            //passive low mana left spells
+            EarthLow = GameObject.Find("EarthLow(L)");
+            FireLow = GameObject.Find("FireLow(L)");
+            WaterLow = GameObject.Find("WaterLow(L)");
+            AirLow = GameObject.Find("AirLow(L)");
+            
+            //passive w/ mana left spells
             Earth = GameObject.Find("Earth(L)");
             Fire = GameObject.Find("Fire(L)");
             Water = GameObject.Find("Water(L)");
             Air = GameObject.Find("Air(L)");
+
+            //active left spells
+            //NOT IMPLEMENTED
+            //the spells which require Instantiation are likely refrenced elsewhere
+            FirePrefab = GameObject.Find("FirePrefab(L)");
+
+            //left ui
             Menu = GameObject.Find("leftWheel");
             EventSystem = GameObject.Find("EventSystem(L)");
         }
+        //RIGHT HAND
         if(Hand.tag == "rHand")
         {
+            //left hand
             OtherHand = GameObject.FindGameObjectWithTag("lHand");
+
+            //passive low mana right spells
+            EarthLow = GameObject.Find("EarthLow(R)");
+            FireLow = GameObject.Find("FireLow(R)");
+            WaterLow = GameObject.Find("WaterLow(R)");
+            AirLow = GameObject.Find("AirLow(R)");
+
+            //passive w/ mana right spells
             Earth = GameObject.Find("Earth(R)");
             Fire = GameObject.Find("Fire(R)");
             Water = GameObject.Find("Water(R)");
             Air = GameObject.Find("Air(R)");
+
+            //active right spells
+            //NOT IMPLEMENTED
+            //the spells which require Instantiation are likely refrenced elsewhere
+            FirePrefab = GameObject.Find("FirePrefab(R)");
+
+            //right ui
             Menu = GameObject.Find("rightWheel");
             EventSystem = GameObject.Find("EventSystem(R)");
         }
+
+        //passive low mana combo spells
+        Earthx2Low = GameObject.Find("Earthx2Low");
+        Firex2Low = GameObject.Find("Firex2Low");
+        Waterx2Low = GameObject.Find("Waterx2Low");
+        Airx2Low = GameObject.Find("Airx2Low");
+        EarthFireLow = GameObject.Find("EarthFireLow");
+        EarthWaterLow = GameObject.Find("EarthWaterLow");
+        EarthAirLow = GameObject.Find("EarthAirLow");
+        FireWaterLow = GameObject.Find("FireWaterLow");
+        FireAirLow = GameObject.Find("FireAirLow");
+        WaterAirLow = GameObject.Find("WaterAirLow");
+
+        //passive w/ mana combo spells
         Earthx2 = GameObject.Find("Earthx2");
         Firex2 = GameObject.Find("Firex2");
         Waterx2 = GameObject.Find("Waterx2");
@@ -102,18 +186,37 @@ public class NEWSpells : MonoBehaviour
         FireAir = GameObject.Find("FireAir");
         WaterAir = GameObject.Find("WaterAir");
 
+        //active combo spells
+        //NOT IMPLEMENTED
+        //the spells which require Instantiation are likely refrenced elsewhere
+
         //disabling the game objects after they're set
+
+        //disabling w/ mana base spells
         Earth.SetActive(false);
         Fire.SetActive(false);
         Water.SetActive(false);
         Air.SetActive(false);
+
+        //disabling low mana base spells
+        EarthLow.SetActive(false);
+        FireLow.SetActive(false);
+        WaterLow.SetActive(false);
+        AirLow.SetActive(false);
+
+        //disabling active base spells
+        //Not all implemented
+        FirePrefab.SetActive(false);
+
+        //disabling ui
         Menu.SetActive(false);
         EventSystem.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        mana = player.GetComponent<Mana>().mana;
+        
         //disables variables here to avoid error
         if(dis == false)
         {
@@ -124,6 +227,7 @@ public class NEWSpells : MonoBehaviour
             dis = true;
             disTimer = 0f;
 
+            //disabling w/ mana combos
             Earthx2.SetActive(false);
             Firex2.SetActive(false);
             Waterx2.SetActive(false);
@@ -134,6 +238,21 @@ public class NEWSpells : MonoBehaviour
             FireWater.SetActive(false);
             FireAir.SetActive(false);
             WaterAir.SetActive(false);
+
+            //disabling low mana combos
+            Earthx2Low.SetActive(false);
+            Firex2Low.SetActive(false);
+            Waterx2Low.SetActive(false);
+            Airx2Low.SetActive(false);
+            EarthFireLow.SetActive(false);
+            EarthWaterLow.SetActive(false);
+            EarthAirLow.SetActive(false);
+            FireWaterLow.SetActive(false);
+            FireAirLow.SetActive(false);
+            WaterAirLow.SetActive(false);
+
+            //diabling active combos
+            //NOT IMPLEMENTED
         }
         
         //deals with menu appearing and setting the right event system
