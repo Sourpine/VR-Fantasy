@@ -57,6 +57,8 @@ Transform:
   - {fileID: 8671748384343462144}
   - {fileID: 6919263930443793711}
   - {fileID: 6535011386202107514}
+  - {fileID: 4158823178578826623}
+  - {fileID: 1600821867316041955}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1547,6 +1549,96 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6185111219604116604}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6736643083736484612
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1564064715614120682}
+    m_Modifications:
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1919
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2652
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.6178
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5041999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.4927982
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5003697
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50255597
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.78000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270.336
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90.526
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0060864002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.006086401
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.006086401
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012063391391326708, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_Name
+      value: Cyberpunk Diner Sign (Japanese) (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 92d4cb91f47ae564aa108a0460148909, type: 3}
+--- !u!4 &1600821867316041955 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+    type: 3}
+  m_PrefabInstance: {fileID: 6736643083736484612}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7171856218742917589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2356,6 +2448,96 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3614241072231941624, guid: ba6ff21aa5e62344d916dd8bb6f05325,
     type: 3}
   m_PrefabInstance: {fileID: 7913082785827230964}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8285785029026662040
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1564064715614120682}
+    m_Modifications:
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2751
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1592
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0882
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0060864002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.006086401
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.006086401
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012063391391326708, guid: 92d4cb91f47ae564aa108a0460148909,
+        type: 3}
+      propertyPath: m_Name
+      value: Cyberpunk Diner Sign (Japanese)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 92d4cb91f47ae564aa108a0460148909, type: 3}
+--- !u!4 &4158823178578826623 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5425181896901940199, guid: 92d4cb91f47ae564aa108a0460148909,
+    type: 3}
+  m_PrefabInstance: {fileID: 8285785029026662040}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8301035182541651196
 PrefabInstance:
