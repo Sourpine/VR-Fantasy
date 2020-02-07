@@ -23,13 +23,17 @@ public class Mana : MonoBehaviour
     {
         castingL = lHand.GetComponent<NEWSpells>().casting;
         castingR = rHand.GetComponent<NEWSpells>().casting;
-        if(castingL == false || castingR == false)
+        if (castingL == false || castingR == false)
         {
             mana += manaRegen;
         }
         if (mana > manaCap)
         {
             mana = manaCap;
+        }
+        if (mana < 0)
+        {
+            mana = 0;
         }
     }
 }

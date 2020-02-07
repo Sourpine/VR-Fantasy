@@ -17,6 +17,9 @@ public class NEWSpells : MonoBehaviour
     //mana
     public int mana;
     public bool casting = false;
+    public bool active = false;
+    public bool passive = true;
+    public bool passiveLow = false;
 
     //base spells
     //passive w/ mana
@@ -100,6 +103,28 @@ public class NEWSpells : MonoBehaviour
     public float disTimer = 0.0f;
     public float disTime = 0.1f;
     public bool dis;
+
+    //mana cost variables (base spells)
+    //initial
+    public int ECostI = 10;
+    public int FCostI = 10;
+    public int WCostI = 10;
+    public int ACostI = 10;
+    //channeling
+    public int FCostC = 2;
+    public int ACostC = 2;
+
+    //mana cost variable (combo spells)
+    public int E2CostI = 10;
+    public int F2CostI = 10;
+    public int W2CostI = 10;
+    public int A2CostI = 10;
+    public int EFCostI = 10;
+    public int EWCostI = 10;
+    public int EACostI = 10;
+    public int FWCostI = 10;
+    public int FACostI = 10;
+    public int WACostI = 10;
 
 
     void Start()
@@ -276,6 +301,27 @@ public class NEWSpells : MonoBehaviour
         {
             player.GetComponent<OVRPlayerController>().enabled = true;
         }
+
+        //sets the correct active/passive/passiveLow bool true
+        //this might be redundant
+        if(mana <= 0)
+        {
+            active = false;
+            passive = false;
+            passiveLow = true;
+        }
+        if (OVRInput.GetDown(cast) && passiveLow == false)
+        {
+            active = true;
+            passive = false;
+        }
+        if(OVRInput.Get(cast) && passiveLow == false)
+        {
+            active = true;
+            passive = false;
+        }
+        
+
         //inputs up and down to select spell (find in the project settings input)
         //depending on the value this sets the correct object to active
         switch (value)
@@ -287,8 +333,9 @@ public class NEWSpells : MonoBehaviour
                 ClearHand();
                 //passive (this one's temp)
                 Earth.SetActive(true);
-                if (OVRInput.GetDown(cast))
+                if (OVRInput.GetDown(cast) && mana >= ECostI)
                 {
+                    player.GetComponent<Mana>().mana -= ECostI;
                     Earth.SetActive(false);
                     RaycastHit hit;
                     Vector3 destination;
@@ -314,16 +361,33 @@ public class NEWSpells : MonoBehaviour
                 //passive (this one's temp)
                 Fire.SetActive(true);
                 //enable the firePrefab game object then disable if let go or if mana if gone
-                if (OVRInput.GetDown(cast))
+                if (OVRInput.GetDown(cast) && mana >= FCostI)
                 {
-                    Debug.Log("Active Fire");
+                    player.GetComponent<Mana>().mana -= FCostI;
+                    //Debug.Log("Active Fire");
                     Fire.SetActive(false);
                     FirePrefab.SetActive(true);
+                }
+                if (OVRInput.Get(cast) && mana >= FCostC)
+                {
+                    player.GetComponent<Mana>().mana -= FCostC;
+                    if(mana <= 0) //!!!!!!!!!!!!!!!!!!!!!!!!!
+                    {
+                        FirePrefab.SetActive(false);
+                        FireLow.SetActive(true);
+                    }
                 }
                 if (OVRInput.GetUp(cast))
                 {
                     FirePrefab.SetActive(false);
-                    Fire.SetActive(false);
+                    if(mana <= 0) //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    {
+                        FireLow.SetActive(true);
+                    }
+                    else
+                    {
+                        Fire.SetActive(true);
+                    }
                     Debug.Log("Inactive Fire");
                 }
                 break;
@@ -391,9 +455,9 @@ public class NEWSpells : MonoBehaviour
     //
     //done o all the variables are acounted for (gameObjects ints etc)
     //done o all variables are assigned in the script
-    // o pop up menus
-    // o when you chose the icon the menu drops and the spell is enabled
-    // o when you click a trigger it fires the spell
+    //done o pop up menus
+    //done o when you chose the icon the menu drops and the spell is enabled
+    //work in progress o when you click a trigger it fires the spell
     // o when you put the hands close enough together it makes a combo
     //
     //2 menus with 4 options each

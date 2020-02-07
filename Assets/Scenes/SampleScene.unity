@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -16867,6 +16867,9 @@ MonoBehaviour:
   OtherHand: {fileID: 0}
   mana: 0
   casting: 0
+  active: 0
+  passive: 1
+  passiveLow: 0
   Earth: {fileID: 0}
   Fire: {fileID: 0}
   Water: {fileID: 0}
@@ -16920,6 +16923,22 @@ MonoBehaviour:
   disTimer: 0
   disTime: 0.1
   dis: 0
+  ECostI: 10
+  FCostI: 10
+  WCostI: 10
+  ACostI: 10
+  FCostC: 2
+  ACostC: 2
+  E2CostI: 10
+  F2CostI: 10
+  W2CostI: 10
+  A2CostI: 10
+  EFCostI: 10
+  EWCostI: 10
+  EACostI: 10
+  FWCostI: 10
+  FACostI: 10
+  WACostI: 10
 --- !u!1 &1451579065
 GameObject:
   m_ObjectHideFlags: 0
@@ -30522,6 +30541,12 @@ PrefabInstance:
       propertyPath: m_player
       value: 
       objectReference: {fileID: 159521982}
+    - target: {fileID: 2426257866312420291, guid: 8af46abbe5d06c7428084f6acff50649,
+        type: 3}
+      propertyPath: EarthPrefab
+      value: 
+      objectReference: {fileID: 6325498717203889607, guid: f831733faf0904f4793f6c041188a9f2,
+        type: 3}
     - target: {fileID: 2427413549200097192, guid: 8af46abbe5d06c7428084f6acff50649,
         type: 3}
       propertyPath: m_Name
@@ -30656,6 +30681,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3267478479004398448, guid: ce2bbb669352f7940a1f2739d9f9f750,
+        type: 3}
+      propertyPath: EarthPrefab
+      value: 
+      objectReference: {fileID: 6325498717203889607, guid: f831733faf0904f4793f6c041188a9f2,
+        type: 3}
     - target: {fileID: 3268953898966926857, guid: ce2bbb669352f7940a1f2739d9f9f750,
         type: 3}
       propertyPath: m_Name
