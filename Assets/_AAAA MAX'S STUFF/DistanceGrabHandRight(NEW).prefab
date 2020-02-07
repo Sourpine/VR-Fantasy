@@ -6069,6 +6069,8 @@ MonoBehaviour:
   player: {fileID: 0}
   Hand: {fileID: 0}
   OtherHand: {fileID: 0}
+  mana: 0
+  casting: 0
   Earth: {fileID: 0}
   Fire: {fileID: 0}
   Water: {fileID: 0}
@@ -6122,6 +6124,22 @@ MonoBehaviour:
   disTimer: 0
   disTime: 0.1
   dis: 0
+  ECostI: 10
+  FCostI: 10
+  WCostI: 10
+  ACostI: 10
+  FCostC: 2
+  ACostC: 2
+  E2CostI: 10
+  F2CostI: 10
+  W2CostI: 10
+  A2CostI: 10
+  EFCostI: 10
+  EWCostI: 10
+  EACostI: 10
+  FWCostI: 10
+  FACostI: 10
+  WACostI: 10
 --- !u!1 &2427422564813692936
 GameObject:
   m_ObjectHideFlags: 0

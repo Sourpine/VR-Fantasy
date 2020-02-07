@@ -7,7 +7,7 @@ public class Mana : MonoBehaviour
     public GameObject lHand;
     public GameObject rHand;
 
-    public int mana = 100;
+    public int mana = 1000;
     public int manaCap = 100;
     public int manaRegen = 5;
     public bool castingL = false;

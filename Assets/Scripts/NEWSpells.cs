@@ -17,9 +17,6 @@ public class NEWSpells : MonoBehaviour
     //mana
     public int mana;
     public bool casting = false;
-    public bool active = false;
-    public bool passive = true;
-    public bool passiveLow = false;
 
     //base spells
     //passive w/ mana
@@ -300,27 +297,7 @@ public class NEWSpells : MonoBehaviour
         if(Menu.activeSelf == false)
         {
             player.GetComponent<OVRPlayerController>().enabled = true;
-        }
-
-        //sets the correct active/passive/passiveLow bool true
-        //this might be redundant
-        if(mana <= 0)
-        {
-            active = false;
-            passive = false;
-            passiveLow = true;
-        }
-        if (OVRInput.GetDown(cast) && passiveLow == false)
-        {
-            active = true;
-            passive = false;
-        }
-        if(OVRInput.Get(cast) && passiveLow == false)
-        {
-            active = true;
-            passive = false;
-        }
-        
+        }        
 
         //inputs up and down to select spell (find in the project settings input)
         //depending on the value this sets the correct object to active
@@ -361,34 +338,21 @@ public class NEWSpells : MonoBehaviour
                 //passive (this one's temp)
                 Fire.SetActive(true);
                 //enable the firePrefab game object then disable if let go or if mana if gone
-                if (OVRInput.GetDown(cast) && mana >= FCostI)
+                if (OVRInput.GetDown(cast) /*&& mana >= FCostI*/)
                 {
                     player.GetComponent<Mana>().mana -= FCostI;
-                    //Debug.Log("Active Fire");
                     Fire.SetActive(false);
                     FirePrefab.SetActive(true);
                 }
                 if (OVRInput.Get(cast) && mana >= FCostC)
                 {
                     player.GetComponent<Mana>().mana -= FCostC;
-                    if(mana <= 0) //!!!!!!!!!!!!!!!!!!!!!!!!!
-                    {
-                        FirePrefab.SetActive(false);
-                        FireLow.SetActive(true);
-                    }
+                    FirePrefab.SetActive(true);
                 }
                 if (OVRInput.GetUp(cast))
                 {
                     FirePrefab.SetActive(false);
-                    if(mana <= 0) //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    {
-                        FireLow.SetActive(true);
-                    }
-                    else
-                    {
-                        Fire.SetActive(true);
-                    }
-                    Debug.Log("Inactive Fire");
+                    Fire.SetActive(true);
                 }
                 break;
             case 50:
