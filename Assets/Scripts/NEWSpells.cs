@@ -17,6 +17,8 @@ public class NEWSpells : MonoBehaviour
     //mana
     public int mana;
     public bool casting = false;
+    public float manaTimer = 0;
+    public float manaTime = 1.0f;
 
     //base spells
     //passive w/ mana
@@ -150,7 +152,10 @@ public class NEWSpells : MonoBehaviour
             //active left spells
             //NOT IMPLEMENTED
             //the spells which require Instantiation are likely refrenced elsewhere
+            EarthPrefab = GameObject.Find("EarthPrefab(L)");
             FirePrefab = GameObject.Find("FirePrefab(L)");
+            WaterPrefab = GameObject.Find("WaterPrefab(L)");
+            AirPrefab = GameObject.Find("AirPrefab(L)");
 
             //left ui
             Menu = GameObject.Find("leftWheel");
@@ -177,7 +182,10 @@ public class NEWSpells : MonoBehaviour
             //active right spells
             //NOT IMPLEMENTED
             //the spells which require Instantiation are likely refrenced elsewhere
+            EarthPrefab = GameObject.Find("EarthPrefab(R)");
             FirePrefab = GameObject.Find("FirePrefab(R)");
+            WaterPrefab = GameObject.Find("WaterPrefab(R)");
+            AirPrefab = GameObject.Find("AirPrefab(R)");
 
             //right ui
             Menu = GameObject.Find("rightWheel");
@@ -228,7 +236,10 @@ public class NEWSpells : MonoBehaviour
 
         //disabling active base spells
         //Not all implemented
+        EarthPrefab.SetActive(false);
         FirePrefab.SetActive(false);
+        WaterPrefab.SetActive(false);
+        AirPrefab.SetActive(false);
 
         //disabling ui
         Menu.SetActive(false);
@@ -238,6 +249,11 @@ public class NEWSpells : MonoBehaviour
     void Update()
     {
         mana = player.GetComponent<Mana>().mana;
+        manaTime += Time.deltaTime;
+        if(manaTimer >= manaTime)
+        {
+
+        }
         
         //disables variables here to avoid error
         if(dis == false)
@@ -338,7 +354,7 @@ public class NEWSpells : MonoBehaviour
                 //passive (this one's temp)
                 Fire.SetActive(true);
                 //enable the firePrefab game object then disable if let go or if mana if gone
-                if (OVRInput.GetDown(cast) /*&& mana >= FCostI*/)
+                if (OVRInput.GetDown(cast) && mana >= FCostI)
                 {
                     player.GetComponent<Mana>().mana -= FCostI;
                     Fire.SetActive(false);

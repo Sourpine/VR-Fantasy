@@ -6,6 +6,15 @@ ModelImporter:
   - first:
       74: -623603649343465320
     second: Scene
+  - first:
+      74: 1989289236423521904
+    second: Default Take
+  - first:
+      74: 6373476897767796878
+    second: InjuredWalk
+  - first:
+      74: -8312538846858333772
+    second: T-Pose
   externalObjects: {}
   materials:
     materialImportMode: 1
