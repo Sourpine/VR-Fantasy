@@ -7,7 +7,7 @@ public class Mana : MonoBehaviour
     public GameObject lHand;
     public GameObject rHand;
 
-    public int mana = 100;
+    public int mana = 1000;
     public int manaCap = 100;
     public int manaRegen = 5;
     public bool castingL = false;
@@ -23,13 +23,17 @@ public class Mana : MonoBehaviour
     {
         castingL = lHand.GetComponent<NEWSpells>().casting;
         castingR = rHand.GetComponent<NEWSpells>().casting;
-        if(castingL == false || castingR == false)
+        if (castingL == false || castingR == false)
         {
             mana += manaRegen;
         }
         if (mana > manaCap)
         {
             mana = manaCap;
+        }
+        if (mana < 0)
+        {
+            mana = 0;
         }
     }
 }
