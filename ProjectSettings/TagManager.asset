@@ -8,6 +8,7 @@ TagManager:
   - lHand
   - rHand
   - spells
+  - spell
   layers:
   - Default
   - TransparentFX
