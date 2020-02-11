@@ -9,6 +9,7 @@ TagManager:
   - rHand
   - spells
   - spell
+  - bullet
   layers:
   - Default
   - TransparentFX
