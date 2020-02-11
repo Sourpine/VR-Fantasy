@@ -26,6 +26,7 @@ public class EnemyShoot : MonoBehaviour
         if (Physics.Raycast(barrelEnd.transform.position, barrelEnd.transform.forward, out hit, 50))
         {
             destination = hit.point;
+            Debug.Log("I shooteddddddddddddddddddddddddddd");
         }
         else
         {
@@ -36,6 +37,7 @@ public class EnemyShoot : MonoBehaviour
         if (/*get the variable that calls the attack anim and if true */shooting == true)
         {
             shooting = true;
+            Debug.Log("I did big shoot");
         }
         if (shooting == true)
         {

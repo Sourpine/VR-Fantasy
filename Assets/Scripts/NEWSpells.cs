@@ -17,9 +17,8 @@ public class NEWSpells : MonoBehaviour
     //mana
     public int mana;
     public bool casting = false;
-    public bool active = false;
-    public bool passive = true;
-    public bool passiveLow = false;
+    public float manaTimer = 0;
+    public float manaTime = 1.0f;
 
     //base spells
     //passive w/ mana
@@ -153,7 +152,10 @@ public class NEWSpells : MonoBehaviour
             //active left spells
             //NOT IMPLEMENTED
             //the spells which require Instantiation are likely refrenced elsewhere
+            EarthPrefab = GameObject.Find("EarthPrefab(L)");
             FirePrefab = GameObject.Find("FirePrefab(L)");
+            WaterPrefab = GameObject.Find("WaterPrefab(L)");
+            AirPrefab = GameObject.Find("AirPrefab(L)");
 
             //left ui
             Menu = GameObject.Find("leftWheel");
@@ -180,7 +182,10 @@ public class NEWSpells : MonoBehaviour
             //active right spells
             //NOT IMPLEMENTED
             //the spells which require Instantiation are likely refrenced elsewhere
+            EarthPrefab = GameObject.Find("EarthPrefab(R)");
             FirePrefab = GameObject.Find("FirePrefab(R)");
+            WaterPrefab = GameObject.Find("WaterPrefab(R)");
+            AirPrefab = GameObject.Find("AirPrefab(R)");
 
             //right ui
             Menu = GameObject.Find("rightWheel");
@@ -231,7 +236,10 @@ public class NEWSpells : MonoBehaviour
 
         //disabling active base spells
         //Not all implemented
+        EarthPrefab.SetActive(false);
         FirePrefab.SetActive(false);
+        WaterPrefab.SetActive(false);
+        AirPrefab.SetActive(false);
 
         //disabling ui
         Menu.SetActive(false);
@@ -241,6 +249,11 @@ public class NEWSpells : MonoBehaviour
     void Update()
     {
         mana = player.GetComponent<Mana>().mana;
+        manaTime += Time.deltaTime;
+        if(manaTimer >= manaTime)
+        {
+
+        }
         
         //disables variables here to avoid error
         if(dis == false)
@@ -300,27 +313,7 @@ public class NEWSpells : MonoBehaviour
         if(Menu.activeSelf == false)
         {
             player.GetComponent<OVRPlayerController>().enabled = true;
-        }
-
-        //sets the correct active/passive/passiveLow bool true
-        //this might be redundant
-        if(mana <= 0)
-        {
-            active = false;
-            passive = false;
-            passiveLow = true;
-        }
-        if (OVRInput.GetDown(cast) && passiveLow == false)
-        {
-            active = true;
-            passive = false;
-        }
-        if(OVRInput.Get(cast) && passiveLow == false)
-        {
-            active = true;
-            passive = false;
-        }
-        
+        }        
 
         //inputs up and down to select spell (find in the project settings input)
         //depending on the value this sets the correct object to active
@@ -364,31 +357,18 @@ public class NEWSpells : MonoBehaviour
                 if (OVRInput.GetDown(cast) && mana >= FCostI)
                 {
                     player.GetComponent<Mana>().mana -= FCostI;
-                    //Debug.Log("Active Fire");
                     Fire.SetActive(false);
                     FirePrefab.SetActive(true);
                 }
                 if (OVRInput.Get(cast) && mana >= FCostC)
                 {
                     player.GetComponent<Mana>().mana -= FCostC;
-                    if(mana <= 0) //!!!!!!!!!!!!!!!!!!!!!!!!!
-                    {
-                        FirePrefab.SetActive(false);
-                        FireLow.SetActive(true);
-                    }
+                    FirePrefab.SetActive(true);
                 }
                 if (OVRInput.GetUp(cast))
                 {
                     FirePrefab.SetActive(false);
-                    if(mana <= 0) //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    {
-                        FireLow.SetActive(true);
-                    }
-                    else
-                    {
-                        Fire.SetActive(true);
-                    }
-                    Debug.Log("Inactive Fire");
+                    Fire.SetActive(true);
                 }
                 break;
             case 50:
