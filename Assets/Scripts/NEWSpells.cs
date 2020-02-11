@@ -19,6 +19,7 @@ public class NEWSpells : MonoBehaviour
     public bool casting = false;
     public float manaTimer = 0;
     public float manaTime = 1.0f;
+    public bool manaCost = false;
 
     //base spells
     //passive w/ mana
@@ -217,7 +218,17 @@ public class NEWSpells : MonoBehaviour
         WaterAir = GameObject.Find("WaterAir");
 
         //active combo spells
-        //NOT IMPLEMENTED
+        Earthx2Prefab = GameObject.Find("Earthx2Prefab");
+        Firex2Prefab = GameObject.Find("Firex2Prefab");
+        Waterx2Prefab = GameObject.Find("Waterx2Prefab");
+        Airx2Prefab = GameObject.Find("Airx2Prefab");
+        EarthFirePrefab = GameObject.Find("EarthFirePrefab");
+        EarthWaterPrefab = GameObject.Find("EarthWaterPrefab");
+        EarthAirPrefab = GameObject.Find("EarthAirPrefab");
+        FireWaterPrefab = GameObject.Find("FireWaterPrefab");
+        FireAirPrefab = GameObject.Find("FireAirPrefab");
+        WaterAirPrefab = GameObject.Find("WaterAirPrefab");
+
         //the spells which require Instantiation are likely refrenced elsewhere
 
         //disabling the game objects after they're set
@@ -248,11 +259,12 @@ public class NEWSpells : MonoBehaviour
 
     void Update()
     {
+        manaCost = false;
         mana = player.GetComponent<Mana>().mana;
         manaTime += Time.deltaTime;
         if(manaTimer >= manaTime)
         {
-
+            manaCost = true;
         }
         
         //disables variables here to avoid error
@@ -290,7 +302,16 @@ public class NEWSpells : MonoBehaviour
             WaterAirLow.SetActive(false);
 
             //diabling active combos
-            //NOT IMPLEMENTED
+            Earthx2Prefab.SetActive(false);
+            Firex2Prefab.SetActive(false);
+            Waterx2Prefab.SetActive(false);
+            Airx2Prefab.SetActive(false);
+            EarthFirePrefab.SetActive(false);
+            EarthWaterPrefab.SetActive(false);
+            EarthAirPrefab.SetActive(false);
+            FireWaterPrefab.SetActive(false);
+            FireAirPrefab.SetActive(false);
+            WaterAirPrefab.SetActive(false);
         }
         
         //deals with menu appearing and setting the right event system
@@ -324,8 +345,13 @@ public class NEWSpells : MonoBehaviour
                 break;
             case 1:
                 ClearHand();
-                //passive (this one's temp)
                 Earth.SetActive(true);
+                if(mana >= ECostI)
+                {
+                    EarthLow.SetActive(false);
+                    Earth.SetActive(true);
+                }
+                //
                 if (OVRInput.GetDown(cast) && mana >= ECostI)
                 {
                     player.GetComponent<Mana>().mana -= ECostI;
@@ -343,29 +369,61 @@ public class NEWSpells : MonoBehaviour
                     Vector3 direction = destination - Hand.transform.position;
                     direction.Normalize();
                     GameObject projectile = Instantiate(EarthPrefab, Hand.transform.position, Hand.transform.localRotation);
+                    projectile.SetActive(true);
                     projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
                     Earth.SetActive(true);
                     Destroy(projectile, 5);
-
+                }
+                else if(mana < ECostI)
+                {
+                    Earth.SetActive(false);
+                    EarthPrefab.SetActive(false);
+                    EarthLow.SetActive(true);
+                }
+                if(OVRInput.GetUp(cast) && EarthLow.activeSelf == false)
+                {
+                    EarthPrefab.SetActive(false);
+                    Earth.SetActive(true);
                 }
                 break;
             case 10:
                 ClearHand();
-                //passive (this one's temp)
                 Fire.SetActive(true);
-                //enable the firePrefab game object then disable if let go or if mana if gone
+                //when mana grows above treshhold then dissable low
+                if(mana >= FCostI && FirePrefab.activeSelf == false)
+                {
+                    FireLow.SetActive(false);
+                    Fire.SetActive(true);
+                }
+                //enable the firePrefab if mana correct and button pressed
                 if (OVRInput.GetDown(cast) && mana >= FCostI)
                 {
                     player.GetComponent<Mana>().mana -= FCostI;
                     Fire.SetActive(false);
                     FirePrefab.SetActive(true);
                 }
-                if (OVRInput.Get(cast) && mana >= FCostC)
+                //not enough mana enables low prefab
+                else if (mana < FCostI)
+                {
+                    FirePrefab.SetActive(false);
+                    Fire.SetActive(false);
+                    FireLow.SetActive(true);
+                }
+                //continues to enable prefab and take mana
+                if (OVRInput.Get(cast) && mana >= FCostC && manaCost == true && FireLow.activeSelf == false)
                 {
                     player.GetComponent<Mana>().mana -= FCostC;
                     FirePrefab.SetActive(true);
                 }
-                if (OVRInput.GetUp(cast))
+                //not enough mana enables low prefab
+                else if (mana < FCostC)
+                {
+                    FirePrefab.SetActive(false);
+                    Fire.SetActive(false);
+                    FireLow.SetActive(true);
+                }
+                //when cast comes up dissables spell
+                if (OVRInput.GetUp(cast) && FireLow.activeSelf == false)
                 {
                     FirePrefab.SetActive(false);
                     Fire.SetActive(true);
@@ -373,17 +431,59 @@ public class NEWSpells : MonoBehaviour
                 break;
             case 50:
                 ClearHand();
-                //passive (this one's temp)
                 Water.SetActive(true);
-                //
-                if (OVRInput.GetDown(cast))
+                if (OVRInput.GetDown(cast) && mana >= WCostI)
                 {
-                    //instantiate the water spell (might follow player position)
+                    player.GetComponent<Mana>().mana -= WCostI;
+                    Water.SetActive(false);
+                    GameObject projectile = Instantiate(WaterPrefab, Hand.transform.position, Hand.transform.localRotation);
+                    projectile.SetActive(true);
+                    Water.SetActive(true);
+                    Destroy(projectile, 5);
+                }
+                else if (mana < WCostI)
+                {
+                    WaterPrefab.SetActive(false);
+                    Water.SetActive(false);
+                    WaterLow.SetActive(false);
+                }
+                if (mana >= WCostI && WaterPrefab.activeSelf == false)
+                {
+                    WaterLow.SetActive(false);
+                    Water.SetActive(true);
+                }
+                if(OVRInput.GetUp(cast) && FireLow.activeSelf == false)
+                {
+                    WaterPrefab.SetActive(false);
+                    Water.SetActive(true);
                 }
                 break;
             case 500:
                 ClearHand();
-
+                Air.SetActive(true);
+                if (OVRInput.GetDown(cast) && mana >= ACostI)
+                {
+                    player.GetComponent<Mana>().mana -= ACostI;
+                    Air.SetActive(false);
+                    AirPrefab.SetActive(true);
+                }
+                else if (mana < ACostI)
+                {
+                    AirPrefab.SetActive(false);
+                    Air.SetActive(false);
+                    AirLow.SetActive(true);
+                }
+                if (OVRInput.Get(cast) && mana >= ACostC && manaCost == true && AirLow.activeSelf == false)
+                {
+                    player.GetComponent<Mana>().mana -= ACostC;
+                    AirPrefab.SetActive(true);
+                }
+                else if(mana < ACostC)
+                {
+                    AirPrefab.SetActive(false);
+                    Air.SetActive(false);
+                    AirLow.SetActive(true);
+                }
                 break;
         }
     }
@@ -421,6 +521,16 @@ public class NEWSpells : MonoBehaviour
         Fire.SetActive(false);
         Water.SetActive(false);
         Air.SetActive(false);
+
+        EarthLow.SetActive(false);
+        FireLow.SetActive(false);
+        WaterLow.SetActive(false);
+        AirLow.SetActive(false);
+
+        EarthPrefab.SetActive(false);
+        FirePrefab.SetActive(false);
+        WaterPrefab.SetActive(false);
+        AirPrefab.SetActive(false);
     }
     public void OutOfManaClear()
     {
