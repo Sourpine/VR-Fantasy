@@ -12,6 +12,9 @@ public class Mana : MonoBehaviour
     public int manaRegen = 5;
     public bool castingL = false;
     public bool castingR = false;
+    public float regenTimer = 0.0f;
+    public float regenTime = 1.0f;
+    public bool canRegen = false;
     
     void Start()
     {
@@ -23,7 +26,14 @@ public class Mana : MonoBehaviour
     {
         castingL = lHand.GetComponent<NEWSpells>().casting;
         castingR = rHand.GetComponent<NEWSpells>().casting;
-        if (castingL == false || castingR == false)
+        canRegen = false;
+        regenTimer += Time.deltaTime;
+        if (regenTimer >= regenTime)
+        {
+            regenTimer = 0;
+            canRegen = true;
+        }
+        if (castingL == false && canRegen == true && castingR == false)
         {
             mana += manaRegen;
         }

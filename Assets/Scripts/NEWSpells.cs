@@ -96,7 +96,7 @@ public class NEWSpells : MonoBehaviour
     public GameObject WaterAirPrefab;
 
     //bullet variables
-    public float bulletSpeed;
+    public float bulletSpeed = 10;
     public float rayLength = 50.0f;
 
     //disable timers and bool
@@ -261,10 +261,11 @@ public class NEWSpells : MonoBehaviour
     {
         manaCost = false;
         mana = player.GetComponent<Mana>().mana;
-        manaTime += Time.deltaTime;
+        manaTimer += Time.deltaTime;
         if(manaTimer >= manaTime)
         {
             manaCost = true;
+            manaTimer = 0;
         }
         
         //disables variables here to avoid error
@@ -343,19 +344,22 @@ public class NEWSpells : MonoBehaviour
             case 0:
                 ClearHand();
                 break;
+
+            //  E   A   R   T   H
             case 1:
                 ClearHand();
                 Earth.SetActive(true);
-                if(mana >= ECostI)
+                //when mana is high enough low is replaced
+                if (mana >= ECostI)
                 {
                     EarthLow.SetActive(false);
                     Earth.SetActive(true);
                 }
-                //
+                //button pressed and mana high enough
                 if (OVRInput.GetDown(cast) && mana >= ECostI)
                 {
                     player.GetComponent<Mana>().mana -= ECostI;
-                    Earth.SetActive(false);
+                    //Earth.SetActive(false);
                     RaycastHit hit;
                     Vector3 destination;
                     if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50))
@@ -374,31 +378,38 @@ public class NEWSpells : MonoBehaviour
                     Earth.SetActive(true);
                     Destroy(projectile, 5);
                 }
+                //button pressed but mana low
                 else if(mana < ECostI)
                 {
                     Earth.SetActive(false);
                     EarthPrefab.SetActive(false);
                     EarthLow.SetActive(true);
                 }
-                if(OVRInput.GetUp(cast) && EarthLow.activeSelf == false)
+                //this is irrelevant for the non channeling spells
+                /*if(OVRInput.GetUp(cast) && EarthLow.activeSelf == false)
                 {
                     EarthPrefab.SetActive(false);
                     Earth.SetActive(true);
-                }
+                }*/
                 break;
+
+            //  F   I   R   E
             case 10:
                 ClearHand();
-                Fire.SetActive(true);
                 //when mana grows above treshhold then dissable low
-                if(mana >= FCostI && FirePrefab.activeSelf == false)
+                if(mana >= FCostI)
                 {
                     FireLow.SetActive(false);
-                    Fire.SetActive(true);
+                    if (FirePrefab.activeSelf == false)
+                    {
+                        Fire.SetActive(true);
+                    }
                 }
                 //enable the firePrefab if mana correct and button pressed
                 if (OVRInput.GetDown(cast) && mana >= FCostI)
                 {
                     player.GetComponent<Mana>().mana -= FCostI;
+                    casting = true;
                     Fire.SetActive(false);
                     FirePrefab.SetActive(true);
                 }
@@ -408,6 +419,7 @@ public class NEWSpells : MonoBehaviour
                     FirePrefab.SetActive(false);
                     Fire.SetActive(false);
                     FireLow.SetActive(true);
+                    casting = false;
                 }
                 //continues to enable prefab and take mana
                 if (OVRInput.Get(cast) && mana >= FCostC && manaCost == true && FireLow.activeSelf == false)
@@ -421,68 +433,106 @@ public class NEWSpells : MonoBehaviour
                     FirePrefab.SetActive(false);
                     Fire.SetActive(false);
                     FireLow.SetActive(true);
+                    casting = false;
                 }
                 //when cast comes up dissables spell
                 if (OVRInput.GetUp(cast) && FireLow.activeSelf == false)
                 {
                     FirePrefab.SetActive(false);
                     Fire.SetActive(true);
+                    casting = false;
                 }
                 break;
+
+            //  W   A   T   E   R
             case 50:
                 ClearHand();
                 Water.SetActive(true);
+                //when mana goes above the threshhold then dissable low
+                if (mana >= WCostI)
+                {
+                    WaterLow.SetActive(false);
+                    if(WaterPrefab.activeSelf == false)
+                    {
+                        Water.SetActive(true);
+                    }
+                }
+                //when button pressed spell enabled (enough mana)
                 if (OVRInput.GetDown(cast) && mana >= WCostI)
                 {
                     player.GetComponent<Mana>().mana -= WCostI;
+                    casting = true;
                     Water.SetActive(false);
                     GameObject projectile = Instantiate(WaterPrefab, Hand.transform.position, Hand.transform.localRotation);
                     projectile.SetActive(true);
                     Water.SetActive(true);
                     Destroy(projectile, 5);
                 }
+                //not enough mana low enabled
                 else if (mana < WCostI)
                 {
                     WaterPrefab.SetActive(false);
                     Water.SetActive(false);
-                    WaterLow.SetActive(false);
+                    WaterLow.SetActive(true);
+                    casting = false;
                 }
-                if (mana >= WCostI && WaterPrefab.activeSelf == false)
-                {
-                    WaterLow.SetActive(false);
-                    Water.SetActive(true);
-                }
+                //when button up the passive re-enabled
                 if(OVRInput.GetUp(cast) && FireLow.activeSelf == false)
                 {
                     WaterPrefab.SetActive(false);
                     Water.SetActive(true);
+                    casting = false;
                 }
                 break;
+
+            //  A   I   R
             case 500:
                 ClearHand();
-                Air.SetActive(true);
+                //mana regened
+                if (mana >= ACostI)
+                {
+                    AirLow.SetActive(false);
+                    //spell not being cast
+                    if (AirPrefab.activeSelf == false)
+                    {
+                        Air.SetActive(true);
+                    }
+                }
+                //casting w/ enough mana
                 if (OVRInput.GetDown(cast) && mana >= ACostI)
                 {
                     player.GetComponent<Mana>().mana -= ACostI;
+                    casting = true;
                     Air.SetActive(false);
                     AirPrefab.SetActive(true);
                 }
+                //mana too low (initial)
                 else if (mana < ACostI)
                 {
                     AirPrefab.SetActive(false);
                     Air.SetActive(false);
                     AirLow.SetActive(true);
+                    casting = false;
                 }
+                //channeling w/ enough mana
                 if (OVRInput.Get(cast) && mana >= ACostC && manaCost == true && AirLow.activeSelf == false)
                 {
                     player.GetComponent<Mana>().mana -= ACostC;
                     AirPrefab.SetActive(true);
                 }
+                //mana too low (channeling)
                 else if(mana < ACostC)
                 {
                     AirPrefab.SetActive(false);
                     Air.SetActive(false);
                     AirLow.SetActive(true);
+                    casting = false;
+                }
+                //when button released dissables
+                if (OVRInput.GetUp(cast) && AirLow.activeSelf == false)
+                {
+                    AirPrefab.SetActive(false);
+                    Air.SetActive(true);
                 }
                 break;
         }
@@ -528,9 +578,9 @@ public class NEWSpells : MonoBehaviour
         AirLow.SetActive(false);
 
         EarthPrefab.SetActive(false);
-        FirePrefab.SetActive(false);
+        //FirePrefab.SetActive(false);
         WaterPrefab.SetActive(false);
-        AirPrefab.SetActive(false);
+        //AirPrefab.SetActive(false);
     }
     public void OutOfManaClear()
     {
@@ -547,8 +597,9 @@ public class NEWSpells : MonoBehaviour
     //done o all variables are assigned in the script
     //done o pop up menus
     //done o when you chose the icon the menu drops and the spell is enabled
-    //work in progress o when you click a trigger it fires the spell
+    //done o when you click a trigger it fires the spell
     // o when you put the hands close enough together it makes a combo
+    // o all the above for combos
     //
     //2 menus with 4 options each
     //when you choose an option it assigns the appropriate hand with a #
