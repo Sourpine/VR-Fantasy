@@ -17,12 +17,12 @@ public class TrooperShoot : MonoBehaviour
     }
     public void TriggerShoot()
     {
-        GetComponent<Animator>().SetBool("Attack 0", true);
+        GetComponent<Animator>().SetBool("Bruh", true);
 
     }
     public void stopShoot()
     {
-        GetComponent<Animator>().SetBool("Attack 0", false);
+        GetComponent<Animator>().SetBool("Bruh", false);
     }
 
     // Update is called once per frame
@@ -30,11 +30,11 @@ public class TrooperShoot : MonoBehaviour
     {
         if (shoot)
         {
-            GetComponent<Animator>().SetBool("Attack 0", true);
+            GetComponent<Animator>().SetBool("Bruh", true);
         }
         if (!shoot)
         {
-            GetComponent<Animator>().SetBool("Attack 0", false);
+            GetComponent<Animator>().SetBool("Bruh", false);
         }
     }
 

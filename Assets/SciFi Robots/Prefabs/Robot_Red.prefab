@@ -198,6 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4654447046817916}
   - component: {fileID: 137686548365782822}
+  - component: {fileID: 1556660092}
   m_Layer: 0
   m_Name: Ironman.001
   m_TagString: Untagged
@@ -354,6 +355,25 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000004827976, y: -0.19367683, z: -0.022019036}
     m_Extent: {x: 0.6654318, y: 1.03942, z: 0.23922494}
   m_DirtyAABB: 0
+--- !u!95 &1556660092
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050407782141822}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce4ccb4a42d87734a931f294a7c830c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1053421632212668
 GameObject:
   m_ObjectHideFlags: 0
@@ -2647,13 +2667,15 @@ GameObject:
   m_Component:
   - component: {fileID: 4387008510207544}
   - component: {fileID: 95874444110950200}
+  - component: {fileID: 223185702}
+  - component: {fileID: 223185703}
   m_Layer: 0
   m_Name: Robot_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4387008510207544
 Transform:
   m_ObjectHideFlags: 0
@@ -2689,6 +2711,42 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!64 &223185702
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768149381455050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a67db89bdee18f241927d32f2379ded1, type: 3}
+--- !u!195 &223185703
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768149381455050}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1768411024926312
 GameObject:
   m_ObjectHideFlags: 0

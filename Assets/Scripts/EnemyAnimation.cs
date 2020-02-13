@@ -44,7 +44,7 @@ public class EnemyAnimation : MonoBehaviour
             if(myAnimator.enabled)
             {
                 myAnimator.SetBool("isPursuing", true);
-                myAnimator.SetBool("Attack 0", false);
+                myAnimator.SetBool("Bruh", false);
             }
         }
     }
@@ -56,7 +56,7 @@ public class EnemyAnimation : MonoBehaviour
             if (myAnimator.enabled)
             {
                 myAnimator.SetBool("isPursuing", false);
-                myAnimator.SetBool("Attack 0", false);
+                //myAnimator.SetBool("Attack 0", false);
             }
         }
     }
@@ -67,7 +67,7 @@ public class EnemyAnimation : MonoBehaviour
         {
             if (myAnimator.enabled)
             {
-                myAnimator.SetBool("Attack 0", true);
+                myAnimator.SetBool("Bruh", true);
             }
         }
     }
@@ -79,7 +79,7 @@ public class EnemyAnimation : MonoBehaviour
             if (myAnimator.enabled)
             {
                 myAnimator.SetTrigger("Struck");
-                myAnimator.SetBool("Attack 0", false);
+                myAnimator.SetBool("Bruh", false);
             }
         }
     }
@@ -91,7 +91,7 @@ public class EnemyAnimation : MonoBehaviour
             if (myAnimator.enabled)
             {
                 myAnimator.SetTrigger("Die");
-                myAnimator.SetBool("Attack 0", false);
+                myAnimator.SetBool("Bruh", false);
             }
         }
     }

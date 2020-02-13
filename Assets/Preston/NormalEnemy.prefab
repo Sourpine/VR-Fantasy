@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fcd77db0df0144e93234f9d0892d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 3.5
+  attackRange: 2.5
   attackDamage: 10
 --- !u!114 &8551618928583406877
 MonoBehaviour:
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2098
 --- !u!1 &411287488907251364
 GameObject:
   m_ObjectHideFlags: 0
