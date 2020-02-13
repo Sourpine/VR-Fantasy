@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Air_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: 4511f3380d54b274ea6ca79d211c737b,
+  m_Name: Air_Hand
+  m_Shader: {fileID: -6465566751694194690, guid: 4be53c200ad54b74e87f9bad0fa74267,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -52,7 +52,7 @@ Material:
     - Vector1_1096B2F5: 0
     - Vector1_1264496D: 2
     - Vector1_17B82119: 0
-    - Vector1_267C514A: 0.35
+    - Vector1_267C514A: 0.25
     - Vector1_4C0FD539: 1
     - Vector1_5EAB2FAC: 50
     - Vector1_6B977293: -0.25
@@ -86,7 +86,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_51EC28EC: {r: 0, g: 0, b: 0, a: 0}
-    - Color_731E16DF: {r: 0.13443397, g: 0.26305553, b: 0.3, a: 1}
+    - Color_731E16DF: {r: 0.11814703, g: 0.35887522, b: 0.4245283, a: 1}
     - Color_C3CBAC44: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_7EFBFF21: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_C6A8E994: {r: 0.5, g: 0.5, b: 0, a: 0}
