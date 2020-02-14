@@ -337,7 +337,10 @@ public class NEWSpells : MonoBehaviour
             player.GetComponent<OVRPlayerController>().enabled = true;
         }        
 
-        //inputs up and down to select spell (find in the project settings input)
+
+
+        //  B   A   S   E
+
         //depending on the value this sets the correct object to active
         switch (value)
         {
@@ -536,6 +539,12 @@ public class NEWSpells : MonoBehaviour
                 }
                 break;
         }
+
+
+
+        //  C   O   M   B   O   S
+        
+        //saves and assigns the combo value
     }
     //button input functions
     public void EarthFunction()
