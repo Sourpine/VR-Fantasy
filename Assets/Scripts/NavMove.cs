@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavMove : MonoBehaviour
+/*public class NavMove : MonoBehaviour
 {
     NavMeshAgent Agent;
     public GameObject Player;
@@ -31,3 +31,4 @@ public class NavMove : MonoBehaviour
         }
     }
 }
+*/
