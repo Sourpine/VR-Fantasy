@@ -19,7 +19,7 @@ public class NewPatrol : MonoBehaviour
     [SerializeField]
     List<Waypoint> _patrolPoints;
 
-    NavMeshAgent _navMeshAgent;
+    UnityEngine.AI.NavMeshAgent _navMeshAgent;
    
     void Start()
     {
