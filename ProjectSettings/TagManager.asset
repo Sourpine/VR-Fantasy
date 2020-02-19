@@ -7,9 +7,9 @@ TagManager:
   - Enemy
   - lHand
   - rHand
-  - spells
   - spell
   - bullet
+  - Fire
   layers:
   - Default
   - TransparentFX
