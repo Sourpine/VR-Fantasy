@@ -96,6 +96,8 @@ public class NEWSpells : MonoBehaviour
     public GameObject FireWaterPrefab;
     public GameObject FireAirPrefab;
     public GameObject WaterAirPrefab;
+    //endpoint if spell hits nothing
+    public GameObject endpoint;
 
     //bullet variables
     public float bulletSpeed = 10;
@@ -232,6 +234,8 @@ public class NEWSpells : MonoBehaviour
         FireWaterPrefab = GameObject.Find("FireWaterPrefab");
         FireAirPrefab = GameObject.Find("FireAirPrefab");
         WaterAirPrefab = GameObject.Find("WaterAirPrefab");
+        //endpoint
+        endpoint = GameObject.Find("endpoint");
 
         //the spells which require Instantiation are likely refrenced elsewhere
 
@@ -552,7 +556,7 @@ public class NEWSpells : MonoBehaviour
                     ComboClear();
                     break;
 
-                // E A R T H X 2 (meteor)
+                // E A R T H X 2 (meteor)     since evry spell is so individual it will take heavy tweaking once given acess to the prefabs
                 case 2:
                     ComboClear();
                     Earthx2.SetActive(true);
@@ -570,7 +574,17 @@ public class NEWSpells : MonoBehaviour
                         player.GetComponent<Mana>().mana -= E2CostI;
                         casting = true;
                         Earthx2.SetActive(false);
-                        GameObject projectile = Instantiate(Earthx2Prefab, Hand.transform.position, Hand.transform.localRotation);
+                        RaycastHit hit;
+                        Vector3 destination;
+                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50))
+                        {
+                            destination = hit.point;
+                        }
+                        else
+                        {
+                            destination = endpoint.transform.position;
+                        }
+                        GameObject projectile = Instantiate(Earthx2Prefab, destination, Hand.transform.localRotation);
                         projectile.SetActive(true);
                         Earthx2.SetActive(true);
                         Destroy(projectile, 5);
@@ -592,7 +606,7 @@ public class NEWSpells : MonoBehaviour
                     }
                     break;
 
-                // F I R E X 2 (fireball/intense flame)
+                // F I R E X 2 (fireball)
                 case 20:
                     ComboClear();
                     //need to determine what this actually is
@@ -940,4 +954,18 @@ public class NEWSpells : MonoBehaviour
     //if the hands get within a certain proximity of one another then they merge (theyre values are stored then added and the appropriate added effect[dormant] is spawned in the hands)
     //if either trigger is pressed then the dual spell is cast and the mana is expended (if both triggers are pulled then <-- x2)
     //when the hands seperate it pulls the stored #s and assigns them
+
+
+    /*
+    meteor
+    fireball
+    greater heal
+    cyclone
+    lava
+    vines
+    gravity
+    geyser
+    lightning
+    ice
+    */
 }
