@@ -52,6 +52,8 @@ public class NEWSpells : MonoBehaviour
     //button values
     public int value = 0;
     public int valueSave = 0;
+    public int valueCombo = 0;
+    public bool combined = false;
 
     //base spells
     //passive no mana
@@ -115,6 +117,7 @@ public class NEWSpells : MonoBehaviour
     public int ACostC = 2;
 
     //mana cost variable (combo spells)
+    //initial
     public int E2CostI = 10;
     public int F2CostI = 10;
     public int W2CostI = 10;
@@ -125,6 +128,7 @@ public class NEWSpells : MonoBehaviour
     public int FWCostI = 10;
     public int FACostI = 10;
     public int WACostI = 10;
+    //channeling
 
 
     void Start()
@@ -388,12 +392,6 @@ public class NEWSpells : MonoBehaviour
                     EarthPrefab.SetActive(false);
                     EarthLow.SetActive(true);
                 }
-                //this is irrelevant for the non channeling spells
-                /*if(OVRInput.GetUp(cast) && EarthLow.activeSelf == false)
-                {
-                    EarthPrefab.SetActive(false);
-                    Earth.SetActive(true);
-                }*/
                 break;
 
             //  F   I   R   E
@@ -480,7 +478,7 @@ public class NEWSpells : MonoBehaviour
                     casting = false;
                 }
                 //when button up the passive re-enabled
-                if(OVRInput.GetUp(cast) && FireLow.activeSelf == false)
+                if(OVRInput.GetUp(cast) && WaterLow.activeSelf == false)
                 {
                     WaterPrefab.SetActive(false);
                     Water.SetActive(true);
@@ -543,9 +541,310 @@ public class NEWSpells : MonoBehaviour
 
 
         //  C   O   M   B   O   S
-        
+
         //saves and assigns the combo value
+        if (combined == true)
+        {
+            switch (valueSave + OtherHand.GetComponent<NEWSpells>().valueSave)
+            {
+                //x2 combos
+                case 0:
+                    ComboClear();
+                    break;
+
+                // E A R T H X 2 (meteor)
+                case 2:
+                    ComboClear();
+                    Earthx2.SetActive(true);
+                    //when mana goes above the threshold then dissable the low
+                    if(mana >= E2CostI)
+                    {
+                        Earthx2Low.SetActive(false);
+                        if (Earthx2Prefab.activeSelf == false)
+                        {
+                            Earthx2.SetActive(true);
+                        }
+                    }
+                    if (OVRInput.GetDown(cast) && mana >= E2CostI)
+                    {
+                        player.GetComponent<Mana>().mana -= E2CostI;
+                        casting = true;
+                        Earthx2.SetActive(false);
+                        GameObject projectile = Instantiate(Earthx2Prefab, Hand.transform.position, Hand.transform.localRotation);
+                        projectile.SetActive(true);
+                        Earthx2.SetActive(true);
+                        Destroy(projectile, 5);
+                    }
+                    //not enough mana low enabled
+                    else if (mana < E2CostI)
+                    {
+                        Earthx2Prefab.SetActive(false);
+                        Earthx2.SetActive(false);
+                        Earthx2Low.SetActive(true);
+                        casting = false;
+                    }
+                    //when button released and passive re-enabled
+                    if (OVRInput.GetUp(cast) && Earthx2Low.activeSelf == false)
+                    {
+                        Earthx2Prefab.SetActive(false);
+                        Earthx2.SetActive(true);
+                        casting = false;
+                    }
+                    break;
+
+                // F I R E X 2 (fireball/intense flame)
+                case 20:
+                    ComboClear();
+                    //need to determine what this actually is
+                    break;
+
+                // W A T E R X 2 (greater heal)
+                case 100:
+                    ComboClear();
+                    Waterx2.SetActive(true);
+                    //when mana goes above the threshhold then dissable low
+                    if (mana >= W2CostI)
+                    {
+                        Waterx2Low.SetActive(false);
+                        if (Waterx2Prefab.activeSelf == false)
+                        {
+                            Waterx2.SetActive(true);
+                        }
+                    }
+                    //when button pressed spell enabled (enough mana)
+                    if (OVRInput.GetDown(cast) && mana >= W2CostI)
+                    {
+                        player.GetComponent<Mana>().mana -= W2CostI;
+                        casting = true;
+                        Waterx2.SetActive(false);
+                        GameObject projectile = Instantiate(Waterx2Prefab, Hand.transform.position, Hand.transform.localRotation);
+                        projectile.SetActive(true);
+                        Waterx2.SetActive(true);
+                        Destroy(projectile, 5);
+                    }
+                    //not enough mana low enabled
+                    else if (mana < W2CostI)
+                    {
+                        Waterx2Prefab.SetActive(false);
+                        Waterx2.SetActive(false);
+                        Waterx2Low.SetActive(true);
+                        casting = false;
+                    }
+                    //when button up the passive re-enabled
+                    if (OVRInput.GetUp(cast) && Waterx2Low.activeSelf == false)
+                    {
+                        Waterx2Prefab.SetActive(false);
+                        Waterx2.SetActive(true);
+                        casting = false;
+                    }
+                    break;
+
+                // A I R X 2 (cyclone)
+                case 1000:
+                    ComboClear();
+                    //determine
+                    break;
+
+                //combos involving 2 different bases
+                // E A R T H F I R E (lava)
+                case 11:
+                    ComboClear();
+                    EarthFire.SetActive(true);
+                    //when mana goes above the threshhold then dissable low
+                    if (mana >= EFCostI)
+                    {
+                        EarthFireLow.SetActive(false);
+                        if (EarthFirePrefab.activeSelf == false)
+                        {
+                            EarthFire.SetActive(true);
+                        }
+                    }
+                    //when button pressed spell enabled (enough mana)
+                    if (OVRInput.GetDown(cast) && mana >= EFCostI)
+                    {
+                        player.GetComponent<Mana>().mana -= EFCostI;
+                        casting = true;
+                        EarthFire.SetActive(false);
+                        GameObject projectile = Instantiate(EarthFirePrefab, Hand.transform.position, Hand.transform.localRotation);
+                        projectile.SetActive(true);
+                        EarthFire.SetActive(true);
+                        Destroy(projectile, 5);
+                    }
+                    //not enough mana low enabled
+                    else if (mana < EFCostI)
+                    {
+                        EarthFirePrefab.SetActive(false);
+                        EarthFire.SetActive(false);
+                        EarthFireLow.SetActive(true);
+                        casting = false;
+                    }
+                    //when button up the passive re-enabled
+                    if (OVRInput.GetUp(cast) && EarthFireLow.activeSelf == false)
+                    {
+                        EarthFirePrefab.SetActive(false);
+                        EarthFire.SetActive(true);
+                        casting = false;
+                    }
+                    break;
+
+                // E A R T H W A T E R (vines)
+                case 51:
+                    ComboClear();
+                    EarthWater.SetActive(true);
+                    //when mana goes above the threshhold then dissable low
+                    if (mana >= EWCostI)
+                    {
+                        EarthWaterLow.SetActive(false);
+                        if (EarthWaterPrefab.activeSelf == false)
+                        {
+                            EarthWater.SetActive(true);
+                        }
+                    }
+                    //when button pressed spell enabled (enough mana)
+                    if (OVRInput.GetDown(cast) && mana >= EWCostI)
+                    {
+                        player.GetComponent<Mana>().mana -= EWCostI;
+                        casting = true;
+                        EarthWater.SetActive(false);
+                        GameObject projectile = Instantiate(EarthWaterPrefab, Hand.transform.position, Hand.transform.localRotation);
+                        projectile.SetActive(true);
+                        EarthWater.SetActive(true);
+                        Destroy(projectile, 5);
+                    }
+                    //not enough mana low enabled
+                    else if (mana < EWCostI)
+                    {
+                        EarthWaterPrefab.SetActive(false);
+                        EarthWater.SetActive(false);
+                        EarthWaterLow.SetActive(true);
+                        casting = false;
+                    }
+                    //when button up the passive re-enabled
+                    if (OVRInput.GetUp(cast) && EarthWaterLow.activeSelf == false)
+                    {
+                        EarthWaterPrefab.SetActive(false);
+                        EarthWater.SetActive(true);
+                        casting = false;
+                    }
+                    break;
+
+                // E A R T H A I R (gravity)
+                case 501:
+                    ComboClear();
+                    //determine
+                    break;
+
+                // F I R E W A T E R (geyser)
+                case 60:
+                    ComboClear();
+                    FireWater.SetActive(true);
+                    //when mana goes above the threshhold then dissable low
+                    if (mana >= FWCostI)
+                    {
+                        FireWaterLow.SetActive(false);
+                        if (FireWaterPrefab.activeSelf == false)
+                        {
+                            FireWater.SetActive(true);
+                        }
+                    }
+                    //when button pressed spell enabled (enough mana)
+                    if (OVRInput.GetDown(cast) && mana >= FWCostI)
+                    {
+                        player.GetComponent<Mana>().mana -= FWCostI;
+                        casting = true;
+                        FireWater.SetActive(false);
+                        GameObject projectile = Instantiate(FireWaterPrefab, Hand.transform.position, Hand.transform.localRotation);
+                        projectile.SetActive(true);
+                        FireWater.SetActive(true);
+                        Destroy(projectile, 5);
+                    }
+                    //not enough mana low enabled
+                    else if (mana < FWCostI)
+                    {
+                        FireWaterPrefab.SetActive(false);
+                        FireWater.SetActive(false);
+                        FireWaterLow.SetActive(true);
+                        casting = false;
+                    }
+                    //when button up the passive re-enabled
+                    if (OVRInput.GetUp(cast) && FireWaterLow.activeSelf == false)
+                    {
+                        FireWaterPrefab.SetActive(false);
+                        FireWater.SetActive(true);
+                        casting = false;
+                    }
+                    break;
+
+                // F I R E A I R (lightning)
+                case 510:
+                    ComboClear();
+                    //YIKES
+                    break;
+
+                // W A T E R A I R (ice)
+                case 550:
+                    ComboClear();
+                    WaterAir.SetActive(true);
+                    //when mana goes above the threshhold then dissable low
+                    if (mana >= WACostI)
+                    {
+                        WaterAir.SetActive(false);
+                        if (WaterAirPrefab.activeSelf == false)
+                        {
+                            WaterAir.SetActive(true);
+                        }
+                    }
+                    //when button pressed spell enabled (enough mana)
+                    if (OVRInput.GetDown(cast) && mana >= WACostI)
+                    {
+                        player.GetComponent<Mana>().mana -= WACostI;
+                        casting = true;
+                        WaterAir.SetActive(false);
+                        GameObject projectile = Instantiate(WaterAirPrefab, Hand.transform.position, Hand.transform.localRotation);
+                        projectile.SetActive(true);
+                        WaterAir.SetActive(true);
+                        Destroy(projectile, 5);
+                    }
+                    //not enough mana low enabled
+                    else if (mana < WACostI)
+                    {
+                        WaterAirPrefab.SetActive(false);
+                        WaterAir.SetActive(false);
+                        WaterAirLow.SetActive(true);
+                        casting = false;
+                    }
+                    //when button up the passive re-enabled
+                    if (OVRInput.GetUp(cast) && WaterAirLow.activeSelf == false)
+                    {
+                        WaterAirPrefab.SetActive(false);
+                        WaterAir.SetActive(true);
+                        casting = false;
+                    }
+                    break;
+            }
+
+        }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "ComboTrigger")
+        {
+            valueSave = value;
+            value = 0;
+            combined = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.name == "ComboTrigger")
+        {
+            value = valueSave;
+            valueSave = 0;
+            combined = false;
+        }
+    }
+
     //button input functions
     public void EarthFunction()
     {
@@ -576,10 +875,10 @@ public class NEWSpells : MonoBehaviour
     //these functions are for the switches
     public void ClearHand()
     {
-        Earth.SetActive(false);
-        Fire.SetActive(false);
-        Water.SetActive(false);
-        Air.SetActive(false);
+        Earth.SetActive(false); //1
+        Fire.SetActive(false); //10
+        Water.SetActive(false); //50
+        Air.SetActive(false); //500
 
         EarthLow.SetActive(false);
         FireLow.SetActive(false);
@@ -590,6 +889,30 @@ public class NEWSpells : MonoBehaviour
         //FirePrefab.SetActive(false);
         WaterPrefab.SetActive(false);
         //AirPrefab.SetActive(false);
+    }
+    public void ComboClear()
+    {
+        Earthx2.SetActive(false); //2
+        Firex2.SetActive(false); //20
+        Waterx2.SetActive(false); //100
+        Airx2.SetActive(false); //1000
+        EarthFire.SetActive(false); //11
+        EarthWater.SetActive(false); //51
+        EarthAir.SetActive(false); //501
+        FireWater.SetActive(false); //60
+        FireAir.SetActive(false); //510
+        WaterAir.SetActive(false); //550
+
+        Earthx2Low.SetActive(false);
+        Firex2Low.SetActive(false);
+        Waterx2Low.SetActive(false);
+        Airx2Low.SetActive(false);
+        EarthFireLow.SetActive(false);
+        EarthWaterLow.SetActive(false);
+        EarthAirLow.SetActive(false);
+        FireWaterLow.SetActive(false);
+        FireAirLow.SetActive(false);
+        WaterAirLow.SetActive(false);
     }
     public void OutOfManaClear()
     {
