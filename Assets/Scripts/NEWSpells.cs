@@ -983,14 +983,6 @@ public class NEWSpells : MonoBehaviour
         FireAirLow.SetActive(false);
         WaterAirLow.SetActive(false);
     }
-    public void OutOfManaClear()
-    {
-        //earth
-        FirePrefab.SetActive(false);
-        //water
-        //air
-        //probably combos too
-    }
 
     //spell check list
     //
