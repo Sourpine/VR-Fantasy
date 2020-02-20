@@ -24,7 +24,7 @@ public class NewPatrol : MonoBehaviour
     int _currentPatrolIndex;
     bool _travelling;
     bool _waiting;
-    bool _patrolForward;
+    bool _patrolForward; 
     float _waitTimer;
 
    
@@ -39,6 +39,7 @@ public class NewPatrol : MonoBehaviour
             if(_patrolPoints != null && _patrolPoints.Count >= 2)
             {
                 _currentPatrolIndex = 0;
+                SetDestination();
                
                
                  

@@ -10,6 +10,7 @@ TagManager:
   - spell
   - bullet
   - Fire
+  - WayPoint
   layers:
   - Default
   - TransparentFX

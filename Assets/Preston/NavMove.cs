@@ -16,11 +16,11 @@ public class NavMove : MonoBehaviour
 
         }else
         {
-            Setdestination();
+            SetDestination();
         }
     }
 
-    private void Setdestination()
+    private void SetDestination()
     {
         if(_destination != null)
         {
