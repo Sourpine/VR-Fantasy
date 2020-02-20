@@ -609,7 +609,53 @@ public class NEWSpells : MonoBehaviour
                 // F I R E X 2 (fireball)
                 case 20:
                     ComboClear();
-                    //need to determine what this actually is
+                    Firex2.SetActive(true);
+                    //when mana goes above the threshhold then dissable low
+                    if (mana >= F2CostI)
+                    {
+                        Firex2Low.SetActive(false);
+                        if (Firex2Prefab.activeSelf == false)
+                        {
+                            Firex2.SetActive(true);
+                        }
+                    }
+                    //when button pressed spell enabled (enough mana)
+                    if (OVRInput.GetDown(cast) && mana >= F2CostI)
+                    {
+                        player.GetComponent<Mana>().mana -= F2CostI;
+                        RaycastHit hit;
+                        Vector3 destination;
+                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50))
+                        {
+                            destination = hit.point;
+                        }
+                        else
+                        {
+                            destination = Hand.transform.position + rayLength * Hand.transform.forward;
+                        }
+                        Vector3 direction = destination - Hand.transform.position;
+                        direction.Normalize();
+                        GameObject projectile = Instantiate(Firex2Prefab, Hand.transform.position, Hand.transform.localRotation);
+                        projectile.SetActive(true);
+                        projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
+                        Firex2.SetActive(true);
+                        Destroy(projectile, 5);
+                    }
+                    //not enough mana low enabled
+                    else if (mana < W2CostI)
+                    {
+                        Firex2Prefab.SetActive(false);
+                        Firex2.SetActive(false);
+                        Firex2Low.SetActive(true);
+                        casting = false;
+                    }
+                    //when button up the passive re-enabled
+                    if (OVRInput.GetUp(cast) && Firex2Low.activeSelf == false)
+                    {
+                        Firex2Prefab.SetActive(false);
+                        Firex2.SetActive(true);
+                        casting = false;
+                    }
                     break;
 
                 // W A T E R X 2 (greater heal)
@@ -664,7 +710,7 @@ public class NEWSpells : MonoBehaviour
                 case 11:
                     ComboClear();
                     EarthFire.SetActive(true);
-                    //when mana goes above the threshhold then dissable low
+                    //when mana goes above the threshold then dissable the low
                     if (mana >= EFCostI)
                     {
                         EarthFireLow.SetActive(false);
@@ -673,13 +719,22 @@ public class NEWSpells : MonoBehaviour
                             EarthFire.SetActive(true);
                         }
                     }
-                    //when button pressed spell enabled (enough mana)
                     if (OVRInput.GetDown(cast) && mana >= EFCostI)
                     {
                         player.GetComponent<Mana>().mana -= EFCostI;
                         casting = true;
                         EarthFire.SetActive(false);
-                        GameObject projectile = Instantiate(EarthFirePrefab, Hand.transform.position, Hand.transform.localRotation);
+                        RaycastHit hit;
+                        Vector3 destination;
+                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50))
+                        {
+                            destination = hit.point;
+                        }
+                        else
+                        {
+                            destination = endpoint.transform.position;
+                        }
+                        GameObject projectile = Instantiate(EarthFirePrefab, destination, Hand.transform.localRotation);
                         projectile.SetActive(true);
                         EarthFire.SetActive(true);
                         Destroy(projectile, 5);
@@ -692,7 +747,7 @@ public class NEWSpells : MonoBehaviour
                         EarthFireLow.SetActive(true);
                         casting = false;
                     }
-                    //when button up the passive re-enabled
+                    //when button released and passive re-enabled
                     if (OVRInput.GetUp(cast) && EarthFireLow.activeSelf == false)
                     {
                         EarthFirePrefab.SetActive(false);
@@ -968,4 +1023,6 @@ public class NEWSpells : MonoBehaviour
     lightning
     ice
     */
+
+    //lava, vines, and geyser all copy meteor
 }
