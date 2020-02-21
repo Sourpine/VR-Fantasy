@@ -157,8 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edabdf9ba8cefd4b9da75d802993743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 159521982}
-  chaseDistance: 10
+  _destination: {fileID: 0}
 --- !u!195 &54903893
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -334,8 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edabdf9ba8cefd4b9da75d802993743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 159521982}
-  chaseDistance: 10
+  _destination: {fileID: 0}
 --- !u!195 &80828021
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -475,12 +473,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 3
---- !u!1 &159521982 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5422597413200358476, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
-    type: 3}
-  m_PrefabInstance: {fileID: 5422597413040845042}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &161016778
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,8 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edabdf9ba8cefd4b9da75d802993743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 159521982}
-  chaseDistance: 10
+  _destination: {fileID: 0}
 --- !u!195 &235181863
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1818,8 +1809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edabdf9ba8cefd4b9da75d802993743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 159521982}
-  chaseDistance: 10
+  _destination: {fileID: 0}
 --- !u!195 &778231599
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2405,8 +2395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edabdf9ba8cefd4b9da75d802993743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 159521982}
-  chaseDistance: 10
+  _destination: {fileID: 0}
 --- !u!1 &984799752
 GameObject:
   m_ObjectHideFlags: 0
@@ -2469,8 +2458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edabdf9ba8cefd4b9da75d802993743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 159521982}
-  chaseDistance: 10
+  _destination: {fileID: 0}
 --- !u!195 &984799756
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4480,8 +4468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edabdf9ba8cefd4b9da75d802993743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 159521982}
-  chaseDistance: 10
+  _destination: {fileID: 0}
 --- !u!195 &1836380475
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4631,8 +4618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edabdf9ba8cefd4b9da75d802993743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 159521982}
-  chaseDistance: 10
+  _destination: {fileID: 0}
 --- !u!195 &1867254854
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5023,6 +5009,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 683808837}
     m_Modifications:
+    - target: {fileID: 5422597411137262506, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5422597411609253276, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5422597413200358476, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
         type: 3}
       propertyPath: m_Name

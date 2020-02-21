@@ -383,7 +383,7 @@ public class NEWSpells : MonoBehaviour
                     }
                     Vector3 direction = destination - Hand.transform.position;
                     direction.Normalize();
-                    GameObject projectile = Instantiate(EarthPrefab, Hand.transform.position, Hand.transform.localRotation);
+                    GameObject projectile = Instantiate(EarthPrefab, Hand.transform.position, Hand.transform.rotation);
                     projectile.SetActive(true);
                     projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
                     Earth.SetActive(true);
@@ -553,7 +553,7 @@ public class NEWSpells : MonoBehaviour
             {
                 //x2 combos
                 case 0:
-                    ComboClear();
+                    //ComboClear();
                     break;
 
                 // E A R T H X 2 (meteor)     since evry spell is so individual it will take heavy tweaking once given acess to the prefabs
@@ -800,6 +800,7 @@ public class NEWSpells : MonoBehaviour
                 // E A R T H A I R (gravity)
                 case 501:
                     ComboClear();
+                    EarthAir.SetActive(true);
                     //determine
                     break;
 
@@ -847,6 +848,7 @@ public class NEWSpells : MonoBehaviour
                 // F I R E A I R (lightning)
                 case 510:
                     ComboClear();
+                    FireAir.SetActive(true);
                     //YIKES
                     break;
 
@@ -893,24 +895,40 @@ public class NEWSpells : MonoBehaviour
             }
 
         }
+
+        //Debug.Log("READ ME! " + (value + OtherHand.GetComponent<NEWSpells>().value));
+        //Debug.Log("ALSO READ ME! " + (valueSave + OtherHand.GetComponent<NEWSpells>().valueSave));
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "ComboTrigger")
+        if(Hand.tag == "lHand" && combined == false)
         {
-            valueSave = value;
-            value = 0;
-            combined = true;
+            if (other.name == "ComboTrigger")
+            {
+                valueSave = value;
+                OtherHand.GetComponent<NEWSpells>().valueSave = OtherHand.GetComponent<NEWSpells>().value;
+                value = 0;
+                OtherHand.GetComponent<NEWSpells>().value = 0;
+                combined = true;
+            }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.name == "ComboTrigger")
+        if (Hand.tag == "lHand" && combined == true)
         {
-            value = valueSave;
-            valueSave = 0;
-            combined = false;
+            if (other.name == "ComboTrigger")
+            {
+                value = valueSave;
+                OtherHand.GetComponent<NEWSpells>().value = OtherHand.GetComponent<NEWSpells>().valueSave;
+                valueSave = 0;
+                OtherHand.GetComponent<NEWSpells>().valueSave = 0;
+                Debug.Log("LEFT " + value);
+                Debug.Log("RIGHT " + OtherHand.GetComponent<NEWSpells>().value);
+                ComboClear();
+                combined = false;
+            }
         }
     }
 
