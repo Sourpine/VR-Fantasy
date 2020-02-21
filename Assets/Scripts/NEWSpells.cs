@@ -373,7 +373,7 @@ public class NEWSpells : MonoBehaviour
                     //Earth.SetActive(false);
                     RaycastHit hit;
                     Vector3 destination;
-                    if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50))
+                    if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
                     {
                         destination = hit.point;
                     }
@@ -581,7 +581,7 @@ public class NEWSpells : MonoBehaviour
                         {
                             destination = endpoint.transform.position;
                         }
-                        GameObject projectile = Instantiate(Earthx2Prefab, destination, Hand.transform.rotation);
+                        GameObject projectile = Instantiate(Earthx2Prefab, destination, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         Earthx2.SetActive(true);
                         Destroy(projectile, 5);
@@ -622,7 +622,7 @@ public class NEWSpells : MonoBehaviour
                         player.GetComponent<Mana>().mana -= F2CostI;
                         RaycastHit hit;
                         Vector3 destination;
-                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50))
+                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
                         {
                             destination = hit.point;
                         }
@@ -674,7 +674,7 @@ public class NEWSpells : MonoBehaviour
                         player.GetComponent<Mana>().mana -= W2CostI;
                         casting = true;
                         Waterx2.SetActive(false);
-                        GameObject projectile = Instantiate(Waterx2Prefab, Hand.transform.position, Hand.transform.rotation);
+                        GameObject projectile = Instantiate(Waterx2Prefab, Hand.transform.position, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         Waterx2.SetActive(true);
                         Destroy(projectile, 5);
@@ -731,7 +731,7 @@ public class NEWSpells : MonoBehaviour
                         {
                             destination = endpoint.transform.position;
                         }
-                        GameObject projectile = Instantiate(EarthFirePrefab, destination, Hand.transform.rotation);
+                        GameObject projectile = Instantiate(EarthFirePrefab, destination, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         EarthFire.SetActive(true);
                         Destroy(projectile, 5);
@@ -772,7 +772,7 @@ public class NEWSpells : MonoBehaviour
                         player.GetComponent<Mana>().mana -= EWCostI;
                         casting = true;
                         EarthWater.SetActive(false);
-                        GameObject projectile = Instantiate(EarthWaterPrefab, Hand.transform.position, Hand.transform.rotation);
+                        GameObject projectile = Instantiate(EarthWaterPrefab, Hand.transform.position, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         EarthWater.SetActive(true);
                         Destroy(projectile, 5);
@@ -820,7 +820,7 @@ public class NEWSpells : MonoBehaviour
                         player.GetComponent<Mana>().mana -= FWCostI;
                         casting = true;
                         FireWater.SetActive(false);
-                        GameObject projectile = Instantiate(FireWaterPrefab, Hand.transform.position, Hand.transform.rotation);
+                        GameObject projectile = Instantiate(FireWaterPrefab, Hand.transform.position, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         FireWater.SetActive(true);
                         Destroy(projectile, 5);
@@ -868,7 +868,7 @@ public class NEWSpells : MonoBehaviour
                         player.GetComponent<Mana>().mana -= WACostI;
                         casting = true;
                         WaterAir.SetActive(false);
-                        GameObject projectile = Instantiate(WaterAirPrefab, Hand.transform.position, Hand.transform.rotation);
+                        GameObject projectile = Instantiate(WaterAirPrefab, Hand.transform.position, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         WaterAir.SetActive(true);
                         Destroy(projectile, 5);
