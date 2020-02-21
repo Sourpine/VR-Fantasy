@@ -584,7 +584,7 @@ public class NEWSpells : MonoBehaviour
                         {
                             destination = endpoint.transform.position;
                         }
-                        GameObject projectile = Instantiate(Earthx2Prefab, destination, Hand.transform.localRotation);
+                        GameObject projectile = Instantiate(Earthx2Prefab, destination, Hand.transform.rotation);
                         projectile.SetActive(true);
                         Earthx2.SetActive(true);
                         Destroy(projectile, 5);
@@ -734,7 +734,7 @@ public class NEWSpells : MonoBehaviour
                         {
                             destination = endpoint.transform.position;
                         }
-                        GameObject projectile = Instantiate(EarthFirePrefab, destination, Hand.transform.localRotation);
+                        GameObject projectile = Instantiate(EarthFirePrefab, destination, Hand.transform.rotation);
                         projectile.SetActive(true);
                         EarthFire.SetActive(true);
                         Destroy(projectile, 5);
