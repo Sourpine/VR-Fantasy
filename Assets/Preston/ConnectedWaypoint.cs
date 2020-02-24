@@ -3,84 +3,87 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ConnectedWaypoint : MonoBehaviour
-{
-    [SerializeField]
-    protected float _connectivityRadius = 50f;
-    protected float debugDrawRadius = 1.0f;
-
-    List<ConnectedWaypoint> _connections;
-
-    void Start()
+    public class ConnectedWaypoint : MonoBehaviour
     {
-        GameObject[] allwaypoints = GameObject.FindGameObjectsWithTag("WayPoint");
+        [SerializeField]
+        protected float _connectivityRadius = 50f;
+         
 
-        
+        List<ConnectedWaypoint> _connections;
+        private float debugDrawRadius;
 
-
-        _connections = new List<ConnectedWaypoint>();
-
-
-
-        for (int i = 0; i < allwaypoints.Length; i++)
+        void Start()
         {
-            ConnectedWaypoint nextWaypoint = allwaypoints[i].GetComponent<ConnectedWaypoint>();
+            GameObject[] allwaypoints = GameObject.FindGameObjectsWithTag("WayPoint");
 
 
 
-            if (nextWaypoint != null)
+
+            _connections = new List<ConnectedWaypoint>();
+
+
+
+            for (int i = 0; i < allwaypoints.Length; i++)
             {
-                if (Vector3.Distance(this.transform.position, nextWaypoint.transform.position) <= _connectivityRadius && nextWaypoint != this)
+                ConnectedWaypoint nextWaypoint = allwaypoints[i].GetComponent<ConnectedWaypoint>();
+
+
+
+                if (nextWaypoint != null)
                 {
-                    _connections.Add(nextWaypoint);
+                    if (Vector3.Distance(this.transform.position, nextWaypoint.transform.position) <= _connectivityRadius && nextWaypoint != this)
+                    {
+                        _connections.Add(nextWaypoint);
+                    }
                 }
             }
         }
-    }   
 
-    public virtual void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, debugDrawRadius);
-
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, _connectivityRadius);
-
-    }
-    public ConnectedWaypoint NextWaypoint (ConnectedWaypoint previousWaypoint)
-    {
-        if (_connections.Count == 0)
+        public virtual void OnDrawGizmos()
         {
-            Debug.LogError("Insufficient Waypoint count.");
-            return null;
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, debugDrawRadius);
+
+
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, _connectivityRadius);
+
         }
-        else if(_connections.Count == 1 && _connections.Contains(previousWaypoint))
+        public ConnectedWaypoint NextWaypoint(ConnectedWaypoint previousWaypoint)
         {
-            return previousWaypoint;
-        }else
-        {
-            ConnectedWaypoint nextWaypoint;
-            int nextIndex = 0;
-
-            do
+            if (_connections.Count == 0)
             {
-                nextIndex = UnityEngine.Random.Range(0, _connections.Count);
-                nextWaypoint = _connections[nextIndex];
-            } while (nextWaypoint == previousWaypoint);
-            return nextWaypoint;  
+                Debug.LogError("Insufficient Waypoint count.");
+                return null;
+            }
+            else if (_connections.Count == 1 && _connections.Contains(previousWaypoint))
+            {
+                return previousWaypoint;
+            }
+            else
+            {
+                ConnectedWaypoint nextWaypoint;
+                int nextIndex = 0;
+
+                do
+                {
+                    nextIndex = UnityEngine.Random.Range(0, _connections.Count);
+                    nextWaypoint = _connections[nextIndex];
+                } while (nextWaypoint == previousWaypoint);
+                return nextWaypoint;
+            }
+
         }
 
+
+
+
+
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 
-
-
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-}

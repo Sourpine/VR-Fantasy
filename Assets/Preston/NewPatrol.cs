@@ -36,7 +36,7 @@ public class NewPatrol : MonoBehaviour
             Debug.Log("The nav mesh agent componenet is not attachedto" + gameObject.name);
         }else
         {
-            if(_patrolPoints != null && _patrolPoints.Count >= 2)
+                if(_patrolPoints != null && _patrolPoints.Count >= 2)
             {
                 _currentPatrolIndex = 0;
                 SetDestination();
