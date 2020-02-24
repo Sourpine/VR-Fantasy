@@ -24,67 +24,70 @@ public class NewPatrol : MonoBehaviour
     int _currentPatrolIndex;
     bool _travelling;
     bool _waiting;
-    bool _patrolForward; 
+    bool _patrolForward;
     float _waitTimer;
 
-   
+
     public void Start()
     {
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
-        if(_navMeshAgent == null)
+        if (_navMeshAgent == null)
         {
             Debug.Log("The nav mesh agent componenet is not attachedto" + gameObject.name);
-        }else
+        }
+        else
         {
-                if(_patrolPoints != null && _patrolPoints.Count >= 2)
+            if (_patrolPoints != null && _patrolPoints.Count >= 2)
             {
                 _currentPatrolIndex = 0;
                 SetDestination();
-               
-               
-                 
-            }else
+
+
+
+            }
+            else
             {
                 Debug.Log("Insufficient patrol point for basic patrolling behaviour");
             }
         }
-        
+
     }
 
     // Update is called once per frame
     public void Update()
     {
-        if(_travelling && _navMeshAgent.remainingDistance <= 1.0f)
+        if (_travelling && _navMeshAgent.remainingDistance <= 1.0f)
         {
             _travelling = false;
 
 
-            if(_patrolWaiting)
+            if (_patrolWaiting)
             {
                 _waiting = true;
                 _waitTimer = 0f;
 
-            }else
+            }
+            else
             {
                 ChangePatrolPoint();
                 SetDestination();
             }
         }
-        if(_waiting)
+        if (_waiting)
         {
             _waitTimer += Time.deltaTime;
-            if(_waitTimer >= _totalWaitTime)
+            if (_waitTimer >= _totalWaitTime)
             {
                 _waiting = false;
 
-                ChangePatrolPoint();
+                 ChangePatrolPoint();
                 SetDestination();
             }
         }
     }
     private void SetDestination()
     {
-        if(_patrolPoints != null)
+        if (_patrolPoints != null)
         {
             Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
             _navMeshAgent.SetDestination(targetVector);
@@ -94,7 +97,7 @@ public class NewPatrol : MonoBehaviour
 
     private void ChangePatrolPoint()
     {
-        if(UnityEngine.Random.Range(0f, 1f) <= _switchProbability)
+        if (UnityEngine.Random.Range(0f, 20f) <= _switchProbability)
         {
             _patrolForward = !_patrolForward;
 
@@ -109,12 +112,15 @@ public class NewPatrol : MonoBehaviour
         }
         else
         {
-            if(--_currentPatrolIndex <0)
+            if (--_currentPatrolIndex < 0)
             {
                 _currentPatrolIndex = _patrolPoints.Count - 1;
             }
         }
 
-
     }
 }
+
+
+
+
