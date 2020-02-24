@@ -96,6 +96,8 @@ public class NEWSpells : MonoBehaviour
     public GameObject FireWaterPrefab;
     public GameObject FireAirPrefab;
     public GameObject WaterAirPrefab;
+    //endpoint if spell hits nothing
+    public GameObject endpoint;
 
     //bullet variables
     public float bulletSpeed = 10;
@@ -232,6 +234,8 @@ public class NEWSpells : MonoBehaviour
         FireWaterPrefab = GameObject.Find("FireWaterPrefab");
         FireAirPrefab = GameObject.Find("FireAirPrefab");
         WaterAirPrefab = GameObject.Find("WaterAirPrefab");
+        //endpoint
+        endpoint = GameObject.Find("endpoint");
 
         //the spells which require Instantiation are likely refrenced elsewhere
 
@@ -369,7 +373,7 @@ public class NEWSpells : MonoBehaviour
                     //Earth.SetActive(false);
                     RaycastHit hit;
                     Vector3 destination;
-                    if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50))
+                    if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
                     {
                         destination = hit.point;
                     }
@@ -379,7 +383,7 @@ public class NEWSpells : MonoBehaviour
                     }
                     Vector3 direction = destination - Hand.transform.position;
                     direction.Normalize();
-                    GameObject projectile = Instantiate(EarthPrefab, Hand.transform.position, Hand.transform.localRotation);
+                    GameObject projectile = Instantiate(EarthPrefab, Hand.transform.position, Hand.transform.rotation);
                     projectile.SetActive(true);
                     projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
                     Earth.SetActive(true);
@@ -464,7 +468,7 @@ public class NEWSpells : MonoBehaviour
                     player.GetComponent<Mana>().mana -= WCostI;
                     casting = true;
                     Water.SetActive(false);
-                    GameObject projectile = Instantiate(WaterPrefab, Hand.transform.position, Hand.transform.localRotation);
+                    GameObject projectile = Instantiate(WaterPrefab, Hand.transform.position, Hand.transform.rotation);
                     projectile.SetActive(true);
                     Water.SetActive(true);
                     Destroy(projectile, 5);
@@ -548,11 +552,8 @@ public class NEWSpells : MonoBehaviour
             switch (valueSave + OtherHand.GetComponent<NEWSpells>().valueSave)
             {
                 //x2 combos
-                case 0:
-                    ComboClear();
-                    break;
 
-                // E A R T H X 2 (meteor)
+                // E A R T H X 2 (meteor)     since evry spell is so individual it will take heavy tweaking once given acess to the prefabs
                 case 2:
                     ComboClear();
                     Earthx2.SetActive(true);
@@ -570,7 +571,17 @@ public class NEWSpells : MonoBehaviour
                         player.GetComponent<Mana>().mana -= E2CostI;
                         casting = true;
                         Earthx2.SetActive(false);
-                        GameObject projectile = Instantiate(Earthx2Prefab, Hand.transform.position, Hand.transform.localRotation);
+                        RaycastHit hit;
+                        Vector3 destination;
+                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
+                        {
+                            destination = hit.point;
+                        }
+                        else
+                        {
+                            destination = endpoint.transform.position;
+                        }
+                        GameObject projectile = Instantiate(Earthx2Prefab, destination, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         Earthx2.SetActive(true);
                         Destroy(projectile, 5);
@@ -592,10 +603,56 @@ public class NEWSpells : MonoBehaviour
                     }
                     break;
 
-                // F I R E X 2 (fireball/intense flame)
+                // F I R E X 2 (fireball)
                 case 20:
                     ComboClear();
-                    //need to determine what this actually is
+                    Firex2.SetActive(true);
+                    //when mana goes above the threshhold then dissable low
+                    if (mana >= F2CostI)
+                    {
+                        Firex2Low.SetActive(false);
+                        if (Firex2Prefab.activeSelf == false)
+                        {
+                            Firex2.SetActive(true);
+                        }
+                    }
+                    //when button pressed spell enabled (enough mana)
+                    if (OVRInput.GetDown(cast) && mana >= F2CostI)
+                    {
+                        player.GetComponent<Mana>().mana -= F2CostI;
+                        RaycastHit hit;
+                        Vector3 destination;
+                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
+                        {
+                            destination = hit.point;
+                        }
+                        else
+                        {
+                            destination = Hand.transform.position + rayLength * Hand.transform.forward;
+                        }
+                        Vector3 direction = destination - Hand.transform.position;
+                        direction.Normalize();
+                        GameObject projectile = Instantiate(Firex2Prefab, Hand.transform.position, Hand.transform.rotation);
+                        projectile.SetActive(true);
+                        projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
+                        Firex2.SetActive(true);
+                        Destroy(projectile, 5);
+                    }
+                    //not enough mana low enabled
+                    else if (mana < W2CostI)
+                    {
+                        Firex2Prefab.SetActive(false);
+                        Firex2.SetActive(false);
+                        Firex2Low.SetActive(true);
+                        casting = false;
+                    }
+                    //when button up the passive re-enabled
+                    if (OVRInput.GetUp(cast) && Firex2Low.activeSelf == false)
+                    {
+                        Firex2Prefab.SetActive(false);
+                        Firex2.SetActive(true);
+                        casting = false;
+                    }
                     break;
 
                 // W A T E R X 2 (greater heal)
@@ -617,7 +674,7 @@ public class NEWSpells : MonoBehaviour
                         player.GetComponent<Mana>().mana -= W2CostI;
                         casting = true;
                         Waterx2.SetActive(false);
-                        GameObject projectile = Instantiate(Waterx2Prefab, Hand.transform.position, Hand.transform.localRotation);
+                        GameObject projectile = Instantiate(Waterx2Prefab, Hand.transform.position, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         Waterx2.SetActive(true);
                         Destroy(projectile, 5);
@@ -650,7 +707,7 @@ public class NEWSpells : MonoBehaviour
                 case 11:
                     ComboClear();
                     EarthFire.SetActive(true);
-                    //when mana goes above the threshhold then dissable low
+                    //when mana goes above the threshold then dissable the low
                     if (mana >= EFCostI)
                     {
                         EarthFireLow.SetActive(false);
@@ -659,13 +716,22 @@ public class NEWSpells : MonoBehaviour
                             EarthFire.SetActive(true);
                         }
                     }
-                    //when button pressed spell enabled (enough mana)
                     if (OVRInput.GetDown(cast) && mana >= EFCostI)
                     {
                         player.GetComponent<Mana>().mana -= EFCostI;
                         casting = true;
                         EarthFire.SetActive(false);
-                        GameObject projectile = Instantiate(EarthFirePrefab, Hand.transform.position, Hand.transform.localRotation);
+                        RaycastHit hit;
+                        Vector3 destination;
+                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
+                        {
+                            destination = hit.point;
+                        }
+                        else
+                        {
+                            destination = endpoint.transform.position;
+                        }
+                        GameObject projectile = Instantiate(EarthFirePrefab, destination, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         EarthFire.SetActive(true);
                         Destroy(projectile, 5);
@@ -678,7 +744,7 @@ public class NEWSpells : MonoBehaviour
                         EarthFireLow.SetActive(true);
                         casting = false;
                     }
-                    //when button up the passive re-enabled
+                    //when button released and passive re-enabled
                     if (OVRInput.GetUp(cast) && EarthFireLow.activeSelf == false)
                     {
                         EarthFirePrefab.SetActive(false);
@@ -706,7 +772,17 @@ public class NEWSpells : MonoBehaviour
                         player.GetComponent<Mana>().mana -= EWCostI;
                         casting = true;
                         EarthWater.SetActive(false);
-                        GameObject projectile = Instantiate(EarthWaterPrefab, Hand.transform.position, Hand.transform.localRotation);
+                        RaycastHit hit;
+                        Vector3 destination;
+                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
+                        {
+                            destination = hit.point;
+                        }
+                        else
+                        {
+                            destination = endpoint.transform.position;
+                        }
+                        GameObject projectile = Instantiate(EarthWaterPrefab, destination, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         EarthWater.SetActive(true);
                         Destroy(projectile, 5);
@@ -731,6 +807,7 @@ public class NEWSpells : MonoBehaviour
                 // E A R T H A I R (gravity)
                 case 501:
                     ComboClear();
+                    EarthAir.SetActive(true);
                     //determine
                     break;
 
@@ -753,7 +830,17 @@ public class NEWSpells : MonoBehaviour
                         player.GetComponent<Mana>().mana -= FWCostI;
                         casting = true;
                         FireWater.SetActive(false);
-                        GameObject projectile = Instantiate(FireWaterPrefab, Hand.transform.position, Hand.transform.localRotation);
+                        RaycastHit hit;
+                        Vector3 destination;
+                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
+                        {
+                            destination = hit.point;
+                        }
+                        else
+                        {
+                            destination = endpoint.transform.position;
+                        }
+                        GameObject projectile = Instantiate(FireWaterPrefab, destination, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         FireWater.SetActive(true);
                         Destroy(projectile, 5);
@@ -778,6 +865,7 @@ public class NEWSpells : MonoBehaviour
                 // F I R E A I R (lightning)
                 case 510:
                     ComboClear();
+                    FireAir.SetActive(true);
                     //YIKES
                     break;
 
@@ -800,7 +888,7 @@ public class NEWSpells : MonoBehaviour
                         player.GetComponent<Mana>().mana -= WACostI;
                         casting = true;
                         WaterAir.SetActive(false);
-                        GameObject projectile = Instantiate(WaterAirPrefab, Hand.transform.position, Hand.transform.localRotation);
+                        GameObject projectile = Instantiate(WaterAirPrefab, Hand.transform.position, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         WaterAir.SetActive(true);
                         Destroy(projectile, 5);
@@ -824,24 +912,40 @@ public class NEWSpells : MonoBehaviour
             }
 
         }
+
+        //Debug.Log("READ ME! " + (value + OtherHand.GetComponent<NEWSpells>().value));
+        //Debug.Log("ALSO READ ME! " + (valueSave + OtherHand.GetComponent<NEWSpells>().valueSave));
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "ComboTrigger")
+        if(Hand.tag == "lHand" && combined == false)
         {
-            valueSave = value;
-            value = 0;
-            combined = true;
+            if (other.name == "ComboTrigger")
+            {
+                valueSave = value;
+                OtherHand.GetComponent<NEWSpells>().valueSave = OtherHand.GetComponent<NEWSpells>().value;
+                value = 0;
+                OtherHand.GetComponent<NEWSpells>().value = 0;
+                combined = true;
+            }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.name == "ComboTrigger")
+        if (Hand.tag == "lHand" && combined == true)
         {
-            value = valueSave;
-            valueSave = 0;
-            combined = false;
+            if (other.name == "ComboTrigger")
+            {
+                value = valueSave;
+                OtherHand.GetComponent<NEWSpells>().value = OtherHand.GetComponent<NEWSpells>().valueSave;
+                valueSave = 0;
+                OtherHand.GetComponent<NEWSpells>().valueSave = 0;
+                Debug.Log("LEFT " + value);
+                Debug.Log("RIGHT " + OtherHand.GetComponent<NEWSpells>().value);
+                ComboClear();
+                combined = false;
+            }
         }
     }
 
@@ -914,14 +1018,6 @@ public class NEWSpells : MonoBehaviour
         FireAirLow.SetActive(false);
         WaterAirLow.SetActive(false);
     }
-    public void OutOfManaClear()
-    {
-        //earth
-        FirePrefab.SetActive(false);
-        //water
-        //air
-        //probably combos too
-    }
 
     //spell check list
     //
@@ -940,4 +1036,20 @@ public class NEWSpells : MonoBehaviour
     //if the hands get within a certain proximity of one another then they merge (theyre values are stored then added and the appropriate added effect[dormant] is spawned in the hands)
     //if either trigger is pressed then the dual spell is cast and the mana is expended (if both triggers are pulled then <-- x2)
     //when the hands seperate it pulls the stored #s and assigns them
+
+
+    /*
+    meteor
+    fireball
+    greater heal
+    cyclone
+    lava
+    vines
+    gravity
+    geyser
+    lightning
+    ice
+    */
+
+    //lava, vines, and geyser all copy meteor
 }

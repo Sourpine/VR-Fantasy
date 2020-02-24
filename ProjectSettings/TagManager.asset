@@ -10,6 +10,8 @@ TagManager:
   - spell
   - bullet
   - Fire
+  - WayPoint
+  - spells
   layers:
   - Default
   - TransparentFX
@@ -24,7 +26,7 @@ TagManager:
   - Player
   - Enemy
   - Ground
-  - 
+  - Player's Children
   - 
   - 
   - 

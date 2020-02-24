@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavMove : MonoBehaviour
+public class Bruh: MonoBehaviour
 {
     NavMeshAgent Agent;
     public GameObject Player;
@@ -30,4 +30,5 @@ public class NavMove : MonoBehaviour
             Agent.destination = Home;
         }
     }
+
 }
