@@ -12,6 +12,7 @@ TagManager:
   - Fire
   - WayPoint
   - spells
+  - Ground
   layers:
   - Default
   - TransparentFX
