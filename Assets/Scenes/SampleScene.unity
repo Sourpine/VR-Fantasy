@@ -2480,6 +2480,7 @@ GameObject:
   - component: {fileID: 840604588}
   - component: {fileID: 840604587}
   - component: {fileID: 840604591}
+  - component: {fileID: 840604592}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2577,6 +2578,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &840604592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840604586}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f7b833b0e98e942b5f9380ad05b27c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &845250262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,6 +2790,16 @@ PrefabInstance:
         type: 3}
       propertyPath: CollisionModule.collidesWith.m_Bits
       value: 55863
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848175916944560104, guid: 1f9f8ec6632ce0e44bca0528f52950ef,
+        type: 3}
+      propertyPath: CustomDataModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848175916944560104, guid: 1f9f8ec6632ce0e44bca0528f52950ef,
+        type: 3}
+      propertyPath: CollisionModule.colliderForce
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6047384300985021866, guid: 1f9f8ec6632ce0e44bca0528f52950ef,
         type: 3}
@@ -6278,6 +6301,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 4759140546110106842, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: m_Name
+      value: FirePrefab(R) old
+      objectReference: {fileID: 0}
     - target: {fileID: 4759140546281591055, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
         type: 3}
       propertyPath: m_Layer
@@ -7923,6 +7951,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7704290281677208875, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: m_Name
+      value: AirPrefab(R) old
+      objectReference: {fileID: 0}
     - target: {fileID: 7704290282034926444, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
         type: 3}
       propertyPath: m_Layer
@@ -7937,6 +7970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704290282271495460, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: m_Name
+      value: 'FirePrefab(R) old '
       objectReference: {fileID: 0}
     - target: {fileID: 7704290282477434119, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
         type: 3}
@@ -7958,6 +7996,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7704290282617087735, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: m_Name
+      value: WaterPrefab(R) old
+      objectReference: {fileID: 0}
     - target: {fileID: 7704290282838579391, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
         type: 3}
       propertyPath: m_Layer
@@ -7967,6 +8010,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704290282838579391, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: m_Name
+      value: EarthPrefab(R) old
       objectReference: {fileID: 0}
     - target: {fileID: 7868370411292923484, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
         type: 3}

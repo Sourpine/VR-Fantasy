@@ -275,6 +275,11 @@ public class NEWSpells : MonoBehaviour
             manaCost = true;
             manaTimer = 0;
         }
+
+        if (combined == true)
+        {
+            Menu.SetActive(false);
+        }
         
         //disables variables here to avoid error
         if(dis == false)
@@ -324,7 +329,7 @@ public class NEWSpells : MonoBehaviour
         }
         
         //deals with menu appearing and setting the right event system
-        if (OVRInput.GetDown(menuOpen) && Menu.activeSelf == false)
+        if (OVRInput.GetDown(menuOpen) && Menu.activeSelf == false && combined == false)
         {
             Menu.SetActive(true);
             EventSystem.SetActive(true);
@@ -941,8 +946,8 @@ public class NEWSpells : MonoBehaviour
                 OtherHand.GetComponent<NEWSpells>().value = OtherHand.GetComponent<NEWSpells>().valueSave;
                 valueSave = 0;
                 OtherHand.GetComponent<NEWSpells>().valueSave = 0;
-                Debug.Log("LEFT " + value);
-                Debug.Log("RIGHT " + OtherHand.GetComponent<NEWSpells>().value);
+                //Debug.Log("LEFT " + value);
+                //Debug.Log("RIGHT " + OtherHand.GetComponent<NEWSpells>().value);
                 ComboClear();
                 combined = false;
             }
