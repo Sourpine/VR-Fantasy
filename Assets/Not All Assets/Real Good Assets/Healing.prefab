@@ -14849,7 +14849,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 2
+      scalar: 0.5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -15785,7 +15785,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -33326,7 +33326,7 @@ SphereCollider:
   m_GameObject: {fileID: 6808580497497922854}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -33394,47 +33394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
         type: 3}
-      propertyPath: NoiseModule.strength.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
-        type: 3}
       propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
-        type: 3}
-      propertyPath: NoiseModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
-        type: 3}
-      propertyPath: NoiseModule.separateAxes
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
-        type: 3}
-      propertyPath: NoiseModule.positionAmount.scalar
-      value: 1.93
-      objectReference: {fileID: 0}
-    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
-        type: 3}
-      propertyPath: NoiseModule.strengthZ.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
-        type: 3}
-      propertyPath: NoiseModule.strengthY.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
-        type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 0.0001
-      objectReference: {fileID: 0}
-    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
-        type: 3}
-      propertyPath: ShapeModule.radiusThickness
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
@@ -33449,7 +33409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
         type: 3}
-      propertyPath: ShapeModule.m_Scale.z
+      propertyPath: ShapeModule.m_Scale.x
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
@@ -33459,8 +33419,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
         type: 3}
-      propertyPath: ShapeModule.m_Scale.x
+      propertyPath: ShapeModule.m_Scale.z
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
+        type: 3}
+      propertyPath: NoiseModule.strength.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
+        type: 3}
+      propertyPath: NoiseModule.strengthY.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
+        type: 3}
+      propertyPath: NoiseModule.strengthZ.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
+        type: 3}
+      propertyPath: NoiseModule.separateAxes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728193829355562761, guid: 930141e278789294fb68e1d168032bf8,
+        type: 3}
+      propertyPath: NoiseModule.positionAmount.scalar
+      value: 1.93
       objectReference: {fileID: 0}
     - target: {fileID: 1728193829355562762, guid: 930141e278789294fb68e1d168032bf8,
         type: 3}
@@ -33486,21 +33476,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VertexStreams.Array.data[4]
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1728193829355562762, guid: 930141e278789294fb68e1d168032bf8,
-        type: 3}
-      propertyPath: m_RenderingLayerMask
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 1728193829355562762, guid: 930141e278789294fb68e1d168032bf8,
-        type: 3}
-      propertyPath: m_MaxParticleSize
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1728193829355562762, guid: 930141e278789294fb68e1d168032bf8,
-        type: 3}
-      propertyPath: m_MinParticleSize
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1728193829355562763, guid: 930141e278789294fb68e1d168032bf8,
         type: 3}
