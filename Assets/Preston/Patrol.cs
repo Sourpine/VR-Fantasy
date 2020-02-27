@@ -24,7 +24,7 @@ public class Patrol : MonoBehaviour
     float waitTimer;
 
     // Start is called before the first frame update
-   public void Start()
+   public void FixedUpdate()
     {
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
         if(_navMeshAgent == null)
