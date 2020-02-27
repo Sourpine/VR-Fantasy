@@ -51,7 +51,8 @@ public class TornadoScript : MonoBehaviour
             //rigidbody component
             if (!(objectsToPullIn.Contains(objects[i].gameObject))
                 && objects[i].gameObject != gameObject
-                && objects[i].GetComponent<Rigidbody>() != null)
+                && objects[i].GetComponent<Rigidbody>() != null
+                /*&& gameObject.tag == "Enemy"*/)
             {
                 //Then add it to the objects to pull in list
                 objectsToPullIn.Add(objects[i].gameObject);
