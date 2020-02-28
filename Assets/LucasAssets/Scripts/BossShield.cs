@@ -16,6 +16,9 @@ public class BossShield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(ShieldGen.GetComponent<ShieldHP>().hp <= 0)
+        {
+            Shield.SetActive(false);
+        }
     }
 }
