@@ -98,6 +98,7 @@ public class NEWSpells : MonoBehaviour
     public GameObject WaterAirPrefab;
     //endpoint if spell hits nothing
     public GameObject endpoint;
+    public GameObject tornadoEndpoint;
 
     //bullet variables
     public float bulletSpeed = 10;
@@ -279,6 +280,10 @@ public class NEWSpells : MonoBehaviour
         if (combined == true)
         {
             Menu.SetActive(false);
+            EarthPrefab.SetActive(false);
+            FirePrefab.SetActive(false);
+            WaterPrefab.SetActive(false);
+            AirPrefab.SetActive(false);
         }
         
         //disables variables here to avoid error
@@ -558,7 +563,7 @@ public class NEWSpells : MonoBehaviour
             {
                 //x2 combos
 
-                // E A R T H X 2 (meteor)     since evry spell is so individual it will take heavy tweaking once given acess to the prefabs
+                // E A R T H X 2 (meteor)
                 case 2:
                     ComboClear();
                     Earthx2.SetActive(true);
@@ -637,7 +642,7 @@ public class NEWSpells : MonoBehaviour
                         }
                         Vector3 direction = destination - Hand.transform.position;
                         direction.Normalize();
-                        GameObject projectile = Instantiate(Firex2Prefab, Hand.transform.position, Hand.transform.rotation);
+                        GameObject projectile = Instantiate(Firex2Prefab, Firex2Prefab.transform.position, Hand.transform.rotation);
                         projectile.SetActive(true);
                         projectile.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
                         Firex2.SetActive(true);
@@ -704,7 +709,42 @@ public class NEWSpells : MonoBehaviour
                 // A I R X 2 (cyclone)
                 case 1000:
                     ComboClear();
-                    //determine
+                    Airx2Prefab.SetActive(true);
+                    //when mana goes above the threshhold then dissable low
+                    if (mana >= A2CostI)
+                    {
+                        Airx2Low.SetActive(false);
+                        if (Airx2Prefab.activeSelf == false)
+                        {
+                            Airx2.SetActive(true);
+                        }
+                    }
+                    //when button pressed spell enabled (enough mana)
+                    if (OVRInput.GetDown(cast) && mana >= A2CostI)
+                    {
+                        player.GetComponent<Mana>().mana -= A2CostI;
+                        casting = true;
+                        Airx2.SetActive(false);
+                        GameObject projectile = Instantiate(Airx2Prefab, tornadoEndpoint.transform.position, tornadoEndpoint.transform.rotation);
+                        projectile.SetActive(true);
+                        Airx2.SetActive(true);
+                        Destroy(projectile, 10);
+                    }
+                    //not enough mana low enabled
+                    else if (mana < A2CostI)
+                    {
+                        Airx2Prefab.SetActive(false);
+                        Airx2.SetActive(false);
+                        Airx2Low.SetActive(true);
+                        casting = false;
+                    }
+                    //when button up the passive re-enabled
+                    if (OVRInput.GetUp(cast) && Airx2Low.activeSelf == false)
+                    {
+                        Airx2Prefab.SetActive(false);
+                        Airx2.SetActive(true);
+                        casting = false;
+                    }
                     break;
 
                 //combos involving 2 different bases
@@ -1045,7 +1085,7 @@ public class NEWSpells : MonoBehaviour
 
     /*
     meteor
-    fireball
+    fireball    
     greater heal
     cyclone
     lava
