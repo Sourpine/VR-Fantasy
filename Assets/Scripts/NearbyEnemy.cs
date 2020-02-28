@@ -14,14 +14,10 @@ public class NearbyEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if(gameObject.name == "Red Enemy")
-        {
-            Debug.Log(gameObject.name + "'s list: " + nearby);
-        }*/
-        foreach(GameObject g in nearby)
+        /*foreach(GameObject g in nearby)
         {
             Debug.Log(g.name);
-        }
+        }*/
         
     }
     private void OnTriggerEnter(Collider other)
