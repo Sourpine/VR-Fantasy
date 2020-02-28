@@ -8,6 +8,7 @@ public class ShieldHP : MonoBehaviour
     public GameObject canvas;
     public GameObject part1;
     public GameObject part2;
+    public GameObject line;
     public float hp;
     public GameObject explosion;
     public AudioSource foo;
@@ -31,6 +32,7 @@ public class ShieldHP : MonoBehaviour
             canvas.SetActive(false);
             part1.SetActive(false);
             part2.SetActive(false);
+            line.SetActive(false);
         }
     }
 }
