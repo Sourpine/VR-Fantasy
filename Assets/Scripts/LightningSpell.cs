@@ -8,6 +8,7 @@ public class LightningSpell : MonoBehaviour
     public GameObject Hand;
     public GameObject lightningPrefab;
     public OVRInput.Button cast;
+    public GameObject lineTest;
     
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class LightningSpell : MonoBehaviour
             {
                 GameObject light = Instantiate(lightningPrefab, targetList[i].transform.position, Quaternion.identity);
                 light.transform.right = Vector3.Normalize(targetList[i].transform.position - targetList[i - 1].transform.position);
+                lineTest.transform.position = targetList[i].transform.position;
             }
         }
     }
