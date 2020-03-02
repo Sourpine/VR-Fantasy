@@ -15,23 +15,25 @@ public class LightningSpell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Hand = gameObject;
-        lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
+        //Hand = gameObject;
+        //lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
     }
 
     // Update is called once per frame
     void Update()
     {
-        lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
+        //lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
 
         RaycastHit zapHit;
         Ray lightningRay = new Ray(Hand.transform.position, Hand.transform.forward);
 
-        Debug.DrawRay(Hand.transform.position, Hand.transform.forward * lightningRange);
-        if (OVRInput.GetDown(cast) 
-            && Physics.Raycast(lightningRay, out zapHit, lightningRange, lightningMask, QueryTriggerInteraction.Ignore))
+        //Debug.DrawRay(Hand.transform.position, Hand.transform.forward * lightningRange);
+        
+        if (Physics.Raycast(lightningRay, out zapHit, lightningRange, lightningMask, QueryTriggerInteraction.Ignore))
         {
+            Debug.DrawLine(lightningRay.origin, zapHit.point, Color.red);
 
+            //if (OVRInput.GetDown(cast)) { }
             targetList = new List<GameObject>();
 
             if (zapHit.collider.gameObject.tag == "Enemy")
@@ -67,6 +69,10 @@ public class LightningSpell : MonoBehaviour
                 light.transform.right = Vector3.Normalize(targetList[i].transform.position - targetList[i - 1].transform.position);
                 lineTest.transform.position = targetList[i - 1].transform.position;
             }
+        }
+        else
+        {
+            Debug.DrawLine(lightningRay.origin, lightningRay.origin + lightningRay.direction * lightningRange, Color.green);
         }
 
         //test stuffs
