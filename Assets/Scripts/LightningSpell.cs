@@ -59,8 +59,14 @@ public class LightningSpell : MonoBehaviour
             {
                 GameObject light = Instantiate(lightningPrefab, targetList[i].transform.position, Quaternion.identity);
                 light.transform.right = Vector3.Normalize(targetList[i].transform.position - targetList[i - 1].transform.position);
-                lineTest.transform.position = targetList[i].transform.position;
+                lineTest.transform.position = targetList[i - 1].transform.position;
             }
+        }
+
+        //test stuffs
+        for (int i = 1; i < targetList.Count; i++)
+        {
+            lineTest.transform.position = targetList[i - 1].transform.position;
         }
     }
 }
