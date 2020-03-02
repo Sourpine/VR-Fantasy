@@ -9,6 +9,8 @@ public class LightningSpell : MonoBehaviour
     public GameObject lightningPrefab;
     public OVRInput.Button cast;
     public GameObject lineTest;
+    public float lightningRange = 50;
+    public LayerMask lightningMask;
     
     // Start is called before the first frame update
     void Start()
@@ -22,15 +24,19 @@ public class LightningSpell : MonoBehaviour
     {
         lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
 
-        RaycastHit hit;
+        RaycastHit zapHit;
+        Ray lightningRay = new Ray(Hand.transform.position, Hand.transform.forward);
+
+        Debug.DrawRay(Hand.transform.position, Hand.transform.forward * lightningRange);
         if (OVRInput.GetDown(cast) 
-            && Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
+            && Physics.Raycast(lightningRay, out zapHit, lightningRange, lightningMask, QueryTriggerInteraction.Ignore))
         {
+
             targetList = new List<GameObject>();
 
-            if (hit.collider.gameObject.tag == "Enemy")
+            if (zapHit.collider.gameObject.tag == "Enemy")
             {
-                GameObject go = hit.collider.gameObject;
+                GameObject go = zapHit.collider.gameObject;
                 targetList.Add(go);
                 foreach (GameObject target in targetList)
                 {
