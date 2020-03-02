@@ -99,6 +99,7 @@ public class NEWSpells : MonoBehaviour
     //endpoint if spell hits nothing
     public GameObject endpoint;
     public GameObject tornadoEndpoint;
+    public GameObject endpointAir;
 
     //bullet variables
     public float bulletSpeed = 10;
@@ -237,6 +238,8 @@ public class NEWSpells : MonoBehaviour
         WaterAirPrefab = GameObject.Find("WaterAirPrefab");
         //endpoint
         endpoint = GameObject.Find("endpoint");
+        tornadoEndpoint = GameObject.Find("tornadoEndpoint");
+        endpointAir = GameObject.Find("endpointAir");
 
         //the spells which require Instantiation are likely refrenced elsewhere
 
@@ -726,6 +729,10 @@ public class NEWSpells : MonoBehaviour
                         casting = true;
                         Airx2.SetActive(false);
                         GameObject projectile = Instantiate(Airx2Prefab, tornadoEndpoint.transform.position, tornadoEndpoint.transform.rotation);
+                        if(projectile.transform.parent != null)
+                        {
+                            projectile.transform.parent = null;
+                        }
                         projectile.SetActive(true);
                         Airx2.SetActive(true);
                         Destroy(projectile, 10);
@@ -911,7 +918,55 @@ public class NEWSpells : MonoBehaviour
                 case 510:
                     ComboClear();
                     FireAir.SetActive(true);
-                    //YIKES
+                    //when mana goes above the threshhold then dissable low
+                    if (mana >= FACostI)
+                    {
+                        FireAirLow.SetActive(false);
+                        if (FireAirPrefab.activeSelf == false)
+                        {
+                            FireAir.SetActive(true);
+                        }
+                    }
+                    //
+                    //
+                    //when button pressed spell enabled (enough mana)
+                    if (OVRInput.GetDown(cast) && mana >= FACostI)
+                    {
+                        player.GetComponent<Mana>().mana -= FACostI;
+                        casting = true;
+                        EarthWater.SetActive(false);
+                        RaycastHit hit;
+                        Vector3 destination;
+                        Vector3 start;
+                        start = Hand.transform.position;
+                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
+                        {
+                            destination = hit.point;
+                        }
+                        else
+                        {
+                            destination = endpointAir.transform.position;
+                        }
+                        GameObject projectile = Instantiate(FireAirPrefab, destination, endpoint.transform.rotation);
+                        projectile.SetActive(true);
+                        FireAir.SetActive(true);
+                        Destroy(projectile, 5);
+                    }
+                    //not enough mana low enabled
+                    else if (mana < FACostI)
+                    {
+                        FireAirPrefab.SetActive(false);
+                        FireAir.SetActive(false);
+                        FireAirLow.SetActive(true);
+                        casting = false;
+                    }
+                    //when button up the passive re-enabled
+                    if (OVRInput.GetUp(cast) && FireAirLow.activeSelf == false)
+                    {
+                        FireAirPrefab.SetActive(false);
+                        FireAir.SetActive(true);
+                        casting = false;
+                    }
                     break;
 
                 // W A T E R A I R (ice)
@@ -986,8 +1041,6 @@ public class NEWSpells : MonoBehaviour
                 OtherHand.GetComponent<NEWSpells>().value = OtherHand.GetComponent<NEWSpells>().valueSave;
                 valueSave = 0;
                 OtherHand.GetComponent<NEWSpells>().valueSave = 0;
-                //Debug.Log("LEFT " + value);
-                //Debug.Log("RIGHT " + OtherHand.GetComponent<NEWSpells>().value);
                 ComboClear();
                 combined = false;
             }
