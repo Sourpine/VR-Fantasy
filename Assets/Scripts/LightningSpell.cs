@@ -15,14 +15,14 @@ public class LightningSpell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Hand = gameObject;
-        //lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
+        Hand = gameObject;
+        lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
+        lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
 
         RaycastHit zapHit;
         Ray lightningRay = new Ray(Hand.transform.position, Hand.transform.forward);
@@ -33,41 +33,48 @@ public class LightningSpell : MonoBehaviour
         {
             Debug.DrawLine(lightningRay.origin, zapHit.point, Color.red);
 
-            //if (OVRInput.GetDown(cast)) { }
-            targetList = new List<GameObject>();
-
-            if (zapHit.collider.gameObject.tag == "Enemy")
+            if (OVRInput.GetDown(cast) || Input.GetButtonDown("Fire1"))
             {
-                GameObject go = zapHit.collider.gameObject;
-                targetList.Add(go);
-                foreach (GameObject target in targetList)
+                targetList = new List<GameObject>();
+
+                if (zapHit.collider.gameObject.tag == "Enemy")
                 {
-                    List<GameObject> nearby = target.GetComponent<NearbyEnemy>().nearby;
-                    foreach(GameObject g in nearby)
+                    GameObject go = zapHit.collider.gameObject;
+                    targetList.Add(go);
+                    foreach (GameObject target in targetList)
                     {
-                        if (!targetList.Contains(g) && targetList.Count < 6)
+                        List<GameObject> nearby = target.GetComponent<NearbyEnemy>().nearby;
+                        foreach (GameObject g in nearby)
                         {
-                            targetList.Add(g);
+                            if (!targetList.Contains(g) && targetList.Count < 6)
+                            {
+                                targetList.Add(g);
+                            }
+                            if (targetList.Count >= 6)
+                            {
+                                break;
+                            }
+
                         }
                         if (targetList.Count >= 6)
                         {
                             break;
                         }
                     }
-                    if (targetList.Count >= 6)
-                    {
-                        break;
-                    }
                 }
-            }
-            GameObject lightning = Instantiate(lightningPrefab, Hand.transform.position, Hand.transform.rotation);
-            //lightning.transform.forward = -Hand.transform.forward;
-            lightning.transform.right = Vector3.Normalize(targetList[0].transform.position - Hand.transform.position);
-            for (int i = 1; i < targetList.Count; i++)
-            {
-                GameObject light = Instantiate(lightningPrefab, targetList[i].transform.position, Quaternion.identity);
-                light.transform.right = Vector3.Normalize(targetList[i].transform.position - targetList[i - 1].transform.position);
-                lineTest.transform.position = targetList[i - 1].transform.position;
+                GameObject lightning = Instantiate(lightningPrefab, Hand.transform.position, Hand.transform.rotation);
+                //lightning.transform.forward = -Hand.transform.forward;
+                lightning.transform.forward /*right*/ = Vector3.Normalize(targetList[0].transform.position - Hand.transform.position);
+                for (int i = 1; i < targetList.Count; i++)
+                {
+                    GameObject t = new GameObject();
+                    //t.transform.LookAt(targetList[i].transform);
+                    GameObject light = Instantiate(lightningPrefab, targetList[i - 1].transform.position, Quaternion.identity);
+                    light.SetActive(true);
+                    light.transform.forward /*right*/ = Vector3.Normalize(targetList[i].transform.position - targetList[i - 1].transform.position);
+                    lineTest.transform.position = targetList[i - 1].transform.position;
+                    Destroy(light, .5f);
+                }
             }
         }
         else
