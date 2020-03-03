@@ -2298,19 +2298,7 @@ MonoBehaviour:
   patrolWaiting: 0
   totalWaitTime: 0
   switchProbability: 0.2
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  patrolPoints: []
 --- !u!1 &9195423157684145244
 GameObject:
   m_ObjectHideFlags: 0
