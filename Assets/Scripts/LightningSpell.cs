@@ -11,17 +11,21 @@ public class LightningSpell : MonoBehaviour
     public GameObject lineTest;
     public float lightningRange = 50;
     public LayerMask lightningMask;
+    public GameObject player;
     
     // Start is called before the first frame update
     void Start()
     {
         Hand = gameObject;
         lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        Destroy(GameObject.Find("New Game Object"));
+
         lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
 
         RaycastHit zapHit;
@@ -33,8 +37,9 @@ public class LightningSpell : MonoBehaviour
         {
             Debug.DrawLine(lightningRay.origin, zapHit.point, Color.red);
 
-            if (OVRInput.GetDown(cast) || Input.GetButtonDown("Fire1"))
+            if (OVRInput.GetDown(cast) && Hand.GetComponent<NEWSpells>().mana >= Hand.GetComponent<NEWSpells>().FACostI && Hand.GetComponent<NEWSpells>().valueSave + Hand.GetComponent<NEWSpells>().OtherHand.GetComponent<NEWSpells>().valueSave == 501  /* || Input.GetButtonDown("Fire1") */)
             {
+                player.GetComponent<Mana>().mana -= Hand.GetComponent<NEWSpells>().FACostI;
                 targetList = new List<GameObject>();
 
                 if (zapHit.collider.gameObject.tag == "Enemy")
@@ -65,6 +70,7 @@ public class LightningSpell : MonoBehaviour
                 GameObject lightning = Instantiate(lightningPrefab, Hand.transform.position, Hand.transform.rotation);
                 //lightning.transform.forward = -Hand.transform.forward;
                 lightning.transform.forward /*right*/ = Vector3.Normalize(targetList[0].transform.position - Hand.transform.position);
+                lightning.SetActive(true);
                 for (int i = 1; i < targetList.Count; i++)
                 {
                     GameObject t = new GameObject();
@@ -75,6 +81,7 @@ public class LightningSpell : MonoBehaviour
                     lineTest.transform.position = targetList[i - 1].transform.position;
                     Destroy(light, .5f);
                 }
+                Destroy(lightning, .5f);
             }
         }
         else
