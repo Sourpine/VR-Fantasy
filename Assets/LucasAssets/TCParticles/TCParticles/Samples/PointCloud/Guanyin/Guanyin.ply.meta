@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dcb3bb994f373444497bd0da19b1e526
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: e7382c3019d94ac42bae64714da2675e, type: 3}
+  Scale: 1
+  PivotOffset: {x: 0, y: 0, z: 0}
+  NormalRotation: {x: 0, y: 0, z: 0}
+  DefaultPointSize: 0.1
