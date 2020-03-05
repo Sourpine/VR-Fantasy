@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &236005241
 Transform:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 99ffdf5d36a005549a95b898fcd37e99, type: 2}
+  - {fileID: 2100000, guid: 43c4be5797537f241b17ffabf38ada65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1877,6 +1877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de22bcb8de16c840add70ed33a11701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WaypointColor: {r: 0, g: 0, b: 0, a: 0}
   debugDrawRadius: 1
 --- !u!114 &2125807127
 MonoBehaviour:
@@ -1890,6 +1891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de22bcb8de16c840add70ed33a11701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WaypointColor: {r: 0, g: 0, b: 0, a: 0}
   debugDrawRadius: 1
 --- !u!1 &5139455915900426735
 GameObject:
@@ -3258,6 +3260,7 @@ GameObject:
   - component: {fileID: 5740086715622853782}
   - component: {fileID: 5461111424281619839}
   - component: {fileID: 1715158730}
+  - component: {fileID: 174362797125546849}
   m_Layer: 14
   m_Name: robot
   m_TagString: Untagged
@@ -3325,6 +3328,8 @@ MonoBehaviour:
   flash: {fileID: 561289542783597606, guid: 807af1d1b1ea9dd49b83a776cca36468, type: 3}
   barrelLocation: {fileID: 4942737756720486739}
   shotPower: 5000
+  range: 0
+  Player: {fileID: 0}
 --- !u!114 &437628878445702274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3558,6 +3563,28 @@ MonoBehaviour:
   Drone: {fileID: 0}
   Shield: {fileID: 236005237}
   ShieldGen: {fileID: 0}
+--- !u!114 &174362797125546849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8121817945896528072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b42990d6814934aa164e7b8b103587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  health: 1000
+  drone: {fileID: 0}
+  renderer1: {fileID: 7252425001608327463}
+  hpslider: {fileID: 1730841389300172588}
+  Explosion: {fileID: 1907336461504944964, guid: b3f6a73fa1953c54d85e98828d001972,
+    type: 3}
+  dead: 0
+  srcs: {fileID: 0}
+  boom: {fileID: 0}
 --- !u!1 &8307197959971881078
 GameObject:
   m_ObjectHideFlags: 0
@@ -3779,7 +3806,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3331273370032929768}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 1000
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
@@ -4202,6 +4229,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 448461776531042726, guid: 89e7d4bfb0e7e0f49a0e93d56751d458,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1072303111558658412, guid: 89e7d4bfb0e7e0f49a0e93d56751d458,
         type: 3}
