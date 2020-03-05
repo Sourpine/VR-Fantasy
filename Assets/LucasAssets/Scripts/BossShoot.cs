@@ -30,10 +30,11 @@ public class BossShoot : MonoBehaviour
     }
     public void disableAI()
     {
-        gameObject.GetComponent<NavMeshAgent>().enabled = false;
+        gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+        gameObject.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
     }
     public void enableAI()
     {
-        gameObject.GetComponent<NavMeshAgent>().enabled = true;
+        gameObject.GetComponent<NavMeshAgent>().isStopped = false;
     }
 }

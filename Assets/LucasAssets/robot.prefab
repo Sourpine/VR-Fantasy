@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &236005241
 Transform:
   m_ObjectHideFlags: 0
@@ -3328,6 +3328,8 @@ MonoBehaviour:
   flash: {fileID: 561289542783597606, guid: 807af1d1b1ea9dd49b83a776cca36468, type: 3}
   barrelLocation: {fileID: 4942737756720486739}
   shotPower: 5000
+  range: 0
+  Player: {fileID: 0}
 --- !u!114 &437628878445702274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3580,6 +3582,9 @@ MonoBehaviour:
   hpslider: {fileID: 1730841389300172588}
   Explosion: {fileID: 1907336461504944964, guid: b3f6a73fa1953c54d85e98828d001972,
     type: 3}
+  dead: 0
+  srcs: {fileID: 0}
+  boom: {fileID: 0}
 --- !u!1 &8307197959971881078
 GameObject:
   m_ObjectHideFlags: 0
@@ -4224,6 +4229,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 448461776531042726, guid: 89e7d4bfb0e7e0f49a0e93d56751d458,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1072303111558658412, guid: 89e7d4bfb0e7e0f49a0e93d56751d458,
         type: 3}
