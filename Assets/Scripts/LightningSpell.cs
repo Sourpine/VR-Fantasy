@@ -24,6 +24,8 @@ public class LightningSpell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Destroy(GameObject.Find("New Game Object"));
+
         lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
 
         RaycastHit zapHit;
@@ -35,7 +37,7 @@ public class LightningSpell : MonoBehaviour
         {
             Debug.DrawLine(lightningRay.origin, zapHit.point, Color.red);
 
-            if (OVRInput.GetDown(cast) && Hand.GetComponent<NEWSpells>().mana >= Hand.GetComponent<NEWSpells>().FACostI || Input.GetButtonDown("Fire1"))
+            if (OVRInput.GetDown(cast) && Hand.GetComponent<NEWSpells>().mana >= Hand.GetComponent<NEWSpells>().FACostI && Hand.GetComponent<NEWSpells>().valueSave + Hand.GetComponent<NEWSpells>().OtherHand.GetComponent<NEWSpells>().valueSave == 501  /* || Input.GetButtonDown("Fire1") */)
             {
                 player.GetComponent<Mana>().mana -= Hand.GetComponent<NEWSpells>().FACostI;
                 targetList = new List<GameObject>();

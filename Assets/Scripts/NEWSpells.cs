@@ -783,10 +783,10 @@ public class NEWSpells : MonoBehaviour
                         {
                             destination = endpoint.transform.position;
                         }
-                        GameObject projectile = Instantiate(EarthFirePrefab, destination, endpoint.transform.rotation);
-                        projectile.SetActive(true);
+                        GameObject field = Instantiate(EarthFirePrefab, destination, endpoint.transform.rotation);
+                        field.SetActive(true);
                         EarthFire.SetActive(true);
-                        Destroy(projectile, 5);
+                        Destroy(field, 12);
                     }
                     //not enough mana low enabled
                     else if (mana < EFCostI)
