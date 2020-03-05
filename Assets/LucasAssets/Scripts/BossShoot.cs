@@ -8,6 +8,8 @@ public class BossShoot : MonoBehaviour
     public GameObject flash;
     public Transform barrelLocation;
     public float shotPower = 100f;
+    public float range;
+    public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
