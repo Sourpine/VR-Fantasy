@@ -712,7 +712,7 @@ public class NEWSpells : MonoBehaviour
                 // A I R X 2 (cyclone)
                 case 1000:
                     ComboClear();
-                    Airx2Prefab.SetActive(true);
+                    Airx2.SetActive(true);
                     //when mana goes above the threshhold then dissable low
                     if (mana >= A2CostI)
                     {
@@ -930,25 +930,8 @@ public class NEWSpells : MonoBehaviour
                     //when button pressed spell enabled (enough mana)
                     if (OVRInput.GetDown(cast) && mana >= FACostI)
                     {
-                        player.GetComponent<Mana>().mana -= FACostI;
+                        //this is handled in the LightningSpell Script
                         casting = true;
-                        EarthWater.SetActive(false);
-                        RaycastHit hit;
-                        Vector3 destination;
-                        Vector3 start;
-                        start = Hand.transform.position;
-                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
-                        {
-                            destination = hit.point;
-                        }
-                        else
-                        {
-                            destination = endpointAir.transform.position;
-                        }
-                        GameObject projectile = Instantiate(FireAirPrefab, destination, endpoint.transform.rotation);
-                        projectile.SetActive(true);
-                        FireAir.SetActive(true);
-                        Destroy(projectile, 5);
                     }
                     //not enough mana low enabled
                     else if (mana < FACostI)

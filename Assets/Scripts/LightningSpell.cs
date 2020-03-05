@@ -37,7 +37,10 @@ public class LightningSpell : MonoBehaviour
         {
             Debug.DrawLine(lightningRay.origin, zapHit.point, Color.red);
 
-            if (OVRInput.GetDown(cast) && Hand.GetComponent<NEWSpells>().mana >= Hand.GetComponent<NEWSpells>().FACostI && Hand.GetComponent<NEWSpells>().valueSave + Hand.GetComponent<NEWSpells>().OtherHand.GetComponent<NEWSpells>().valueSave == 501  /* || Input.GetButtonDown("Fire1") */)
+            if (OVRInput.GetDown(cast) 
+                && Hand.GetComponent<NEWSpells>().mana >= Hand.GetComponent<NEWSpells>().FACostI 
+                && Hand.GetComponent<NEWSpells>().valueSave + Hand.GetComponent<NEWSpells>().OtherHand.GetComponent<NEWSpells>().valueSave == 510  
+                /* || Input.GetButtonDown("Fire1") */)
             {
                 player.GetComponent<Mana>().mana -= Hand.GetComponent<NEWSpells>().FACostI;
                 targetList = new List<GameObject>();
