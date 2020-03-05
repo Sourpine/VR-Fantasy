@@ -927,8 +927,6 @@ public class NEWSpells : MonoBehaviour
                             FireAir.SetActive(true);
                         }
                     }
-                    //
-                    //
                     //when button pressed spell enabled (enough mana)
                     if (OVRInput.GetDown(cast) && mana >= FACostI)
                     {
