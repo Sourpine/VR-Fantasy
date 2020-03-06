@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4371887601714870227}
   - component: {fileID: 4371887601714870224}
   - component: {fileID: 4371887601714870225}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Lightning V2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4371887601714870230}
   m_LocalRotation: {x: -0.066402726, y: -0.70398206, z: 0.066402726, w: -0.703982}
   m_LocalPosition: {x: -5.9763155, y: 4.29, z: -15.233074}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000007, y: 1.0000002, z: 1.0000005}
   m_Children:
   - {fileID: 4371887601952233596}
   m_Father: {fileID: 0}
@@ -3733,7 +3733,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 121399
+      m_Bits: 119351
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4766,7 +4766,7 @@ GameObject:
   - component: {fileID: 4371887601952233596}
   - component: {fileID: 4371887601952233598}
   - component: {fileID: 4371887601952233599}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
