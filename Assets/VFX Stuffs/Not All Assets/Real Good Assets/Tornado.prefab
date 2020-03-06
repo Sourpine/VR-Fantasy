@@ -94,9 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d878ce292fb0e024ba1c416c3680badf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullInSpeed: 10
+  pullInSpeed: 15
   rotateSpeed: 5
-  radius: 20
+  radius: 10
   objectsToPullIn: []
 --- !u!64 &7293354727177888291
 MeshCollider:

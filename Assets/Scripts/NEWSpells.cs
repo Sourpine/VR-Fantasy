@@ -861,6 +861,8 @@ public class NEWSpells : MonoBehaviour
                     ComboClear();
                     EarthAir.SetActive(true);
                     //determine
+                    //What will this thing do!?!?!?!?!?!?!?!?!!??!?!?!
+                    //i dont have any idea
                     break;
 
                 // F I R E W A T E R (geyser)
