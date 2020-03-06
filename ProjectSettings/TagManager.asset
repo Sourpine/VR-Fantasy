@@ -14,6 +14,7 @@ TagManager:
   - spells
   - Ground
   - RainPart
+  - PatrolPoint
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Robot
   - Robobullet
   - Shield
-  - 
+  - NPC
   - 
   - 
   - 
