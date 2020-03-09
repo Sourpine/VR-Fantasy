@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7293354727177888288}
   - component: {fileID: 7293354727177888291}
   - component: {fileID: 7293354727177888289}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pullInSpeed: 15
   rotateSpeed: 5
-  radius: 10
+  radius: 12
   objectsToPullIn: []
 --- !u!64 &7293354727177888291
 MeshCollider:
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 250314129998652318}
   - component: {fileID: 3159372298169674806}
   - component: {fileID: 8718062542846277856}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 250314130186093297}
   - component: {fileID: 3159372298097036633}
   - component: {fileID: 8718062543033719183}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 8017367886037644723}
   - component: {fileID: 8017367886037644721}
   - component: {fileID: 8017367886037644720}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cylinder.002 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8017367886786425618}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tornado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
