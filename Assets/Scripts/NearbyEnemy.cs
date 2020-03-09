@@ -22,7 +22,7 @@ public class NearbyEnemy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy" && !nearby.Contains(other.gameObject))
+        if(other.gameObject.tag == "EnemyChild" && !nearby.Contains(other.gameObject))
         {
             nearby.Add(other.gameObject);
         }

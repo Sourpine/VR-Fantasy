@@ -12,6 +12,7 @@ public class LightningSpell : MonoBehaviour
     public float lightningRange = 50;
     public LayerMask lightningMask;
     public GameObject player;
+    public GameObject trail;
     
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class LightningSpell : MonoBehaviour
     void Update()
     {
         Destroy(GameObject.Find("New Game Object"));
+        trail.transform.position = Hand.transform.position;
 
         lightningPrefab = Hand.GetComponent<NEWSpells>().FireAirPrefab;
 
@@ -71,6 +73,7 @@ public class LightningSpell : MonoBehaviour
                     }
                 }
                 GameObject lightning = Instantiate(lightningPrefab, Hand.transform.position, Hand.transform.rotation);
+                trail.transform.position = targetList[0].transform.position;
                 //lightning.transform.forward = -Hand.transform.forward;
                 lightning.transform.forward /*right*/ = Vector3.Normalize(targetList[0].transform.position - Hand.transform.position);
                 lightning.SetActive(true);
@@ -79,6 +82,7 @@ public class LightningSpell : MonoBehaviour
                     GameObject t = new GameObject();
                     //t.transform.LookAt(targetList[i].transform);
                     GameObject light = Instantiate(lightningPrefab, targetList[i - 1].transform.position, Quaternion.identity);
+                    trail.transform.position = targetList[i].transform.position;
                     light.SetActive(true);
                     light.transform.forward /*right*/ = Vector3.Normalize(targetList[i].transform.position - targetList[i - 1].transform.position);
                     lineTest.transform.position = targetList[i - 1].transform.position;

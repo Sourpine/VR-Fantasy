@@ -15,6 +15,7 @@ TagManager:
   - Ground
   - RainPart
   - PatrolPoint
+  - EnemyChild
   layers:
   - Default
   - TransparentFX

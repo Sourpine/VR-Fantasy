@@ -39,6 +39,7 @@ public class SpawnMeteor : MonoBehaviour
             var endPos = endPoint.position;
 
             RotateTo(objVFX, endPos);
+            hasFired = true;
         }
     }
 
