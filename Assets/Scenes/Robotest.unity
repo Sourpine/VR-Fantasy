@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -711,11 +711,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 512617769, guid: 7c41d0f4a317e5a4bb19750886a1b1e7, type: 3}
-      propertyPath: Explosion
-      value: 
-      objectReference: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
-        type: 3}
     - target: {fileID: 1225403156, guid: 7c41d0f4a317e5a4bb19750886a1b1e7, type: 3}
       propertyPath: player
       value: 
@@ -814,11 +809,6 @@ PrefabInstance:
       propertyPath: cameraToLookAt
       value: 
       objectReference: {fileID: 890247563}
-    - target: {fileID: 6916801935369157105, guid: 7c41d0f4a317e5a4bb19750886a1b1e7,
-        type: 3}
-      propertyPath: hp
-      value: 500
-      objectReference: {fileID: 0}
     - target: {fileID: 6916801935506493225, guid: 7c41d0f4a317e5a4bb19750886a1b1e7,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -834,11 +824,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 890247567}
-    - target: {fileID: 8082095052315181693, guid: 7c41d0f4a317e5a4bb19750886a1b1e7,
-        type: 3}
-      propertyPath: restoreRate
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8233187785442032327, guid: 7c41d0f4a317e5a4bb19750886a1b1e7,
         type: 3}
       propertyPath: myTarget
@@ -863,11 +848,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8498533837239389194, guid: 7c41d0f4a317e5a4bb19750886a1b1e7,
-        type: 3}
-      propertyPath: m_MaxValue
-      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c41d0f4a317e5a4bb19750886a1b1e7, type: 3}

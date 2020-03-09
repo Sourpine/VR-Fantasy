@@ -30,6 +30,8 @@ MonoBehaviour:
   Range: 25
   reload: 8
   reloadTime: 8
+  cameraToLookAt: {fileID: 0}
+  firing: 0
 --- !u!135 &1057519466
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -50,19 +52,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212890503120615331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b66452cd70f9543a37731c0876c00a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nearby: []
---- !u!114 &433692232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5454739438592478787}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6b66452cd70f9543a37731c0876c00a, type: 3}
@@ -165,6 +154,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &433692232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5454739438592478787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b66452cd70f9543a37731c0876c00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nearby: []
 --- !u!114 &512617769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,8 +185,7 @@ MonoBehaviour:
   drone: {fileID: 5454739438592478787}
   renderer1: {fileID: 1699584317596284535}
   hpslider: {fileID: 8498533837239389194}
-  Explosion: {fileID: 1907336461504944964, guid: b3f6a73fa1953c54d85e98828d001972,
-    type: 3}
+  Explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   dead: 0
   srcs: {fileID: 512617774}
   boom: {fileID: 8300000, guid: 32b4fea03d5efb046841a865fe406ee6, type: 3}
@@ -248,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 6916801936737835627}
     - target: {fileID: 660805729, guid: 0b154c26748d3434bb4fe13f598d23e3, type: 3}
       propertyPath: hp
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 660805729, guid: 0b154c26748d3434bb4fe13f598d23e3, type: 3}
       propertyPath: health
@@ -633,6 +634,11 @@ PrefabInstance:
       objectReference: {fileID: 212890503120615331}
     - target: {fileID: 174362797125546849, guid: 12a00929944b63d4da33ac97c8e7ae1d,
         type: 3}
+      propertyPath: restoreRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 174362797125546849, guid: 12a00929944b63d4da33ac97c8e7ae1d,
+        type: 3}
       propertyPath: drone
       value: 
       objectReference: {fileID: 5454739438592478787}
@@ -649,7 +655,7 @@ PrefabInstance:
     - target: {fileID: 5110784836584921819, guid: 12a00929944b63d4da33ac97c8e7ae1d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.84
+      value: -7.15
       objectReference: {fileID: 0}
     - target: {fileID: 5110784836584921819, guid: 12a00929944b63d4da33ac97c8e7ae1d,
         type: 3}
@@ -659,7 +665,7 @@ PrefabInstance:
     - target: {fileID: 5110784836584921819, guid: 12a00929944b63d4da33ac97c8e7ae1d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.43
+      value: -12.06
       objectReference: {fileID: 0}
     - target: {fileID: 5110784836584921819, guid: 12a00929944b63d4da33ac97c8e7ae1d,
         type: 3}
@@ -787,6 +793,10 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 8233187784169001783}
+    - target: {fileID: 1176776195, guid: b639b70a6a6a72a44973044b4ce8f4f0, type: 3}
+      propertyPath: m_MaxValue
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 583394520300133977, guid: b639b70a6a6a72a44973044b4ce8f4f0,
         type: 3}
       propertyPath: m_LocalPosition.x
