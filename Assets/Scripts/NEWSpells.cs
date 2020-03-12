@@ -100,6 +100,8 @@ public class NEWSpells : MonoBehaviour
     public GameObject endpoint;
     public GameObject tornadoEndpoint;
     public GameObject endpointAir;
+    public GameObject target;
+    public bool floorSpell = false;
 
     //bullet variables
     public float bulletSpeed = 10;
@@ -240,6 +242,7 @@ public class NEWSpells : MonoBehaviour
         endpoint = GameObject.Find("endpoint");
         tornadoEndpoint = GameObject.Find("tornadoEndpoint");
         endpointAir = GameObject.Find("endpointAir");
+        target = GameObject.Find("target");
 
         //the spells which require Instantiation are likely refrenced elsewhere
 
@@ -267,6 +270,7 @@ public class NEWSpells : MonoBehaviour
         //disabling ui
         Menu.SetActive(false);
         EventSystem.SetActive(false);
+        target.SetActive(false);
     }
 
     void Update()
@@ -287,6 +291,11 @@ public class NEWSpells : MonoBehaviour
             FirePrefab.SetActive(false);
             WaterPrefab.SetActive(false);
             AirPrefab.SetActive(false);
+            OtherHand.GetComponent<NEWSpells>().Menu.SetActive(false);
+            OtherHand.GetComponent<NEWSpells>().EarthPrefab.SetActive(false);
+            OtherHand.GetComponent<NEWSpells>().FirePrefab.SetActive(false);
+            OtherHand.GetComponent<NEWSpells>().WaterPrefab.SetActive(false);
+            OtherHand.GetComponent<NEWSpells>().AirPrefab.SetActive(false);
         }
         
         //disables variables here to avoid error
@@ -356,13 +365,31 @@ public class NEWSpells : MonoBehaviour
         if(Menu.activeSelf == false)
         {
             player.GetComponent<OVRPlayerController>().enabled = true;
-        }        
+        }
+
+        RaycastHit targetHit;
+        Vector3 targetDestination;
+        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out targetHit, 50, 13))
+        {
+            targetDestination = targetHit.point;
+            target.SetActive(true);
+        }
+        else if (floorSpell == true)
+        {
+            targetDestination = endpoint.transform.position;
+            target.SetActive(true);
+        }
+        else
+        {
+            targetDestination = tornadoEndpoint.transform.position;
+            target.SetActive(false);
+        }
+        target.transform.position = targetDestination;
 
 
+            //  B   A   S   E
 
-        //  B   A   S   E
-
-        //depending on the value this sets the correct object to active
+            //depending on the value this sets the correct object to active
         switch (value)
         {
             case 0:
@@ -389,6 +416,7 @@ public class NEWSpells : MonoBehaviour
                     if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
                     {
                         destination = hit.point;
+                        //target.transform.position = hit.point;
                     }
                     else
                     {
@@ -566,9 +594,13 @@ public class NEWSpells : MonoBehaviour
             {
                 //x2 combos
 
+                case 0:
+                    floorSpell = false;
+                    break;
                 // E A R T H X 2 (meteor)
                 case 2:
                     ComboClear();
+                    floorSpell = true;
                     Earthx2.SetActive(true);
                     //when mana goes above the threshold then dissable the low
                     if(mana >= E2CostI)
@@ -619,6 +651,7 @@ public class NEWSpells : MonoBehaviour
                 // F I R E X 2 (fireball)
                 case 20:
                     ComboClear();
+                    floorSpell = false;
                     Firex2.SetActive(true);
                     //when mana goes above the threshhold then dissable low
                     if (mana >= F2CostI)
@@ -671,6 +704,7 @@ public class NEWSpells : MonoBehaviour
                 // W A T E R X 2 (greater heal)
                 case 100:
                     ComboClear();
+                    floorSpell = false;
                     Waterx2.SetActive(true);
                     //when mana goes above the threshhold then dissable low
                     if (mana >= W2CostI)
@@ -712,6 +746,7 @@ public class NEWSpells : MonoBehaviour
                 // A I R X 2 (cyclone)
                 case 1000:
                     ComboClear();
+                    floorSpell = false;
                     Airx2.SetActive(true);
                     //when mana goes above the threshhold then dissable low
                     if (mana >= A2CostI)
@@ -758,6 +793,7 @@ public class NEWSpells : MonoBehaviour
                 // E A R T H F I R E (lava)
                 case 11:
                     ComboClear();
+                    floorSpell = true;
                     EarthFire.SetActive(true);
                     //when mana goes above the threshold then dissable the low
                     if (mana >= EFCostI)
@@ -808,6 +844,7 @@ public class NEWSpells : MonoBehaviour
                 // E A R T H W A T E R (vines)
                 case 51:
                     ComboClear();
+                    floorSpell = true;
                     EarthWater.SetActive(true);
                     //when mana goes above the threshhold then dissable low
                     if (mana >= EWCostI)
@@ -837,7 +874,7 @@ public class NEWSpells : MonoBehaviour
                         GameObject projectile = Instantiate(EarthWaterPrefab, destination, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         EarthWater.SetActive(true);
-                        Destroy(projectile, 5);
+                        Destroy(projectile, 8);
                     }
                     //not enough mana low enabled
                     else if (mana < EWCostI)
@@ -859,15 +896,59 @@ public class NEWSpells : MonoBehaviour
                 // E A R T H A I R (gravity)
                 case 501:
                     ComboClear();
+                    floorSpell = true;
                     EarthAir.SetActive(true);
-                    //determine
-                    //What will this thing do!?!?!?!?!?!?!?!?!!??!?!?!
-                    //i dont have any idea
+                    //when mana goes above the threshold then dissable low
+                    if (mana >= EACostI)
+                    {
+                        EarthAirLow.SetActive(false);
+                        if (EarthAirPrefab.activeSelf == false)
+                        {
+                            EarthAir.SetActive(true);
+                        }
+                    }
+                    //when button pressed spell enabled (enough mana)
+                    if (OVRInput.GetDown(cast) && mana >= EACostI)
+                    {
+                        player.GetComponent<Mana>().mana -= EACostI;
+                        casting = true;
+                        EarthAir.SetActive(false);
+                        RaycastHit hit;
+                        Vector3 destination;
+                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
+                        {
+                            destination = hit.point;
+                        }
+                        else
+                        {
+                            destination = endpoint.transform.position;
+                        }
+                        GameObject projectile = Instantiate(EarthAirPrefab, destination, endpoint.transform.rotation);
+                        projectile.SetActive(true);
+                        EarthAir.SetActive(true);
+                        Destroy(projectile, 5.5f);
+                    }
+                    //not enough mana low enabled
+                    else if (mana < EACostI)
+                    {
+                        EarthAirPrefab.SetActive(false);
+                        EarthAir.SetActive(false);
+                        EarthAirLow.SetActive(true);
+                        casting = false;
+                    }
+                    //when button up the passive re-enabled
+                    if (OVRInput.GetUp(cast) && EarthAirLow.activeSelf == false)
+                    {
+                        EarthAirPrefab.SetActive(false);
+                        EarthAir.SetActive(true);
+                        casting = false;
+                    }
                     break;
 
                 // F I R E W A T E R (geyser)
                 case 60:
                     ComboClear();
+                    floorSpell = true;
                     FireWater.SetActive(true);
                     //when mana goes above the threshhold then dissable low
                     if (mana >= FWCostI)
@@ -919,6 +1000,7 @@ public class NEWSpells : MonoBehaviour
                 // F I R E A I R (lightning)
                 case 510:
                     ComboClear();
+                    floorSpell = false;
                     FireAir.SetActive(true);
                     //when mana goes above the threshhold then dissable low
                     if (mana >= FACostI)
@@ -955,6 +1037,7 @@ public class NEWSpells : MonoBehaviour
                 // W A T E R A I R (ice)
                 case 550:
                     ComboClear();
+                    floorSpell = false;
                     WaterAir.SetActive(true);
                     //when mana goes above the threshhold then dissable low
                     if (mana >= WACostI)

@@ -6,13 +6,15 @@ public class GravitySpell : MonoBehaviour
 {
     public float gravityMod = 1;
     public float gravNorm = 1;
-    public float gravNeg = -1.1f;
-    public float gravFall = 5;
+    public float gravNeg = -1.5f;
+    public float gravFall = 40;
     public bool inSpell = false;
     public bool castDown = false;
+    //public bool hasCast = false;
     public GameObject player;
-    public float floatTime = 5;
-    public float floatTime2 = 8;
+    public float floatTime = 2.5f;
+    public float floatTime2 = 4.5f;
+    public float floatTime3 = 5.5f;
     public float floatTimer;
     
     // Start is called before the first frame update
@@ -21,63 +23,79 @@ public class GravitySpell : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         gravNorm = 1;
         gameObject.GetComponent<Rigidbody>().AddForce(Physics.gravity * gravNorm);
-        gravNeg = -1.1f;
-        gravFall = 5;
+        gravNeg = -1.5f;
+        //gravFall = 40;
+
+        //floatTime = 2;
+        //floatTime2 = 4;
+        //floatTime3 = 6;
     }
 
     // Update is called once per frame
     void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         gameObject.GetComponent<Rigidbody>().AddForce(Physics.gravity * gravityMod);
 
         if (floatTimer >= floatTime)
         {
-            gravityMod = gravFall;
+            castDown = false;
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
         }
         if (floatTimer >= floatTime2)
         {
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            gameObject.GetComponent<Rigidbody>().AddForce(-transform.up * 50, ForceMode.Impulse);
+            gravityMod = gravFall;
+        }
+        if (floatTimer >= floatTime3)
+        {
             inSpell = false;
-            castDown = false;
-
             floatTimer = 0;
         }
 
-        /*if (OVRInput.GetDown(player.GetComponent<NEWSpells>().cast))
+        if (inSpell == true)
         {
-            castDown = true;
-        }*/
-        if (inSpell == true && castDown == true)
-        {
-            //Debug.Log("Not Here 1");
             floatTimer += Time.deltaTime;
-            gravityMod = gravNeg;
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-            gameObject.GetComponent<Animator>().enabled = false;
-            //Debug.Log("Not Here 2");
+            if (castDown == true && floatTimer < floatTime)
+            {
+                gravityMod = gravNeg;
+                gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                gameObject.GetComponent<Animator>().enabled = false;
+            }
         }
         else
         {
-            //Debug.Log("Not Here 3");
             gravityMod = gravNorm;
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
             gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
-            //Debug.Log("Not Here 4");
         }
+        /*if (player.GetComponent<NEWSpells>().casting == true)
+        {
+            castDown = true;
+        }*/
+        /*else
+        {
+            castDown = false;
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "EarthAirPrefab")
+        if (other.name == "EarthAirPrefab" || other.name == "EarthAirPrefab(Clone)")
         {
             inSpell = true;
+            castDown = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.name == "EarthAirPrefab")
+        if (other.name == "EarthAirPrefab" || other.name == "EarthAirPrefab(Clone)")
         {
-            inSpell = false;
+            //inSpell = false;
+            castDown = false;
         }
     }
 }
