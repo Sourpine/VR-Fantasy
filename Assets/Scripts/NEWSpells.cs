@@ -287,6 +287,11 @@ public class NEWSpells : MonoBehaviour
             FirePrefab.SetActive(false);
             WaterPrefab.SetActive(false);
             AirPrefab.SetActive(false);
+            OtherHand.GetComponent<NEWSpells>().Menu.SetActive(false);
+            OtherHand.GetComponent<NEWSpells>().EarthPrefab.SetActive(false);
+            OtherHand.GetComponent<NEWSpells>().FirePrefab.SetActive(false);
+            OtherHand.GetComponent<NEWSpells>().WaterPrefab.SetActive(false);
+            OtherHand.GetComponent<NEWSpells>().AirPrefab.SetActive(false);
         }
         
         //disables variables here to avoid error
@@ -860,9 +865,51 @@ public class NEWSpells : MonoBehaviour
                 case 501:
                     ComboClear();
                     EarthAir.SetActive(true);
-                    //determine
-                    //What will this thing do!?!?!?!?!?!?!?!?!!??!?!?!
-                    //i dont have any idea
+                    //when mana goes above the threshold then dissable low
+                    if (mana >= EACostI)
+                    {
+                        EarthAirLow.SetActive(false);
+                        if (EarthAirPrefab.activeSelf == false)
+                        {
+                            EarthAir.SetActive(true);
+                        }
+                    }
+                    //when button pressed spell enabled (enough mana)
+                    if (OVRInput.GetDown(cast) && mana >= EACostI)
+                    {
+                        player.GetComponent<Mana>().mana -= EACostI;
+                        casting = true;
+                        EarthAir.SetActive(false);
+                        RaycastHit hit;
+                        Vector3 destination;
+                        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, 50, 13))
+                        {
+                            destination = hit.point;
+                        }
+                        else
+                        {
+                            destination = endpoint.transform.position;
+                        }
+                        GameObject projectile = Instantiate(EarthAirPrefab, destination, endpoint.transform.rotation);
+                        projectile.SetActive(true);
+                        EarthAir.SetActive(true);
+                        Destroy(projectile, 10);
+                    }
+                    //not enough mana low enabled
+                    else if (mana < EACostI)
+                    {
+                        EarthAirPrefab.SetActive(false);
+                        EarthAir.SetActive(false);
+                        EarthAirLow.SetActive(true);
+                        casting = false;
+                    }
+                    //when button up the passive re-enabled
+                    if (OVRInput.GetUp(cast) && EarthAirLow.activeSelf == false)
+                    {
+                        EarthAirPrefab.SetActive(false);
+                        EarthAir.SetActive(true);
+                        casting = false;
+                    }
                     break;
 
                 // F I R E W A T E R (geyser)
