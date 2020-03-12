@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 54903898}
   - component: {fileID: 54903904}
   - component: {fileID: 54903905}
+  - component: {fileID: 54903906}
   m_Layer: 11
   m_Name: Green Enemy
   m_TagString: Enemy
@@ -253,7 +254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54903891}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.175412, y: 3.187605, z: -1.5632935}
+  m_LocalPosition: {x: 3.46, y: 3.187605, z: -2.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1227267279}
@@ -296,7 +297,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -390,6 +391,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &54903906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54903891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b425d4fdeaf741047ad2cd50a3b05c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  moveSpeedSave: 0
+  player: {fileID: 0}
+  active: 0
+  slowed: 0
+  slowAmnt: 0
+  time: 8
+  timer: 0
 --- !u!1 &80828019
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,7 +755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193773389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.9637694, y: -2.5742788, z: 39.99725}
+  m_LocalPosition: {x: 11.69, y: -2.5742788, z: 39.99725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 54903897}
@@ -818,6 +839,7 @@ GameObject:
   - component: {fileID: 235181868}
   - component: {fileID: 235181874}
   - component: {fileID: 235181875}
+  - component: {fileID: 235181876}
   m_Layer: 11
   m_Name: White Enemy
   m_TagString: Enemy
@@ -835,7 +857,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1065,6 +1087,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &235181876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235181861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b425d4fdeaf741047ad2cd50a3b05c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  moveSpeedSave: 0
+  player: {fileID: 0}
+  active: 0
+  slowed: 0
+  slowAmnt: 0
+  time: 8
+  timer: 0
 --- !u!1 &237631852
 GameObject:
   m_ObjectHideFlags: 0
@@ -2373,6 +2415,7 @@ GameObject:
   - component: {fileID: 778231604}
   - component: {fileID: 778231610}
   - component: {fileID: 778231611}
+  - component: {fileID: 778231612}
   m_Layer: 11
   m_Name: Blue Enemy
   m_TagString: Enemy
@@ -2390,7 +2433,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2620,6 +2663,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &778231612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778231597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b425d4fdeaf741047ad2cd50a3b05c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  moveSpeedSave: 0
+  player: {fileID: 0}
+  active: 0
+  slowed: 0
+  slowAmnt: 0
+  time: 8
+  timer: 0
 --- !u!1001 &797881794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3324,6 +3387,7 @@ GameObject:
   - component: {fileID: 984799765}
   - component: {fileID: 984799766}
   - component: {fileID: 984799767}
+  - component: {fileID: 984799768}
   m_Layer: 11
   m_Name: Silver Enemy
   m_TagString: Enemy
@@ -3367,7 +3431,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -3584,6 +3648,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &984799768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984799752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b425d4fdeaf741047ad2cd50a3b05c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  moveSpeedSave: 0
+  player: {fileID: 0}
+  active: 0
+  slowed: 0
+  slowAmnt: 0
+  time: 8
+  timer: 0
 --- !u!1 &998847910
 GameObject:
   m_ObjectHideFlags: 0
@@ -4899,6 +4983,8 @@ MonoBehaviour:
   endpoint: {fileID: 0}
   tornadoEndpoint: {fileID: 0}
   endpointAir: {fileID: 0}
+  target: {fileID: 0}
+  floorSpell: 0
   bulletSpeed: 0
   rayLength: 50
   disTimer: 0
@@ -5876,6 +5962,7 @@ GameObject:
   - component: {fileID: 1836380472}
   - component: {fileID: 1836380484}
   - component: {fileID: 1836380485}
+  - component: {fileID: 1836380486}
   m_Layer: 11
   m_Name: Pink Enemy
   m_TagString: Enemy
@@ -5919,7 +6006,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -6123,6 +6210,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1836380486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836380471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b425d4fdeaf741047ad2cd50a3b05c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  moveSpeedSave: 0
+  player: {fileID: 0}
+  active: 0
+  slowed: 0
+  slowAmnt: 0
+  time: 8
+  timer: 0
 --- !u!1 &1842346233
 GameObject:
   m_ObjectHideFlags: 0
@@ -6268,6 +6375,7 @@ GameObject:
   - component: {fileID: 1867254859}
   - component: {fileID: 1867254865}
   - component: {fileID: 1867254866}
+  - component: {fileID: 1867254867}
   m_Layer: 11
   m_Name: Orange Enemy
   m_TagString: Enemy
@@ -6285,7 +6393,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -6515,6 +6623,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1867254867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867254852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b425d4fdeaf741047ad2cd50a3b05c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  moveSpeedSave: 0
+  player: {fileID: 0}
+  active: 0
+  slowed: 0
+  slowAmnt: 0
+  time: 8
+  timer: 0
 --- !u!1001 &1868216331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7846,21 +7974,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 683808837}
     m_Modifications:
-    - target: {fileID: 1545987464, guid: 3d5024fdc0c65284bb533bf3351c9ac2, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 1545987466, guid: 3d5024fdc0c65284bb533bf3351c9ac2, type: 3}
+      propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1545987466, guid: 3d5024fdc0c65284bb533bf3351c9ac2, type: 3}
-      propertyPath: m_LocalPosition.y
+      propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1545987466, guid: 3d5024fdc0c65284bb533bf3351c9ac2, type: 3}
-      propertyPath: m_LocalPosition.z
+      propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1545987466, guid: 3d5024fdc0c65284bb533bf3351c9ac2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1620805998695976, guid: 3d5024fdc0c65284bb533bf3351c9ac2, type: 3}
       propertyPath: Hand
@@ -7934,12 +8062,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7704290282477434116, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+    - target: {fileID: 6713090613815756917, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
         type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5e771cf49d7659f44824c847cb0bd858, type: 2}
+    - target: {fileID: 7411826977560188405, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411826977560188405, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411826977560188405, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411826977560188405, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411826977560188405, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411826977560188405, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7704290282477434119, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
+    - target: {fileID: 7704290281428919101, guid: 3d5024fdc0c65284bb533bf3351c9ac2,
         type: 3}
       propertyPath: m_IsActive
       value: 0

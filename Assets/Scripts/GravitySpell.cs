@@ -10,6 +10,7 @@ public class GravitySpell : MonoBehaviour
     public float gravFall = 40;
     public bool inSpell = false;
     public bool castDown = false;
+    //public bool hasCast = false;
     public GameObject player;
     public float floatTime = 2.5f;
     public float floatTime2 = 4.5f;
@@ -71,28 +72,30 @@ public class GravitySpell : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
             gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
         }
-        if (player.GetComponent<NEWSpells>().casting == true)
+        /*if (player.GetComponent<NEWSpells>().casting == true)
         {
             castDown = true;
-        }
-        else
+        }*/
+        /*else
         {
             castDown = false;
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "EarthAirPrefab")
+        if (other.name == "EarthAirPrefab" || other.name == "EarthAirPrefab(Clone)")
         {
             inSpell = true;
+            castDown = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.name == "EarthAirPrefab")
+        if (other.name == "EarthAirPrefab" || other.name == "EarthAirPrefab(Clone)")
         {
-            inSpell = false;
+            //inSpell = false;
+            castDown = false;
         }
     }
 }
