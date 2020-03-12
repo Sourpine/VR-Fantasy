@@ -28,14 +28,14 @@ public class TrooperShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if (shoot)
-        {
-            GetComponent<Animator>().SetBool("Bruh", true);
-        }
-        if (!shoot)
-        {
-            GetComponent<Animator>().SetBool("Bruh", false);
-        }
+        /* if (shoot)
+           {
+               GetComponent<Animator>().SetBool("Bruh", true);
+           }
+           if (!shoot)
+           {
+               GetComponent<Animator>().SetBool("Bruh", false);
+          }*/
     }
 
 
