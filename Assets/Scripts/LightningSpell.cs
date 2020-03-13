@@ -8,7 +8,7 @@ public class LightningSpell : MonoBehaviour
     public GameObject Hand;
     public GameObject lightningPrefab;
     public OVRInput.Button cast;
-    public GameObject lineTest;
+    //public GameObject lineTest;
     public float lightningRange = 50;
     public LayerMask lightningMask;
     public GameObject player;
@@ -85,8 +85,8 @@ public class LightningSpell : MonoBehaviour
                     //trail.transform.position = targetList[i].transform.position;
                     light.SetActive(true);
                     light.transform.forward /*right*/ = Vector3.Normalize(targetList[i].transform.position - targetList[i - 1].transform.position);
-                    lineTest.transform.position = targetList[i - 1].transform.position;
-                    Destroy(light, .5f);
+                    //lineTest.transform.position = targetList[i - 1].transform.position;
+                    Destroy(light, .3f);
                 }
                 Destroy(lightning, .5f);
             }
@@ -97,9 +97,9 @@ public class LightningSpell : MonoBehaviour
         }
 
         //test stuffs
-        for (int i = 1; i < targetList.Count; i++)
+        /*for (int i = 1; i < targetList.Count; i++)
         {
             lineTest.transform.position = targetList[i - 1].transform.position;
-        }
+        }*/
     }
 }

@@ -24,11 +24,6 @@ public class GravitySpell : MonoBehaviour
         gravNorm = 1;
         gameObject.GetComponent<Rigidbody>().AddForce(Physics.gravity * gravNorm);
         gravNeg = -1.5f;
-        //gravFall = 40;
-
-        //floatTime = 2;
-        //floatTime2 = 4;
-        //floatTime3 = 6;
     }
 
     // Update is called once per frame
@@ -72,14 +67,6 @@ public class GravitySpell : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
             gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
         }
-        /*if (player.GetComponent<NEWSpells>().casting == true)
-        {
-            castDown = true;
-        }*/
-        /*else
-        {
-            castDown = false;
-        }*/
     }
 
     private void OnTriggerEnter(Collider other)
@@ -94,7 +81,6 @@ public class GravitySpell : MonoBehaviour
     {
         if (other.name == "EarthAirPrefab" || other.name == "EarthAirPrefab(Clone)")
         {
-            //inSpell = false;
             castDown = false;
         }
     }

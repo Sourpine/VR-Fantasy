@@ -100,6 +100,7 @@ public class NEWSpells : MonoBehaviour
     public GameObject endpoint;
     public GameObject tornadoEndpoint;
     public GameObject endpointAir;
+    public GameObject iceEndpoint;
     public GameObject target;
     public bool floorSpell = false;
 
@@ -242,6 +243,7 @@ public class NEWSpells : MonoBehaviour
         endpoint = GameObject.Find("endpoint");
         tornadoEndpoint = GameObject.Find("tornadoEndpoint");
         endpointAir = GameObject.Find("endpointAir");
+        iceEndpoint = GameObject.Find("iceEndpoint");
         target = GameObject.Find("target");
 
         //the spells which require Instantiation are likely refrenced elsewhere
@@ -270,7 +272,6 @@ public class NEWSpells : MonoBehaviour
         //disabling ui
         Menu.SetActive(false);
         EventSystem.SetActive(false);
-        target.SetActive(false);
     }
 
     void Update()
@@ -343,6 +344,9 @@ public class NEWSpells : MonoBehaviour
             FireWaterPrefab.SetActive(false);
             FireAirPrefab.SetActive(false);
             WaterAirPrefab.SetActive(false);
+
+            //diabling target
+            target.SetActive(false);
         }
         
         //deals with menu appearing and setting the right event system
@@ -367,24 +371,29 @@ public class NEWSpells : MonoBehaviour
             player.GetComponent<OVRPlayerController>().enabled = true;
         }
 
-        RaycastHit targetHit;
-        Vector3 targetDestination;
-        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out targetHit, 50, 13))
+        if(Hand.tag == "lHand")
         {
-            targetDestination = targetHit.point;
-            target.SetActive(true);
+            RaycastHit targetHit;
+            Vector3 targetDestination;
+            LayerMask targetLM;
+            targetLM = 4097;
+            if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out targetHit, 50, targetLM))
+            {
+                targetDestination = targetHit.point;
+                target.SetActive(true);
+            }
+            else if (floorSpell == true && combined == true)
+            {
+                targetDestination = endpoint.transform.position;
+                target.SetActive(true);
+            }
+            else
+            {
+                targetDestination = tornadoEndpoint.transform.position;
+                target.SetActive(false);
+            }
+            target.transform.position = targetDestination;
         }
-        else if (floorSpell == true)
-        {
-            targetDestination = endpoint.transform.position;
-            target.SetActive(true);
-        }
-        else
-        {
-            targetDestination = tornadoEndpoint.transform.position;
-            target.SetActive(false);
-        }
-        target.transform.position = targetDestination;
 
 
             //  B   A   S   E
@@ -1054,7 +1063,7 @@ public class NEWSpells : MonoBehaviour
                         player.GetComponent<Mana>().mana -= WACostI;
                         casting = true;
                         WaterAir.SetActive(false);
-                        GameObject projectile = Instantiate(WaterAirPrefab, Hand.transform.position, endpoint.transform.rotation);
+                        GameObject projectile = Instantiate(WaterAirPrefab, iceEndpoint.transform.position, endpoint.transform.rotation);
                         projectile.SetActive(true);
                         WaterAir.SetActive(true);
                         Destroy(projectile, 5);
@@ -1078,9 +1087,6 @@ public class NEWSpells : MonoBehaviour
             }
 
         }
-
-        //Debug.Log("READ ME! " + (value + OtherHand.GetComponent<NEWSpells>().value));
-        //Debug.Log("ALSO READ ME! " + (valueSave + OtherHand.GetComponent<NEWSpells>().valueSave));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -1182,38 +1188,4 @@ public class NEWSpells : MonoBehaviour
         FireAirLow.SetActive(false);
         WaterAirLow.SetActive(false);
     }
-
-    //spell check list
-    //
-    //done o all the variables are acounted for (gameObjects ints etc)
-    //done o all variables are assigned in the script
-    //done o pop up menus
-    //done o when you chose the icon the menu drops and the spell is enabled
-    //done o when you click a trigger it fires the spell
-    // o when you put the hands close enough together it makes a combo
-    // o all the above for combos
-    //
-    //2 menus with 4 options each
-    //when you choose an option it assigns the appropriate hand with a #
-    //depending on the number it will spawn one of 4 dormant effects
-    //if the MAIN TRIGGER (the trigger associated with the hand) is pulled the dormant effect is replaced with the active effect and mana takes a toll
-    //if the hands get within a certain proximity of one another then they merge (theyre values are stored then added and the appropriate added effect[dormant] is spawned in the hands)
-    //if either trigger is pressed then the dual spell is cast and the mana is expended (if both triggers are pulled then <-- x2)
-    //when the hands seperate it pulls the stored #s and assigns them
-
-
-    /*
-    meteor
-    fireball    
-    greater heal
-    cyclone
-    lava
-    vines
-    gravity
-    geyser
-    lightning
-    ice
-    */
-
-    //lava, vines, and geyser all copy meteor
 }
