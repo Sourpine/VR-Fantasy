@@ -267,7 +267,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110683768826698270}
-  m_LocalRotation: {x: -0.092282444, y: -0, z: -0, w: 0.9957329}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
@@ -276,7 +276,7 @@ Transform:
   - {fileID: 5629854680969403372}
   m_Father: {fileID: 5328708556643548364}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -10.59, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2311495204049497493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,6 +1212,8 @@ GameObject:
   - component: {fileID: 903487385902978606}
   - component: {fileID: 903487385902978607}
   - component: {fileID: 903487385902978601}
+  - component: {fileID: 1665846554}
+  - component: {fileID: 1665846567}
   m_Layer: 11
   m_Name: Trooper@Pistol Idle (1)
   m_TagString: Enemy
@@ -1249,7 +1251,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1264,9 +1266,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.008300563
-  m_Height: 0.03552303
+  m_Height: 0.03923627
   m_Direction: 1
-  m_Center: {x: 0.0005596423, y: -0.0030810463, z: 0.0018448412}
+  m_Center: {x: 0.0005596424, y: -0.0049376846, z: 0.0018448407}
 --- !u!95 &903487385902979024
 Animator:
   serializedVersion: 3
@@ -1298,7 +1300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fcd77db0df0144e93234f9d0892d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1000
+  attackRange: 3.5
   attackDamage: 10
 --- !u!114 &903487385902979026
 MonoBehaviour:
@@ -1401,7 +1403,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1409,3 +1411,31 @@ NavMeshAgent:
   m_BaseOffset: 0.02
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1665846554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9198665924574727903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c93833976f728ac45be49577b8a69859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+--- !u!114 &1665846567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9198665924574727903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b66452cd70f9543a37731c0876c00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nearby: []
