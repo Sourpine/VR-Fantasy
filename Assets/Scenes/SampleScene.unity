@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 54903904}
   - component: {fileID: 54903905}
   - component: {fileID: 54903906}
+  - component: {fileID: 54903907}
   m_Layer: 11
   m_Name: Green Enemy
   m_TagString: Enemy
@@ -411,6 +412,23 @@ MonoBehaviour:
   slowAmnt: 0
   time: 8
   timer: 0
+--- !u!114 &54903907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54903891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b31435a00fecff4991360be914cf59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  spellName: null
+  dpsTime: 1
+  dpsTimer: 0
+  dps: 0
 --- !u!1 &193773389
 GameObject:
   m_ObjectHideFlags: 0
